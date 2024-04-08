@@ -25,6 +25,7 @@ Bạn có thể cài đặt DApps SubProject bằng cách thực hiện các bư
 ## Công nghệ sử dụng:
 
 - java
+- data SQL
 
 ## Tác giả
 
