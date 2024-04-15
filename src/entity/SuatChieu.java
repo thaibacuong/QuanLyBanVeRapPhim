@@ -2,9 +2,10 @@ package entity;
 import java.time.LocalDate;
 
 public class SuatChieu {
-	private String maSuatChieu;
-	private LocalDate gioBatDau;
-	private LocalDate gioKetThuc;
+	private String MaSC;
+	private LocalDate GioBD;
+	private LocalDate GioKT;
+	private LocalDate NgayChieu;
 	private PhongChieu phongChieu;
 	private Phim phim;
 	
@@ -12,28 +13,55 @@ public class SuatChieu {
 		super();
 	}
 
-	public String getMaSuatChieu() {
-		return maSuatChieu;
+	public SuatChieu(Phim phim) {
+		super();
 	}
 
-	public void setMaSuatChieu(String maSuatChieu) {
-		this.maSuatChieu = maSuatChieu;
+	public SuatChieu(PhongChieu phongChieu) {
+		super();
 	}
 
-	public LocalDate getGioBatDau() {
-		return gioBatDau;
+	public SuatChieu(String maSC, LocalDate gioBD, LocalDate gioKT, LocalDate ngayChieu, PhongChieu phongChieu,
+			Phim phim) {
+		super();
+		this.MaSC = maSC;
+		this.GioBD = gioBD;
+		this.GioKT = gioKT;
+		this.NgayChieu = ngayChieu;
+		this.phongChieu = phongChieu;
+		this.phim = phim;
 	}
 
-	public void setGioBatDau(LocalDate gioBatDau) {
-		this.gioBatDau = gioBatDau;
+	public String getMaSC() {
+		return MaSC;
 	}
 
-	public LocalDate getGioKetThuc() {
-		return gioKetThuc;
+	public void setMaSC(String maSC) {
+		MaSC = maSC;
 	}
 
-	public void setGioKetThuc(LocalDate gioKetThuc) {
-		this.gioKetThuc = gioKetThuc;
+	public LocalDate getGioBD() {
+		return GioBD;
+	}
+
+	public void setGioBD(LocalDate gioBD) {
+		GioBD = gioBD;
+	}
+
+	public LocalDate getGioKT() {
+		return GioKT;
+	}
+
+	public void setGioKT(LocalDate gioKT) {
+		GioKT = gioKT;
+	}
+
+	public LocalDate getNgayChieu() {
+		return NgayChieu;
+	}
+
+	public void setNgayChieu(LocalDate ngayChieu) {
+		NgayChieu = ngayChieu;
 	}
 
 	public PhongChieu getPhongChieu() {
@@ -54,9 +82,7 @@ public class SuatChieu {
 
 	@Override
 	public String toString() {
-		return "SuatChieu [maSuatChieu=" + maSuatChieu + ", gioBatDau=" + gioBatDau + ", gioKetThuc=" + gioKetThuc
+		return "SuatChieu [MaSC=" + MaSC + ", GioBD=" + GioBD + ", GioKT=" + GioKT + ", NgayChieu=" + NgayChieu
 				+ ", phongChieu=" + phongChieu + ", phim=" + phim + "]";
-	}
-	
-	
+	}	
 }

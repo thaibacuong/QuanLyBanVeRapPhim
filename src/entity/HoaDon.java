@@ -2,62 +2,62 @@ package entity;
 import java.time.LocalDate;
 
 public class HoaDon {
-	private String maHoaDon;
-	private LocalDate ngayXuatHD;
+	private String MaHD;
+	private LocalDate NgayXHD;
 	private NhanVien nhanVien;
+	private KhachHang khachhang;
 	
-	public HoaDon() {
+	public HoaDon(KhachHang khachhang) {
 		super();
 	}
-	
-	public HoaDon(String maHoaDon, LocalDate ngayXuatHD, NhanVien nhanVien) {
+
+	public HoaDon(NhanVien nhanVien) {
 		super();
-		this.maHoaDon = maHoaDon;
-		this.ngayXuatHD = ngayXuatHD;
+	}
+
+	public HoaDon(String maHD, LocalDate ngayXHD, NhanVien nhanVien, KhachHang khachhang) {
+		super();
+		this.MaHD = maHD;
+		this.NgayXHD = ngayXHD;
 		this.nhanVien = nhanVien;
+		this.khachhang = khachhang;
 	}
 
-	public String getMaHoaDon() {
-		return maHoaDon;
+	public String getMaHD() {
+		return MaHD;
 	}
 
-
-
-	public void setMaHoaDon(String maHoaDon) {
-		this.maHoaDon = maHoaDon;
+	public void setMaHD(String maHD) {
+		MaHD = maHD;
 	}
 
-
-
-	public LocalDate getNgayXuatHD() {
-		return ngayXuatHD;
+	public LocalDate getNgayXHD() {
+		return NgayXHD;
 	}
 
-
-
-	public void setNgayXuatHD(LocalDate ngayXuatHD) {
-		this.ngayXuatHD = ngayXuatHD;
+	public void setNgayXHD(LocalDate ngayXHD) {
+		NgayXHD = ngayXHD;
 	}
-
-
 
 	public NhanVien getNhanVien() {
 		return nhanVien;
 	}
 
-
-
 	public void setNhanVien(NhanVien nhanVien) {
 		this.nhanVien = nhanVien;
 	}
 
+	public KhachHang getKhachhang() {
+		return khachhang;
+	}
 
+	public void setKhachhang(KhachHang khachhang) {
+		this.khachhang = khachhang;
+	}
 
 	@Override
 	public String toString() {
-		// TODO Auto-generated method stub
-		return super.toString();
+		return "HoaDon [MaHD=" + MaHD + ", NgayXHD=" + NgayXHD + ", nhanVien=" + nhanVien + ", khachhang=" + khachhang
+				+ "]";
 	}
-	
-	
 }
