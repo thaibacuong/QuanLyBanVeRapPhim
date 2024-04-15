@@ -41,11 +41,7 @@ public class KhachHang {
 	public boolean isGioiTinh() {
 		return GioiTinh;
 	}
-	@Override
-	public String toString() {
-		return "KhachHang [MaKH=" + MaKH + ", TenKH=" + TenKH + ", SoDT=" + SoDT + ", GioiTinh=" + GioiTinh
-				+ ", NgaySinh=" + NgaySinh + "]";
-	}
+
 	public void setGioiTinh(boolean gioiTinh) {
 		GioiTinh = gioiTinh;
 	}
@@ -55,6 +51,10 @@ public class KhachHang {
 	public void setNgaySinh(LocalDate ngaySinh) {
 		NgaySinh = ngaySinh;
 	}
-	
+	@Override
+	public String toString() {
+		return "KhachHang [MaKH=" + MaKH + ", TenKH=" + TenKH + ", SoDT=" + SoDT + ", GioiTinh=" + GioiTinh
+				+ ", NgaySinh=" + NgaySinh + "]";
+	}
 	
 }

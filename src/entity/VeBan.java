@@ -2,54 +2,69 @@ package entity;
 import java.time.LocalDate;
 
 public class VeBan {
-	private String maVeBan;
-	private LocalDate ngayBatDau;
-	private LocalDate ngayKetThuc;
+	private String MaVB;
+	private LocalDate NgayBD;
+	private LocalDate NgayKT;
 	private GheNgoi gheNgoi;
 	private SuatChieu suatChieu;
-	private String loaiVe;
+	private String LVe;
+	private HoaDon hoadon;
+	private GheNgoi ghengoi;
 	
 	public VeBan() {
 		super();
 	}
 
-	
-	
-	public VeBan(String maVeBan, LocalDate ngayBatDau, LocalDate ngayKetThuc, GheNgoi gheNgoi, SuatChieu suatChieu,
-			String loaiVe) {
+	public VeBan(HoaDon hoadon) {
 		super();
-		this.maVeBan = maVeBan;
-		this.ngayBatDau = ngayBatDau;
-		this.ngayKetThuc = ngayKetThuc;
+
+	}
+
+	public VeBan(GheNgoi ghengoi) {
+		super();
+
+	}
+
+	public VeBan(SuatChieu suatChieu) {
+		super();
+
+	}
+
+	public VeBan(String maVB, LocalDate ngayBD, LocalDate ngayKT, GheNgoi gheNgoi, SuatChieu suatChieu, String lVe,
+			HoaDon hoadon, GheNgoi ghengoi2) {
+		super();
+		this.MaVB = maVB;
+		this.NgayBD = ngayBD;
+		this.NgayKT = ngayKT;
 		this.gheNgoi = gheNgoi;
 		this.suatChieu = suatChieu;
-		this.loaiVe = loaiVe;
+		this.LVe = lVe;
+		this.hoadon = hoadon;
+		this.ghengoi = ghengoi2;
 	}
 
-
-
-	public String getMaVeBan() {
-		return maVeBan;
+	public String getMaVB() {
+		return MaVB;
 	}
 
-	public void setMaVeBan(String maVeBan) {
-		this.maVeBan = maVeBan;
+	public void setMaVB(String maVB) {
+		MaVB = maVB;
 	}
 
-	public LocalDate getNgayBatDau() {
-		return ngayBatDau;
+	public LocalDate getNgayBD() {
+		return NgayBD;
 	}
 
-	public void setNgayBatDau(LocalDate ngayBatDau) {
-		this.ngayBatDau = ngayBatDau;
+	public void setNgayBD(LocalDate ngayBD) {
+		NgayBD = ngayBD;
 	}
 
-	public LocalDate getNgayKetThuc() {
-		return ngayKetThuc;
+	public LocalDate getNgayKT() {
+		return NgayKT;
 	}
 
-	public void setNgayKetThuc(LocalDate ngayKetThuc) {
-		this.ngayKetThuc = ngayKetThuc;
+	public void setNgayKT(LocalDate ngayKT) {
+		NgayKT = ngayKT;
 	}
 
 	public GheNgoi getGheNgoi() {
@@ -68,19 +83,36 @@ public class VeBan {
 		this.suatChieu = suatChieu;
 	}
 
-	public String getLoaiVe() {
-		return loaiVe;
+	public String getLVe() {
+		return LVe;
 	}
 
-	public void setLoaiVe(String loaiVe) {
-		this.loaiVe = loaiVe;
+	public void setLVe(String lVe) {
+		LVe = lVe;
+	}
+
+	public HoaDon getHoadon() {
+		return hoadon;
+	}
+
+	public void setHoadon(HoaDon hoadon) {
+		this.hoadon = hoadon;
+	}
+
+	public GheNgoi getGhengoi() {
+		return ghengoi;
+	}
+
+	public void setGhengoi(GheNgoi ghengoi) {
+		this.ghengoi = ghengoi;
 	}
 
 	@Override
 	public String toString() {
-		return "VeBan [maVeBan=" + maVeBan + ", ngayBatDau=" + ngayBatDau + ", ngayKetThuc=" + ngayKetThuc
-				+ ", gheNgoi=" + gheNgoi + ", suatChieu=" + suatChieu + ", loaiVe=" + loaiVe + "]";
+		return "VeBan [MaVB=" + MaVB + ", NgayBD=" + NgayBD + ", NgayKT=" + NgayKT + ", gheNgoi=" + gheNgoi
+				+ ", suatChieu=" + suatChieu + ", LVe=" + LVe + ", hoadon=" + hoadon + ", ghengoi=" + ghengoi + "]";
 	}
 	
 	
+
 }

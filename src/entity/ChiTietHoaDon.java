@@ -1,59 +1,56 @@
 package entity;
 public class ChiTietHoaDon {
 	private HoaDon hoaDon;
-	private VeBan veBan;
-	private int soLuong;
-	private double tongTien;
+	private int SoL;
+	private double GiaT;
 	
-	public ChiTietHoaDon() {
+	
+	public ChiTietHoaDon(HoaDon hoaDon) {
 		super();
 	}
 
-	public ChiTietHoaDon(HoaDon hoaDon, VeBan veBan, int soLuong, double tongTien) {
+
+	public ChiTietHoaDon(HoaDon hoaDon, int soL, double giaT) {
 		super();
 		this.hoaDon = hoaDon;
-		this.veBan = veBan;
-		this.soLuong = soLuong;
-		this.tongTien = tongTien;
+		this.SoL = soL;
+		this.GiaT = giaT;
 	}
+
 
 	public HoaDon getHoaDon() {
 		return hoaDon;
 	}
 
+
 	public void setHoaDon(HoaDon hoaDon) {
 		this.hoaDon = hoaDon;
 	}
 
-	public VeBan getVeBan() {
-		return veBan;
+
+	public int getSoL() {
+		return SoL;
 	}
 
-	public void setVeBan(VeBan veBan) {
-		this.veBan = veBan;
+
+	public void setSoL(int soL) {
+		SoL = soL;
 	}
 
-	public int getSoLuong() {
-		return soLuong;
+
+	public double getGiaT() {
+		return GiaT;
 	}
 
-	public void setSoLuong(int soLuong) {
-		this.soLuong = soLuong;
+
+	public void setGiaT(double giaT) {
+		GiaT = giaT;
 	}
 
-	public double getTongTien() {
-		return tongTien;
-	}
-
-	public void setTongTien(double tongTien) {
-		this.tongTien = tongTien;
-	}
 
 	@Override
 	public String toString() {
-		return "ChiTietHoaDon [hoaDon=" + hoaDon + ", veBan=" + veBan + ", soLuong=" + soLuong + ", tongTien="
-				+ tongTien + "]";
+		return "ChiTietHoaDon [hoaDon=" + hoaDon + ", SoL=" + SoL + ", GiaT=" + GiaT + "]";
 	}
-	
 	
 }

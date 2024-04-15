@@ -1,52 +1,43 @@
 package entity;
 public class PhongChieu {
-	private String maPhongChieu;
-	private String tenPhongChieu;
-	private int sucChua;
-	private boolean trangThai;
-	
-	public PhongChieu() {
+	private String MaPC;
+	private String TenPC;
+	private int SucChua;
+	private boolean TrangThai;
+	public PhongChieu(String maPC, String tenPC, int sucChua, boolean trangThai) {
 		super();
+		this.MaPC = maPC;
+		this.TenPC = tenPC;
+		this.SucChua = sucChua;
+		this.TrangThai = trangThai;
 	}
-
-	public String getMaPhongChieu() {
-		return maPhongChieu;
+	public String getMaPC() {
+		return MaPC;
 	}
-
-	public void setMaPhongChieu(String maPhongChieu) {
-		this.maPhongChieu = maPhongChieu;
+	public void setMaPC(String maPC) {
+		MaPC = maPC;
 	}
-
-	public String getTenPhongChieu() {
-		return tenPhongChieu;
+	public String getTenPC() {
+		return TenPC;
 	}
-
-	public void setTenPhongChieu(String tenPhongChieu) {
-		this.tenPhongChieu = tenPhongChieu;
+	public void setTenPC(String tenPC) {
+		TenPC = tenPC;
 	}
-
 	public int getSucChua() {
-		return sucChua;
+		return SucChua;
 	}
-
 	public void setSucChua(int sucChua) {
-		this.sucChua = sucChua;
+		SucChua = sucChua;
 	}
-
 	public boolean isTrangThai() {
-		return trangThai;
+		return TrangThai;
 	}
-
 	public void setTrangThai(boolean trangThai) {
-		this.trangThai = trangThai;
+		TrangThai = trangThai;
 	}
-
 	@Override
 	public String toString() {
-		return "PhongChieu [maPhongChieu=" + maPhongChieu + ", tenPhongChieu=" + tenPhongChieu + ", sucChua=" + sucChua
-				+ ", trangThai=" + trangThai + "]";
+		return "PhongChieu [MaPC=" + MaPC + ", TenPC=" + TenPC + ", SucChua=" + SucChua + ", TrangThai=" + TrangThai
+				+ "]";
 	}
-	
-	
-	
 }

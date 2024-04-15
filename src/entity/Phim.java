@@ -3,84 +3,104 @@ package entity;
 import java.time.LocalDate;
 
 public class Phim {
-		private String maPhim;
-		private String tenPhim;
-		private int thoiLuong;
-		private int gioiHanTuoi;
-		private LocalDate ngayCongChieu;
-		private String nhaSanXuat;
-		private String tomTat;
-		private String loaiPhim;
-		private String quocGia;
-		private String maLoaiPhim;
-		public Phim() {
+		private String MaPHIM;
+		private String TenPhim;
+		private int ThoiLuong;
+		private int DoTuoi;
+		private LocalDate NgayCongChieu;
+		private String NhaSX;
+		private String LoaiPhim;
+		private SuatChieu suatchieu;
+		
+		public Phim(SuatChieu suatchieu) {
 			super();
+
 		}
-		public String getMaPhim() {
-			return maPhim;
+
+		public Phim(String maPHIM, String tenPhim, int thoiLuong, int doTuoi, LocalDate ngayCongChieu, String nhaSX,
+				String loaiPhim, SuatChieu suatchieu) {
+			super();
+			this.MaPHIM = maPHIM;
+			this.TenPhim = tenPhim;
+			this.ThoiLuong = thoiLuong;
+			this.DoTuoi = doTuoi;
+			this.NgayCongChieu = ngayCongChieu;
+			this.NhaSX = nhaSX;
+			this.LoaiPhim = loaiPhim;
+			this.suatchieu = suatchieu;
 		}
-		public void setMaPhim(String maPhim) {
-			this.maPhim = maPhim;
+
+		public String getMaPHIM() {
+			return MaPHIM;
 		}
+
+		public void setMaPHIM(String maPHIM) {
+			MaPHIM = maPHIM;
+		}
+
 		public String getTenPhim() {
-			return tenPhim;
+			return TenPhim;
 		}
+
 		public void setTenPhim(String tenPhim) {
-			this.tenPhim = tenPhim;
+			TenPhim = tenPhim;
 		}
+
 		public int getThoiLuong() {
-			return thoiLuong;
+			return ThoiLuong;
 		}
+
 		public void setThoiLuong(int thoiLuong) {
-			this.thoiLuong = thoiLuong;
+			ThoiLuong = thoiLuong;
 		}
-		public int getGioiHanTuoi() {
-			return gioiHanTuoi;
+
+		public int getDoTuoi() {
+			return DoTuoi;
 		}
-		public void setGioiHanTuoi(int gioiHanTuoi) {
-			this.gioiHanTuoi = gioiHanTuoi;
+
+		public void setDoTuoi(int doTuoi) {
+			DoTuoi = doTuoi;
 		}
+
 		public LocalDate getNgayCongChieu() {
-			return ngayCongChieu;
+			return NgayCongChieu;
 		}
+
 		public void setNgayCongChieu(LocalDate ngayCongChieu) {
-			this.ngayCongChieu = ngayCongChieu;
+			NgayCongChieu = ngayCongChieu;
 		}
-		public String getNhaSanXuat() {
-			return nhaSanXuat;
+
+		public String getNhaSX() {
+			return NhaSX;
 		}
-		public void setNhaSanXuat(String nhaSanXuat) {
-			this.nhaSanXuat = nhaSanXuat;
+
+		public void setNhaSX(String nhaSX) {
+			NhaSX = nhaSX;
 		}
-		public String getTomTat() {
-			return tomTat;
-		}
-		public void setTomTat(String tomTat) {
-			this.tomTat = tomTat;
-		}
+
 		public String getLoaiPhim() {
-			return loaiPhim;
+			return LoaiPhim;
 		}
+
 		public void setLoaiPhim(String loaiPhim) {
-			this.loaiPhim = loaiPhim;
+			LoaiPhim = loaiPhim;
 		}
-		public String getQuocGia() {
-			return quocGia;
+
+		public SuatChieu getSuatchieu() {
+			return suatchieu;
 		}
-		public void setQuocGia(String quocGia) {
-			this.quocGia = quocGia;
+
+		public void setSuatchieu(SuatChieu suatchieu) {
+			this.suatchieu = suatchieu;
 		}
-		public String getMaLoaiPhim() {
-			return maLoaiPhim;
-		}
-		public void setMaLoaiPhim(String maLoaiPhim) {
-			this.maLoaiPhim = maLoaiPhim;
-		}
+
 		@Override
 		public String toString() {
-			return "Phim [maPhim=" + maPhim + ", tenPhim=" + tenPhim + ", thoiLuong=" + thoiLuong + ", gioiHanTuoi="
-					+ gioiHanTuoi + ", ngayCongChieu=" + ngayCongChieu + ", nhaSanXuat=" + nhaSanXuat + ", tomTat="
-					+ tomTat + ", loaiPhim=" + loaiPhim + ", quocGia=" + quocGia + ", maLoaiPhim=" + maLoaiPhim + "]";
+			return "Phim [MaPHIM=" + MaPHIM + ", TenPhim=" + TenPhim + ", ThoiLuong=" + ThoiLuong + ", DoTuoi=" + DoTuoi
+					+ ", NgayCongChieu=" + NgayCongChieu + ", NhaSX=" + NhaSX + ", LoaiPhim=" + LoaiPhim
+					+ ", suatchieu=" + suatchieu + "]";
 		}
+		
+		
 		
 }
