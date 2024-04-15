@@ -10,6 +10,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
@@ -35,11 +36,11 @@ public class DangNhap extends JFrame {
 
         ImageIcon backgroundImg = new ImageIcon(this.getClass().getResource("background1.jpg"));
         myLabel = new JLabel(backgroundImg);
-        myLabel.setBounds(0, 0, 600, 400);
+        myLabel.setBounds(0, 0, 500, 400);
         layeredPane.add(myLabel, Integer.valueOf(0)); 
 
         JNorth = new JPanel();
-        JNorth.setBounds(0, 0, 600, 100);
+        JNorth.setBounds(0, 0, 500, 100);
         layeredPane.add(JNorth, Integer.valueOf(2)); 
 
         lblTieuDe = new JLabel("ĐĂNG NHẬP");
@@ -50,13 +51,13 @@ public class DangNhap extends JFrame {
         JNorth.add(lblTieuDe);
 
         JCen = new JPanel();
-        JCen.setBounds(0, 100, 600, 200);
+        JCen.setBounds(0, 100, 500, 200);
         layeredPane.add(JCen, Integer.valueOf(2)); 
 
         JCen.setLayout(null);
         JCen.add(lblMaNV = new JLabel("Mã nhân viên:"));
         JCen.add(lblMatKhau = new JLabel("Mật khẩu:"));
-        JCen.add(txtMatKhau = new JTextField());
+        JCen.add(txtMatKhau = new JPasswordField());
         JCen.add(txtMaNV = new JTextField());
 
         Font f1 = new Font("Arial", Font.BOLD, 14);
@@ -75,16 +76,16 @@ public class DangNhap extends JFrame {
         lblMatKhau.setForeground(Color.white); 
 
         JPanel JSouth = new JPanel();
-        JSouth.setBounds(0, 300, 600, 100);
+        JSouth.setBounds(0, 300, 500, 100);
         layeredPane.add(JSouth, Integer.valueOf(2)); 
 
         JSouth.add(btnReset = new JButton("Reset"));
         JSouth.add(btnLogin = new JButton("Login"));
 
-        setSize(600, 400);
+        setSize(500, 400);
         setLocationRelativeTo(null);
         setVisible(true);
-        System.out.println(this.getClass().getResource("background.jpg"));
+        System.out.println(this.getClass().getResource("background1.jpg"));
         JNorth.setBackground(new Color(0, 0, 0, 100)); // Màu đen semi-transparent
         JCen.setBackground(new Color(0, 0, 0, 100)); // Màu đen semi-transparent
         JSouth.setBackground(new Color(0, 0, 0, 100)); // Màu đen semi-transparent
