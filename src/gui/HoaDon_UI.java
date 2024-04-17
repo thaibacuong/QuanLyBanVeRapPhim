@@ -122,7 +122,7 @@ public class HoaDon_UI extends JFrame implements ActionListener{
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         setLocationRelativeTo(null);
         setVisible(true);
-        
+         
         btnTim.addActionListener(this);
 	}
 	
