@@ -116,7 +116,7 @@ public class HoaDon_UI extends JFrame implements ActionListener{
 		JCen.add(scroll, BorderLayout.CENTER);
 
 		
-		setTitle("Phim");
+		setTitle("Hóa Đơn");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setResizable(true);
         setExtendedState(JFrame.MAXIMIZED_BOTH);

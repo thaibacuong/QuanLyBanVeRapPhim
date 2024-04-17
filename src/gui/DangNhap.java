@@ -86,8 +86,8 @@ public class DangNhap extends JFrame {
         setLocationRelativeTo(null);
         setVisible(true);
         JNorth.setBackground(new Color(0, 0, 0, 100)); // Màu đen semi-transparent
-        JCen.setBackground(new Color(0, 0, 0, 100)); // Màu đen semi-transparent
-        JSouth.setBackground(new Color(0, 0, 0, 100)); // Màu đen semi-transparent
+        JCen.setBackground(new Color(0, 0, 0, 100)); 
+        JSouth.setBackground(new Color(0, 0, 0, 100)); 
 
     }
 
