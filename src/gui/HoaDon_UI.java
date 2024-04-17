@@ -124,6 +124,7 @@ public class HoaDon_UI extends JFrame implements ActionListener{
         
         btnTim.addActionListener(this);
 	}
+	
 	public static void main(String[] args) {
 		new HoaDon_UI();
 	}
