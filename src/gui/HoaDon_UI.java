@@ -43,6 +43,7 @@ public class HoaDon_UI extends JFrame implements ActionListener{
 	private DefaultTableModel tableModel;
 	private JTable table;
 	private JScrollPane scroll;
+	
 	public HoaDon_UI() {
 		JNorth=new JPanel();
 		JTraCuu=new JPanel();
