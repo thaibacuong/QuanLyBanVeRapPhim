@@ -105,7 +105,7 @@ public class HoaDon_UI extends JFrame implements ActionListener{
 		vbT.add(btnThoat);
 		JThoat.add(vbT);
 		
-		JCen = new JPanel(new BorderLayout()); // Use BorderLayout for JCen
+		JCen = new JPanel(new BorderLayout()); 
 		add(JCen, BorderLayout.CENTER);
 		JCen.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.black), "Danh sách bán vé"));
 		String[] headers = "Mã hóa đơn;Ngày thanh toán;Giờ thanh toán;Tên nhân viên;Tên khách hàng;Số điện thoại khách hàng;Tổng hóa đơn".split(";");
