@@ -34,9 +34,9 @@ public class DangNhap extends JFrame {
         JLayeredPane layeredPane = new JLayeredPane();
         getContentPane().add(layeredPane);
 
-        ImageIcon backgroundImg = new ImageIcon(this.getClass().getResource("background1.jpg"));
+        ImageIcon backgroundImg = new ImageIcon(this.getClass().getResource("Login_Image/LoginBackground.jpg"));
         myLabel = new JLabel(backgroundImg);
-        myLabel.setBounds(0, 0, 500, 400);
+        myLabel.setBounds(0, 0, 500, 500);
         layeredPane.add(myLabel, Integer.valueOf(0)); 
 
         JNorth = new JPanel();
@@ -85,7 +85,6 @@ public class DangNhap extends JFrame {
         setSize(500, 400);
         setLocationRelativeTo(null);
         setVisible(true);
-        System.out.println(this.getClass().getResource("background1.jpg"));
         JNorth.setBackground(new Color(0, 0, 0, 100)); // Màu đen semi-transparent
         JCen.setBackground(new Color(0, 0, 0, 100)); // Màu đen semi-transparent
         JSouth.setBackground(new Color(0, 0, 0, 100)); // Màu đen semi-transparent
