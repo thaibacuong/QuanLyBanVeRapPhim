@@ -12,5 +12,6 @@ public class DatVe_UI extends JFrame{
         setSize(500, 400);
         setLocationRelativeTo(null);
         setVisible(true);
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
 	}
 }
