@@ -36,7 +36,7 @@ public class DangNhap extends JFrame {
 
         ImageIcon backgroundImg = new ImageIcon(this.getClass().getResource("Login_Image/LoginBackground.jpg"));
         myLabel = new JLabel(backgroundImg);
-        myLabel.setBounds(0, 0, 500, 500);
+        myLabel.setBounds(0, 0, 700, 700);
         layeredPane.add(myLabel, Integer.valueOf(0)); 
 
         JNorth = new JPanel();
