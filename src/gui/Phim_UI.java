@@ -87,7 +87,7 @@ public class Phim_UI extends JFrame implements ActionListener, MouseListener{
 
     public void createPanel(int n) {
         for (int i = 0; i < n; i++) {
-            String imageName = "Phim_Image/PhimImage" + (i + 1) + ".jpg";
+            String imageName = "Image/PhimImage" + (i + 1) + ".jpg";
             JPhims[i] = new JPanel();
             originalIcon = new ImageIcon(getClass().getResource(imageName));
             scaledWidth = originalIcon.getIconWidth() / 2;

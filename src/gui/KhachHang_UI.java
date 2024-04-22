@@ -38,9 +38,11 @@ public class KhachHang_UI extends JFrame{
 	private JButton btnXoa;
 	private JButton btnThoat;
 	public KhachHang_UI() {
+		
 		JWest=new JPanel();
 		add(JWest,BorderLayout.WEST);
 		JWest.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.black),"Thông tin nhân viên"));
+		
 		Box vb1=Box.createVerticalBox();
 		Box hb1=Box.createHorizontalBox();
 		Box hb2=Box.createHorizontalBox();
