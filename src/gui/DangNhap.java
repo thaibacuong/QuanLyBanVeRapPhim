@@ -41,7 +41,7 @@ public class DangNhap extends JFrame {
 
         JNorth = new JPanel();
         JNorth.setBounds(0, 0, 500, 100);
-        layeredPane.add(JNorth, Integer.valueOf(2)); 
+        layeredPane.add(JNorth, Integer.valueOf(2));
 
         lblTieuDe = new JLabel("ĐĂNG NHẬP");
         lblTieuDe.setForeground(Color.white);
