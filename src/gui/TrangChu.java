@@ -4,6 +4,9 @@ import javax.swing.JFrame;
 
 public class TrangChu extends JFrame{
 	public TrangChu() {
+		
+		
+		
 		setTitle("Trang chủ");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setResizable(false);
