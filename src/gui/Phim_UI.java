@@ -82,7 +82,6 @@ public class Phim_UI extends JFrame implements ActionListener, MouseListener{
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         setLocationRelativeTo(null);
         setVisible(true);
-        
     }
 
     public void createPanel(int n) {
