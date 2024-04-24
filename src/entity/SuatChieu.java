@@ -6,29 +6,24 @@ public class SuatChieu {
 	private LocalDate GioBD;
 	private LocalDate GioKT;
 	private LocalDate NgayChieu;
-	private PhongChieu phongChieu;
 	private Phim phim;
-	
-	public SuatChieu() {
+
+	public SuatChieu(String maSC) {
 		super();
+		this.MaSC = maSC;
 	}
 
 	public SuatChieu(Phim phim) {
 		super();
+		this.phim = phim;
 	}
 
-	public SuatChieu(PhongChieu phongChieu) {
-		super();
-	}
-
-	public SuatChieu(String maSC, LocalDate gioBD, LocalDate gioKT, LocalDate ngayChieu, PhongChieu phongChieu,
+	public SuatChieu(String maSC, LocalDate gioBD, LocalDate gioKT, LocalDate ngayChieu,
 			Phim phim) {
-		super();
 		this.MaSC = maSC;
 		this.GioBD = gioBD;
 		this.GioKT = gioKT;
 		this.NgayChieu = ngayChieu;
-		this.phongChieu = phongChieu;
 		this.phim = phim;
 	}
 
@@ -64,13 +59,6 @@ public class SuatChieu {
 		NgayChieu = ngayChieu;
 	}
 
-	public PhongChieu getPhongChieu() {
-		return phongChieu;
-	}
-
-	public void setPhongChieu(PhongChieu phongChieu) {
-		this.phongChieu = phongChieu;
-	}
 
 	public Phim getPhim() {
 		return phim;
@@ -83,6 +71,8 @@ public class SuatChieu {
 	@Override
 	public String toString() {
 		return "SuatChieu [MaSC=" + MaSC + ", GioBD=" + GioBD + ", GioKT=" + GioKT + ", NgayChieu=" + NgayChieu
-				+ ", phongChieu=" + phongChieu + ", phim=" + phim + "]";
-	}	
+				+ ", phim=" + phim + "]";
+	}
+
+	
 }

@@ -4,19 +4,18 @@ public class GheNgoi {
 	private String ViTriGN;
 	private int TrangThai;
 	private String LoaiGN;
-	private PhongChieu phongChieu;
 	
-	public GheNgoi(PhongChieu phongChieu) {
+	public GheNgoi(String MaGN) {
 		super();
+		this.MaGN = MaGN;
 	}
 
-	public GheNgoi(String maGN, String viTriGN, int trangThai, String loaiGN, PhongChieu phongChieu) {
-		super();
+	public GheNgoi(String maGN, String viTriGN, int trangThai, String loaiGN) {
 		this.MaGN = maGN;
 		this.ViTriGN = viTriGN;
 		this.TrangThai = trangThai;
 		this.LoaiGN = loaiGN;
-		this.phongChieu = phongChieu;
+
 	}
 
 	public String getMaGN() {
@@ -51,18 +50,11 @@ public class GheNgoi {
 		LoaiGN = loaiGN;
 	}
 
-	public PhongChieu getPhongChieu() {
-		return phongChieu;
-	}
-
-	public void setPhongChieu(PhongChieu phongChieu) {
-		this.phongChieu = phongChieu;
-	}
 
 	@Override
 	public String toString() {
 		return "GheNgoi [MaGN=" + MaGN + ", ViTriGN=" + ViTriGN + ", TrangThai=" + TrangThai + ", LoaiGN=" + LoaiGN
-				+ ", phongChieu=" + phongChieu + "]";
+			+ "]";
 	}
 	
 	

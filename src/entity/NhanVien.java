@@ -1,33 +1,31 @@
 package entity;
 
-import java.time.LocalDate;
 
 public class NhanVien {
 	private String MaNV;
 	private String TenNV;
-	private String SoCCCD;
 	private String SoDT;
 	private String ChuVu;
 	private boolean GioiTinh;
 	private String MatKH;
-	private LocalDate NgaySinh;
+	private int NgaySinh;
+	private boolean TrangThai;
 	
-	public NhanVien() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
-	public NhanVien(String maNV, String tenNV, String soCCCD, String soDT, String chuVu, boolean gioiTinh, String matKH,
-			LocalDate ngaySinh) {
+	public NhanVien(String maNV) {
 		super();
 		this.MaNV = maNV;
+	}
+
+	public NhanVien(String maNV, String tenNV, String soDT, String chuVu, boolean gioiTinh, String matKH,
+			int ngaySinh, boolean Trangthai) {
+		this.MaNV = maNV;
 		this.TenNV = tenNV;
-		this.SoCCCD = soCCCD;
 		this.SoDT = soDT;
 		this.ChuVu = chuVu;
 		this.GioiTinh = gioiTinh;
 		this.MatKH = matKH;
 		this.NgaySinh = ngaySinh;
+		this.TrangThai=Trangthai;
 	}
 
 	public String getMaNV() {
@@ -46,13 +44,6 @@ public class NhanVien {
 		TenNV = tenNV;
 	}
 
-	public String getSoCCCD() {
-		return SoCCCD;
-	}
-
-	public void setSoCCCD(String soCCCD) {
-		SoCCCD = soCCCD;
-	}
 
 	public String getSoDT() {
 		return SoDT;
@@ -86,17 +77,26 @@ public class NhanVien {
 		MatKH = matKH;
 	}
 
-	public LocalDate getNgaySinh() {
+	public int getNgaySinh() {
 		return NgaySinh;
 	}
 
-	public void setNgaySinh(LocalDate ngaySinh) {
+	public void setNgaySinh(int ngaySinh) {
 		NgaySinh = ngaySinh;
+	}
+	
+
+	public boolean isTrangThai() {
+		return TrangThai;
+	}
+
+	public void setTrangThai(boolean trangThai) {
+		TrangThai = trangThai;
 	}
 
 	@Override
 	public String toString() {
-		return "NhanVien [MaNV=" + MaNV + ", TenNV=" + TenNV + ", SoCCCD=" + SoCCCD + ", SoDT=" + SoDT + ", ChuVu="
+		return "NhanVien [MaNV=" + MaNV + ", TenNV=" + TenNV + ", SoDT=" + SoDT + ", ChuVu="
 				+ ChuVu + ", GioiTinh=" + GioiTinh + ", MatKH=" + MatKH + ", NgaySinh=" + NgaySinh + "]";
 	}
 

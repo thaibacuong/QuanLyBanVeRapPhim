@@ -1,22 +1,30 @@
 package entity;
-import java.time.LocalDate;
+
+import java.util.ArrayList;
 
 public class HoaDon {
 	private String MaHD;
-	private LocalDate NgayXHD;
+	private int NgayXHD;
 	private NhanVien nhanVien;
 	private KhachHang khachhang;
-	
+    private ArrayList<ChiTietHoaDon> chiTietHoaDonList;
+    
+	public HoaDon(String maHD) {
+		super();
+		MaHD = maHD;
+	}
+
 	public HoaDon(KhachHang khachhang) {
 		super();
+		this.khachhang = khachhang;
 	}
 
 	public HoaDon(NhanVien nhanVien) {
 		super();
+		this.nhanVien = nhanVien;
 	}
 
-	public HoaDon(String maHD, LocalDate ngayXHD, NhanVien nhanVien, KhachHang khachhang) {
-		super();
+	public HoaDon(String maHD, int ngayXHD, NhanVien nhanVien, KhachHang khachhang) {
 		this.MaHD = maHD;
 		this.NgayXHD = ngayXHD;
 		this.nhanVien = nhanVien;
@@ -31,11 +39,11 @@ public class HoaDon {
 		MaHD = maHD;
 	}
 
-	public LocalDate getNgayXHD() {
+	public int getNgayXHD() {
 		return NgayXHD;
 	}
 
-	public void setNgayXHD(LocalDate ngayXHD) {
+	public void setNgayXHD(int ngayXHD) {
 		NgayXHD = ngayXHD;
 	}
 
@@ -53,6 +61,14 @@ public class HoaDon {
 
 	public void setKhachhang(KhachHang khachhang) {
 		this.khachhang = khachhang;
+	}
+	
+	public double tinhTongTien() {
+	    double tongTien = 0.0;
+	    for (ChiTietHoaDon chiTiet : chiTietHoaDonList) {
+	        tongTien += chiTiet.thanhTien();
+	    }
+	    return tongTien;
 	}
 
 	@Override
