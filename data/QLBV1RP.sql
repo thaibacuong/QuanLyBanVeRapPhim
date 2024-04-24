@@ -18,19 +18,19 @@ FILEGROWTH=3MB
 CREATE TABLE NHANVIEN
 (maNhanVien CHAR(5) NOT NULL,
 tenNhanVien NVARCHAR(30) NOT NULL,
-gioiTinh NVARCHAR,
+gioiTinh bit,
 ngaySing DATETIME,
 soDienThoai CHAR(10),
 chucVu NVARCHAR(20),
-matKhau CHAR(20),
-trangThai BIT
+matKhau CHAR(20) Not Null,
+trangThai BIT Not Null
 )
 
 CREATE TABLE KHACHHANG
 (maKhachHang CHAR(5) NOT NULL,
 tenKhachHang NVARCHAR(30),
 soDienThoai CHAR(10),
-ngaySinh DATETIME
+ngaySinh DATETIME Not Null
 )
 
 CREATE TABLE HOADON
@@ -68,8 +68,8 @@ CREATE TABLE PHIM
 (maPhim CHAR(5) NOT NULL,
 tenPhim NVARCHAR(20) NOT NULL,
 thoiLuong TIME,
-gioiHanTuoi int,
-ngayCongChieu DATETIME NOT NULL,
+gioiHanTuoi int Not Null,
+ngayCongChieu DATETIME,
 nhaSanXuat NVARCHAR(20) NOT NULL,
 loaiPhim NVARCHAR(10) NOT NULL,
 )
@@ -78,14 +78,14 @@ CREATE TABLE PHONGCHIEU
 (maPhongChieu CHAR(5) NOT NULL,
 tenPhongChieu CHAR(5) NOT NULL,
 DienTich INT,
-trangThai BIT,
+trangThai BIT Not Null,
 maGhe CHAR(5)
 )
 
 CREATE TABLE GHENGOI
 (maGhe CHAR(5) NOT NULL,
 viTriGhe CHAR(5) NOT NULL,
-trangThai BIT,
+trangThai BIT Not Null,
 loaiGhe CHAR(5)
 )
 
