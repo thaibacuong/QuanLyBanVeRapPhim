@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class HoaDon {
 	private String MaHD;
-	private int NgayXHD;
+	private String NgayXHD;
 	private NhanVien nhanVien;
 	private KhachHang khachhang;
     private ArrayList<ChiTietHoaDon> chiTietHoaDonList;
@@ -24,7 +24,7 @@ public class HoaDon {
 		this.nhanVien = nhanVien;
 	}
 
-	public HoaDon(String maHD, int ngayXHD, NhanVien nhanVien, KhachHang khachhang) {
+	public HoaDon(String maHD, String ngayXHD, NhanVien nhanVien, KhachHang khachhang) {
 		this.MaHD = maHD;
 		this.NgayXHD = ngayXHD;
 		this.nhanVien = nhanVien;
@@ -39,11 +39,11 @@ public class HoaDon {
 		MaHD = maHD;
 	}
 
-	public int getNgayXHD() {
+	public String getNgayXHD() {
 		return NgayXHD;
 	}
 
-	public void setNgayXHD(int ngayXHD) {
+	public void setNgayXHD(String ngayXHD) {
 		NgayXHD = ngayXHD;
 	}
 

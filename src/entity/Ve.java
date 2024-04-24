@@ -3,8 +3,8 @@ package entity;
 
 public class Ve {
 	private String MaVe;
-	private int NgayBD;
-	private int NgayKT;
+	private String NgayBD;
+	private String NgayKT;
 	private SuatChieu suatChieu;
 	private String LoaiVe;
 	private PhongChieu Phongchieu;
@@ -21,7 +21,7 @@ public class Ve {
 		Phongchieu = phongchieu;
 	}
 
-	public Ve(String maVe, int ngayBD, int ngayKT, SuatChieu suatChieu, String loaiVe, PhongChieu phongchieu,
+	public Ve(String maVe, String ngayBD, String ngayKT, SuatChieu suatChieu, String loaiVe, PhongChieu phongchieu,
 			Double giaVe) {
 		this.MaVe = maVe;
 		this.NgayBD = ngayBD;
@@ -40,19 +40,19 @@ public class Ve {
 		MaVe = maVe;
 	}
 
-	public int getNgayBD() {
+	public String getNgayBD() {
 		return NgayBD;
 	}
 
-	public void setNgayBD(int ngayBD) {
+	public void setNgayBD(String ngayBD) {
 		NgayBD = ngayBD;
 	}
 
-	public int getNgayKT() {
+	public String getNgayKT() {
 		return NgayKT;
 	}
 
-	public void setNgayKT(int ngayKT) {
+	public void setNgayKT(String ngayKT) {
 		NgayKT = ngayKT;
 	}
 

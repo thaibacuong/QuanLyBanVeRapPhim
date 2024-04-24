@@ -1,11 +1,10 @@
 package entity;
-import java.time.LocalDate;
 
 public class SuatChieu {
 	private String MaSC;
-	private LocalDate GioBD;
-	private LocalDate GioKT;
-	private LocalDate NgayChieu;
+	private String GioBD;
+	private String GioKT;
+	private String NgayChieu;
 	private Phim phim;
 
 	public SuatChieu(String maSC) {
@@ -18,7 +17,7 @@ public class SuatChieu {
 		this.phim = phim;
 	}
 
-	public SuatChieu(String maSC, LocalDate gioBD, LocalDate gioKT, LocalDate ngayChieu,
+	public SuatChieu(String maSC, String gioBD, String gioKT, String ngayChieu,
 			Phim phim) {
 		this.MaSC = maSC;
 		this.GioBD = gioBD;
@@ -35,27 +34,27 @@ public class SuatChieu {
 		MaSC = maSC;
 	}
 
-	public LocalDate getGioBD() {
+	public String getGioBD() {
 		return GioBD;
 	}
 
-	public void setGioBD(LocalDate gioBD) {
+	public void setGioBD(String gioBD) {
 		GioBD = gioBD;
 	}
 
-	public LocalDate getGioKT() {
+	public String getGioKT() {
 		return GioKT;
 	}
 
-	public void setGioKT(LocalDate gioKT) {
+	public void setGioKT(String gioKT) {
 		GioKT = gioKT;
 	}
 
-	public LocalDate getNgayChieu() {
+	public String getNgayChieu() {
 		return NgayChieu;
 	}
 
-	public void setNgayChieu(LocalDate ngayChieu) {
+	public void setNgayChieu(String ngayChieu) {
 		NgayChieu = ngayChieu;
 	}
 

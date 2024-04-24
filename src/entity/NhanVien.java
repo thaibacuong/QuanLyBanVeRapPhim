@@ -8,7 +8,7 @@ public class NhanVien {
 	private String ChuVu;
 	private boolean GioiTinh;
 	private String MatKH;
-	private int NgaySinh;
+	private String NgaySinh;
 	private boolean TrangThai;
 	
 	public NhanVien(String maNV) {
@@ -17,7 +17,7 @@ public class NhanVien {
 	}
 
 	public NhanVien(String maNV, String tenNV, String soDT, String chuVu, boolean gioiTinh, String matKH,
-			int ngaySinh, boolean Trangthai) {
+			String ngaySinh, boolean Trangthai) {
 		this.MaNV = maNV;
 		this.TenNV = tenNV;
 		this.SoDT = soDT;
@@ -77,11 +77,11 @@ public class NhanVien {
 		MatKH = matKH;
 	}
 
-	public int getNgaySinh() {
+	public String getNgaySinh() {
 		return NgaySinh;
 	}
 
-	public void setNgaySinh(int ngaySinh) {
+	public void setNgaySinh(String ngaySinh) {
 		NgaySinh = ngaySinh;
 	}
 	

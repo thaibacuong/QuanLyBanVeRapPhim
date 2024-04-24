@@ -5,13 +5,13 @@ public class KhachHang {
 	private String TenKH;
 	private String SoDT;
 	private boolean GioiTinh;
-	private int NgaySinh;
+	private String NgaySinh;
 	
 	public KhachHang(String maKH) {
 		super();
 		this.MaKH = maKH;
 	}
-	public KhachHang(String maKH, String tenKH, String soDT, boolean gioiTinh, int ngaySinh) {
+	public KhachHang(String maKH, String tenKH, String soDT, boolean gioiTinh, String ngaySinh) {
 		this.MaKH = maKH;
 		this.TenKH = tenKH;
 		this.SoDT = soDT;
@@ -43,10 +43,10 @@ public class KhachHang {
 	public void setGioiTinh(boolean gioiTinh) {
 		GioiTinh = gioiTinh;
 	}
-	public int getNgaySinh() {
+	public String getNgaySinh() {
 		return NgaySinh;
 	}
-	public void setNgaySinh(int ngaySinh) {
+	public void setNgaySinh(String ngaySinh) {
 		NgaySinh = ngaySinh;
 	}
 	@Override
