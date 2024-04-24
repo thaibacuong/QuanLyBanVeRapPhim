@@ -19,7 +19,7 @@ CREATE TABLE NHANVIEN
 (maNhanVien CHAR(5) NOT NULL,
 tenNhanVien NVARCHAR(30) NOT NULL,
 gioiTinh bit,
-ngaySing DATETIME,
+ngaySing DATE,
 soDienThoai CHAR(10),
 chucVu NVARCHAR(20),
 matKhau CHAR(20) Not Null,
@@ -30,12 +30,12 @@ CREATE TABLE KHACHHANG
 (maKhachHang CHAR(5) NOT NULL,
 tenKhachHang NVARCHAR(30),
 soDienThoai CHAR(10),
-ngaySinh DATETIME Not Null
+ngaySinh DATE Not Null
 )
 
 CREATE TABLE HOADON
 (maHoaDon CHAR(5) NOT NULL,
-ngayXuatHD DATETIME,
+ngayXuatHD DATE,
 maNhanVien CHAR(5),
 maKhachHang CHAR(5)
 )
@@ -43,8 +43,8 @@ maKhachHang CHAR(5)
 CREATE TABLE VE
 (maVe CHAR(5) NOT NULL,
 loaiVe CHAR(10) NOT NULL,
-ngayBatDau DATETIME,
-ngayKetThuc DATETIME,
+ngayBatDau DATE,
+ngayKetThuc DATE,
 maPhongChieu CHAR(5),
 maSuatChieu CHAR(5),
 giaVe MONEY
@@ -58,9 +58,9 @@ soLuong int
 
 CREATE TABLE SUATCHIEU
 (maSuatChieu CHAR(5) NOT NULL,
-gioBatDau DATETIME,
-gioKetThuc DATETIME,
-ngayChieu DATETIME,
+gioBatDau DATE,
+gioKetThuc DATE,
+ngayChieu DATE,
 maPhim CHAR(5)
 )
 
@@ -69,7 +69,7 @@ CREATE TABLE PHIM
 tenPhim NVARCHAR(20) NOT NULL,
 thoiLuong TIME,
 gioiHanTuoi int Not Null,
-ngayCongChieu DATETIME,
+ngayCongChieu DATE,
 nhaSanXuat NVARCHAR(20) NOT NULL,
 loaiPhim NVARCHAR(10) NOT NULL,
 )

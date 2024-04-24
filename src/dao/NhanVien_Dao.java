@@ -3,6 +3,7 @@ package dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,13 +15,32 @@ import entity.NhanVien;
 
 
 public class NhanVien_Dao {
-	 
+	public ArrayList<NhanVien> QLBV1RP(){
+		try {
+			Connection con = ConnectDB.getInstance().getConnection();
+			String sql= "select * from NHANVIEN";
+			Statement statement = con.createStatement();
+			ResultSet rs = statement.executeQuery(sql);
+			while (rs.next()) {
+				String ma =rs.getString(1);
+				String ten =rs.getString(2);
+				String gv =rs.getString(3);
+				int siso = rs.getInt(4);
+				LopHoc s= new LopHoc(ma,ten,new GiaoVien(gv),siso);
+				dslop.add(s);
+			}
+		} catch (SQLException e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		return dslop;
+	}
 	public List<NhanVien> getAllNhanViens(){
 		List<NhanVien> ds = new ArrayList<NhanVien>();
 		ConnectDB.getInstance();
 		 Connection con = ConnectDB.getConnection();
 		try {
-			String sql ="SELECT * FROM Xe";
+			String sql ="SELECT * FROM NHANVIEN";
 					 
 			Statement st =  con.createStatement();
 			ResultSet rs = st.executeQuery(sql);
