@@ -3,16 +3,19 @@ package gui;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
+import java.awt.Dimension;
 import java.awt.Font;
 
 import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 
 public class TrangChu extends JFrame{
@@ -39,6 +42,9 @@ public class TrangChu extends JFrame{
 	private int scaledHeight1;
 	private JLabel myLabel11;
 	private ImageIcon scaledIcon1;
+	private JButton btnCPass;
+	private JButton btnLogin;
+	private JButton btnExit;
 
 	
 	public TrangChu() {
@@ -56,7 +62,7 @@ public class TrangChu extends JFrame{
         scaledIcon = new ImageIcon(backgrounfImg.getImage().getScaledInstance(scaledWidth, scaledHeight, java.awt.Image.SCALE_SMOOTH));
         myLabel = new JLabel(scaledIcon);
  
-        myLabel.setBorder(BorderFactory.createEmptyBorder(100, 50, 0, 50)); // Bố trí khoảng trống
+        myLabel.setBorder(BorderFactory.createEmptyBorder(100, 100, 0, 100)); // Bố trí khoảng trống
 
 	    // Thêm JLabel vào JPanel
 	    JWest.add(myLabel, BorderLayout.NORTH);
@@ -69,14 +75,19 @@ public class TrangChu extends JFrame{
 	    JWest.add(lbltenUse, BorderLayout.CENTER);
 	    lbltenUse.setFont(font);
 	    
-	    
+	    JPanel Jsouth = new JPanel();
+	    Jsouth.setBounds(500, 0, 500, 100);
+	    JWest.add(Jsouth, BorderLayout.SOUTH);
+	    Jsouth.add(btnCPass = new JButton("change Password"));
+	    Jsouth.add(btnExit = new JButton("exit"));
+        
 	    JLayeredPane layeredPane = new JLayeredPane();
         getContentPane().add(layeredPane);
         
 	    Jcen = new JPanel();
 	    backgrounfImg1 = new ImageIcon(getClass().getResource("Image/LoginBackground.jpg"));
 	    myLabel = new JLabel(backgrounfImg1);
-        myLabel.setBounds(0, 0, 1000, 1000);
+        myLabel.setBounds(0, 0, 2000, 1000);
         layeredPane.add(myLabel, Integer.valueOf(0)); 
         
 //        Jcen.add(myLabel11, BorderLayout.CENTER);
