@@ -1,6 +1,5 @@
 package entity;
 
-<<<<<<< Updated upstream
 
 public class NhanVien {
 	private String MaNV;
@@ -13,24 +12,6 @@ public class NhanVien {
 	private boolean TrangThai;
 	
 	public NhanVien(String maNV) {
-=======
-public class NhanVien {
-	private String MaNV;
-	private String TenNV;
-	private int SoDT;
-	private String ChucVu;
-	private boolean GioiTinh;
-	private String MatKH;
-	private String NgaySinh;
-	
-	public NhanVien() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
-	public NhanVien(String maNV, String tenNV, int soDT, String chucVu, boolean gioiTinh, String matKH,
-			String ngaySinh) {
->>>>>>> Stashed changes
 		super();
 		this.MaNV = maNV;
 	}
@@ -40,7 +21,7 @@ public class NhanVien {
 		this.MaNV = maNV;
 		this.TenNV = tenNV;
 		this.SoDT = soDT;
-		this.ChucVu = chucVu;
+		this.ChuVu = chuVu;
 		this.GioiTinh = gioiTinh;
 		this.MatKH = matKH;
 		this.NgaySinh = ngaySinh;
@@ -64,24 +45,20 @@ public class NhanVien {
 	}
 
 
-<<<<<<< Updated upstream
 	public String getSoDT() {
-=======
-	public int getSoDT() {
->>>>>>> Stashed changes
 		return SoDT;
 	}
 
-	public void setSoDT(int soDT) {
+	public void setSoDT(String soDT) {
 		SoDT = soDT;
 	}
 
 	public String getChuVu() {
-		return ChucVu;
+		return ChuVu;
 	}
 
-	public void setChucVu(String chucVu) {
-		ChucVu = chucVu;
+	public void setChuVu(String chuVu) {
+		ChuVu = chuVu;
 	}
 
 	public boolean isGioiTinh() {
@@ -119,13 +96,8 @@ public class NhanVien {
 
 	@Override
 	public String toString() {
-<<<<<<< Updated upstream
 		return "NhanVien [MaNV=" + MaNV + ", TenNV=" + TenNV + ", GioiTinh=" + GioiTinh + ", NgaySinh=" + NgaySinh
 				+ ", SoDT=" + SoDT + ", ChuVu=" + ChuVu + ", MatKH=" + MatKH + ", TrangThai=" + TrangThai + "]";
-=======
-		return "NhanVien [MaNV=" + MaNV + ", TenNV=" + TenNV + ", SoDT=" + SoDT + ", ChucVu="
-				+ ChucVu + ", GioiTinh=" + GioiTinh + ", MatKH=" + MatKH + ", NgaySinh=" + NgaySinh + "]";
->>>>>>> Stashed changes
 	}
 	
 }
