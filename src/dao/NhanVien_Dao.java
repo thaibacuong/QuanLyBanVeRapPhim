@@ -12,8 +12,6 @@ import connectDB.ConnectDB;
 import entity.NhanVien;
 
 
-
-
 public class NhanVien_Dao {
 	public NhanVien_Dao() {}
 	
@@ -30,6 +28,7 @@ public class NhanVien_Dao {
 			while(rs.next()) {
 				String ma=rs.getString(1);
 				String ten=rs.getString(2);
+<<<<<<< Updated upstream
 				Boolean gioiTinh =rs.getBoolean(3);
 				String ngaySinh=rs.getString(4);
 				String soDT=rs.getString(5);
@@ -38,6 +37,15 @@ public class NhanVien_Dao {
 				Boolean trangThai=rs.getBoolean(8);
 				
 				NhanVien nhanVien = new NhanVien(ma,ten,gioiTinh,ngaySinh,soDT,chucVU,matKhau,trangThai);
+=======
+				Integer soDT=rs.getInt(3);
+				String chucvu=rs.getString(4);
+				boolean gioitinh=rs.getBoolean(5);
+				String matkhau=rs.getString(6);
+				String ngaysinh=rs.getString(7);
+				
+				NhanVien nhanVien = new NhanVien(ma, ten, soDT, chucvu, gioitinh, matkhau, ngaysinh);
+>>>>>>> Stashed changes
 				
 				ds.add(nhanVien);
 				
@@ -49,7 +57,11 @@ public class NhanVien_Dao {
 		
 		return ds;
 	}
+<<<<<<< Updated upstream
 	public boolean addXeMay(NhanVien xm) {
+=======
+	public boolean addNhanVien(NhanVien nv) {
+>>>>>>> Stashed changes
 		ConnectDB.getInstance();
 		 Connection con = ConnectDB.getConnection();
 		int n=0;
@@ -57,6 +69,7 @@ public class NhanVien_Dao {
 		 PreparedStatement pst = null;
 		 try {
 			pst = con.prepareStatement(sql);
+<<<<<<< Updated upstream
 			pst.setString(1, xm.getMaNV());
 			pst.setString(2, xm.getTenNV());
 			pst.setBoolean(3, xm.isGioiTinh());
@@ -65,6 +78,15 @@ public class NhanVien_Dao {
 			pst.setString(6, xm.getChuVu());
 			pst.setString(7, xm.getMatKH());
 			pst.setBoolean(8, xm.isTrangThai());
+=======
+			pst.setString(1, nv.getMaNV());
+			pst.setString(2, nv.getTenNV());
+			pst.setInt(3, nv.getSoDT());
+			pst.setString(4, nv.getChuVu());
+			pst.setBoolean(5, nv.isGioiTinh());
+			pst.setString(6, nv.getMatKH());
+			pst.setString(7, nv.getNgaySinh());
+>>>>>>> Stashed changes
 			n= pst.executeUpdate();
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -81,11 +103,16 @@ public class NhanVien_Dao {
 		 }
 		return n>0;
 }
+<<<<<<< Updated upstream
 	public void updateXeMay(NhanVien xm) {
+=======
+	public void updateNhanVien(NhanVien nv) {
+>>>>>>> Stashed changes
 		ConnectDB.getInstance();
 		PreparedStatement pst =null;
 		 Connection con = ConnectDB.getConnection();
 		
+<<<<<<< Updated upstream
 		 String sql ="update NHANVIEN  set maNhanVien = ?,tenNhanVien=?,gioiTinh=?,ngaySing=?,soDienThoai=?,chucVu=?,matKhau=?,trangThai=? where soKhung =?";
 		 try {	
 			 pst = con.prepareStatement(sql);
@@ -97,6 +124,20 @@ public class NhanVien_Dao {
 				pst.setString(6, xm.getChuVu());
 				pst.setString(7, xm.getMatKH());
 				pst.setBoolean(8, xm.isTrangThai());
+=======
+		 String sql ="update NHANVIEN  set maNhanVien = ?,tenNhanVien=?,gioiTinh=?,soDienThoai=?,chucVu=?,matKhau=?,trangThai=? where maNhanVien =?";
+		 try {
+			 pst = con.prepareStatement(sql);
+			 pst = con.prepareStatement(sql);
+				
+				pst.setString(1, nv.getMaNV());
+				pst.setString(2, nv.getTenNV());
+				pst.setInt(3, nv.getSoDT());
+				pst.setString(4, nv.getChuVu());
+				pst.setBoolean(5, nv.isGioiTinh());
+				pst.setString(6, nv.getMatKH());
+				pst.setString(7, nv.getNgaySinh());
+>>>>>>> Stashed changes
 			 pst.executeUpdate() ;
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -106,6 +147,7 @@ public class NhanVien_Dao {
 			close(pst);
 		}
 	}
+<<<<<<< Updated upstream
 
 	public void DeleteXeMay(String sokhung) {
 		ConnectDB.getInstance();
@@ -117,6 +159,18 @@ public class NhanVien_Dao {
 			pst = con.prepareStatement(sql);
 			pst.setString(1, sokhung);
 			pst.executeUpdate();
+=======
+	public void DeleteNhanVien(String maNV) {
+		ConnectDB.getInstance();
+		PreparedStatement pst = null;
+		 Connection con = ConnectDB.getConnection();
+		
+		 String sql ="DELETE FROM NHANVIEN WHERE maNhanVien =?";
+		 try {
+			 pst = con.prepareStatement(sql);
+			pst.setString(1, maNV);
+			 pst.executeUpdate() ;
+>>>>>>> Stashed changes
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
