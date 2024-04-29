@@ -4,11 +4,11 @@ package entity;
 public class NhanVien {
 	private String MaNV;
 	private String TenNV;
+	private boolean GioiTinh;
+	private String NgaySinh;
 	private String SoDT;
 	private String ChuVu;
-	private boolean GioiTinh;
 	private String MatKH;
-	private String NgaySinh;
 	private boolean TrangThai;
 	
 	public NhanVien(String maNV) {
@@ -16,8 +16,8 @@ public class NhanVien {
 		this.MaNV = maNV;
 	}
 
-	public NhanVien(String maNV, String tenNV, String soDT, String chuVu, boolean gioiTinh, String matKH,
-			String ngaySinh, boolean Trangthai) {
+	public NhanVien(String maNV, String tenNV, boolean gioiTinh, String ngaySinh, String soDT, String chuVu, String matKH,
+			 boolean Trangthai) {
 		this.MaNV = maNV;
 		this.TenNV = tenNV;
 		this.SoDT = soDT;
@@ -96,10 +96,8 @@ public class NhanVien {
 
 	@Override
 	public String toString() {
-		return "NhanVien [MaNV=" + MaNV + ", TenNV=" + TenNV + ", SoDT=" + SoDT + ", ChuVu="
-				+ ChuVu + ", GioiTinh=" + GioiTinh + ", MatKH=" + MatKH + ", NgaySinh=" + NgaySinh + "]";
+		return "NhanVien [MaNV=" + MaNV + ", TenNV=" + TenNV + ", GioiTinh=" + GioiTinh + ", NgaySinh=" + NgaySinh
+				+ ", SoDT=" + SoDT + ", ChuVu=" + ChuVu + ", MatKH=" + MatKH + ", TrangThai=" + TrangThai + "]";
 	}
-
-	
 	
 }
