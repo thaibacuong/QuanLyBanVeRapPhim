@@ -1,13 +1,14 @@
 package entity;
 
-import java.time.LocalDate;
+import java.sql.Time;
+import java.sql.Date;
 
 public class Phim {
 	private String MaPHIM;
 	private String TenPhim;
-	private int ThoiLuong;
+	private Time ThoiLuong;
 	private int DoTuoi;
-	private LocalDate NgayCongChieu;
+	private Date NgayCongChieu;
 	private String NhaSX;
 	private String LoaiPhim;
 
@@ -16,7 +17,7 @@ public class Phim {
 		MaPHIM = maPHIM;
 	}
 
-	public Phim(String maPHIM, String tenPhim, int thoiLuong, int doTuoi, LocalDate ngayCongChieu, String nhaSX,
+	public Phim(String maPHIM, String tenPhim, Time thoiLuong, int doTuoi, Date ngayCongChieu, String nhaSX,
 			String loaiPhim) {
 		this.MaPHIM = maPHIM;
 		this.TenPhim = tenPhim;
@@ -43,11 +44,11 @@ public class Phim {
 		TenPhim = tenPhim;
 	}
 
-	public int getThoiLuong() {
+	public Time getThoiLuong() {
 		return ThoiLuong;
 	}
 
-	public void setThoiLuong(int thoiLuong) {
+	public void setThoiLuong(Time thoiLuong) {
 		ThoiLuong = thoiLuong;
 	}
 
@@ -59,11 +60,11 @@ public class Phim {
 		DoTuoi = doTuoi;
 	}
 
-	public LocalDate getNgayCongChieu() {
+	public Date getNgayCongChieu() {
 		return NgayCongChieu;
 	}
 
-	public void setNgayCongChieu(LocalDate ngayCongChieu) {
+	public void setNgayCongChieu(Date ngayCongChieu) {
 		NgayCongChieu = ngayCongChieu;
 	}
 
@@ -88,5 +89,6 @@ public class Phim {
 		return "Phim [MaPHIM=" + MaPHIM + ", TenPhim=" + TenPhim + ", ThoiLuong=" + ThoiLuong + ", DoTuoi=" + DoTuoi
 				+ ", NgayCongChieu=" + NgayCongChieu + ", NhaSX=" + NhaSX + ", LoaiPhim=" + LoaiPhim + "]";
 	}
+
 	
 }

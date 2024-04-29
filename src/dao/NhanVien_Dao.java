@@ -49,7 +49,7 @@ public class NhanVien_Dao {
 		
 		return ds;
 	}
-	public boolean addXeMay(NhanVien xm) {
+	public boolean addNhanVien(NhanVien nv) {
 		ConnectDB.getInstance();
 		 Connection con = ConnectDB.getConnection();
 		int n=0;
@@ -57,14 +57,14 @@ public class NhanVien_Dao {
 		 PreparedStatement pst = null;
 		 try {
 			pst = con.prepareStatement(sql);
-			pst.setString(1, xm.getMaNV());
-			pst.setString(2, xm.getTenNV());
-			pst.setBoolean(3, xm.isGioiTinh());
-			pst.setString(4, xm.getNgaySinh());
-			pst.setString(5, xm.getSoDT());
-			pst.setString(6, xm.getChuVu());
-			pst.setString(7, xm.getMatKH());
-			pst.setBoolean(8, xm.isTrangThai());
+			pst.setString(1, nv.getMaNV());
+			pst.setString(2, nv.getTenNV());
+			pst.setBoolean(3, nv.isGioiTinh());
+			pst.setString(4, nv.getNgaySinh());
+			pst.setString(5, nv.getSoDT());
+			pst.setString(6, nv.getChuVu());
+			pst.setString(7, nv.getMatKH());
+			pst.setBoolean(8, nv.isTrangThai());
 			n= pst.executeUpdate();
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -81,7 +81,7 @@ public class NhanVien_Dao {
 		 }
 		return n>0;
 }
-	public void updateXeMay(NhanVien xm) {
+	public void updateNhanVien(NhanVien nv) {
 		ConnectDB.getInstance();
 		PreparedStatement pst =null;
 		 Connection con = ConnectDB.getConnection();
@@ -89,14 +89,14 @@ public class NhanVien_Dao {
 		 String sql ="update NHANVIEN  set maNhanVien = ?,tenNhanVien=?,gioiTinh=?,ngaySing=?,soDienThoai=?,chucVu=?,matKhau=?,trangThai=? where soKhung =?";
 		 try {	
 			 pst = con.prepareStatement(sql);
-				pst.setString(1, xm.getMaNV());
-				pst.setString(2, xm.getTenNV());
-				pst.setBoolean(3, xm.isGioiTinh());
-				pst.setString(4, xm.getNgaySinh());
-				pst.setString(5, xm.getSoDT());
-				pst.setString(6, xm.getChuVu());
-				pst.setString(7, xm.getMatKH());
-				pst.setBoolean(8, xm.isTrangThai());
+				pst.setString(1, nv.getMaNV());
+				pst.setString(2, nv.getTenNV());
+				pst.setBoolean(3, nv.isGioiTinh());
+				pst.setString(4, nv.getNgaySinh());
+				pst.setString(5, nv.getSoDT());
+				pst.setString(6, nv.getChuVu());
+				pst.setString(7, nv.getMatKH());
+				pst.setBoolean(8, nv.isTrangThai());
 			 pst.executeUpdate() ;
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -107,7 +107,7 @@ public class NhanVien_Dao {
 		}
 	}
 
-	public void DeleteXeMay(String sokhung) {
+	public void DeleteNhanVien(String ma) {
 		ConnectDB.getInstance();
 		PreparedStatement pst = null;
 		Connection con = ConnectDB.getConnection();
@@ -115,7 +115,7 @@ public class NhanVien_Dao {
 		String sql = "DELETE FROM NHANVIEN WHERE sokhung =?";
 		try {
 			pst = con.prepareStatement(sql);
-			pst.setString(1, sokhung);
+			pst.setString(1, ma);
 			pst.executeUpdate();
 		} catch (Exception e) {
 			// TODO: handle exception
