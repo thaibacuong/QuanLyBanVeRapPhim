@@ -6,6 +6,7 @@ import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.ScrollPane;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
@@ -95,6 +96,31 @@ public class BanVe_UI extends JFrame implements ActionListener, MouseListener{
 	private DefaultTableModel tableModel;
 	private JTable table;
 	private JScrollPane scroll;
+	private JPanel JCen1;
+	private JPanel pnnhanvien;
+	private JPanel JCen1nv;
+	private JPanel JNorth1nv;
+	private DefaultTableModel tablemodel;
+	private JTable tablenv;
+	private JScrollPane scrollnv;
+	private JPanel JPSmall1;
+	private JPanel JPSmall2;
+	private Box vbnv1;
+	private Box vbnv2;
+	private Box vbnv3;
+	private Box vbnv4;
+	private Box hbnv1;
+	private Box hbnv2;
+	private Box hbnv4;
+	private Box hbnv3;
+	private JLabel lblchucvu;
+	private JLabel lbltinhtrang;
+	private JTextField txttennv;
+	private JButton btnTimnv;
+	private JLabel lbltennv;
+	private JLabel lblsodienthoai;
+	private JTextField txtsodienthoai;
+	private JButton btnLammoinv;
 	public BanVe_UI() {
 		UI();
 	}
@@ -141,11 +167,11 @@ public class BanVe_UI extends JFrame implements ActionListener, MouseListener{
         
         JSouth=new JPanel();
         
-        pnkhachhang = new JPanel(new BorderLayout());
-		//khách hàng ui
+        pnnhanvien = new JPanel(new BorderLayout());
+		//nhân viên ui
         
         JWest=new JPanel();
-        pnkhachhang.add(JWest,BorderLayout.WEST);
+        pnnhanvien.add(JWest,BorderLayout.WEST);
 		JWest.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.black),"Thông tin nhân viên"));
 		
 		Box vb1=Box.createVerticalBox();
@@ -165,19 +191,19 @@ public class BanVe_UI extends JFrame implements ActionListener, MouseListener{
 		String[] chucVu = {null,"Nhân viên bán vé", "Quản lý"};
 		
 		
-		lblTen=new JLabel("Tên nhân viên");
+		lblTen=new JLabel("Tên nhân viên   ");
 		txtTen=new JTextField(25);
-		lblNS=new JLabel("Năm sinh");
+		lblNS=new JLabel("Năm sinh  ");
 		txtNS=new JTextField(25);
-		lblGT=new JLabel("Giới tính");
+		lblGT=new JLabel("Giới tính  ");
 		cbxGT=new JComboBox<>(gioiTinh);
-		lblSDT=new JLabel("Số điện thoại");
+		lblSDT=new JLabel("Số điện thoại  ");
 		txtSDT=new JTextField(25);
-		lblCCCD=new JLabel("CCCD");
+		lblCCCD=new JLabel("CCCD  ");
 		txtCCCD=new JTextField(20);
-		lblCV=new JLabel("Chức vụ");
+		lblCV=new JLabel("Chức vụ  ");
 		cbxCV=new JComboBox<>(chucVu);
-		lblMK=new JLabel("Mật khẩu");
+		lblMK=new JLabel("Mật khẩu  ");
 		txtMK=new JTextField(25);
 		btnThem=new JButton("Thêm mới");
 		btnCapNhat=new JButton("Cập nhật");
@@ -185,12 +211,15 @@ public class BanVe_UI extends JFrame implements ActionListener, MouseListener{
 		btnLamMoi=new JButton("Làm mới");
 		btnThoat=new JButton("Thoát");
 		
-		lblNS.setPreferredSize(lblTen.getPreferredSize());
-		lblGT.setPreferredSize(lblTen.getPreferredSize());
-		lblSDT.setPreferredSize(lblTen.getPreferredSize());
-		lblCCCD.setPreferredSize(lblTen.getPreferredSize());
-		lblCV.setPreferredSize(lblTen.getPreferredSize());
-		lblMK.setPreferredSize(lblTen.getPreferredSize());
+		Dimension defaultSize = lblTen.getPreferredSize();
+		int increasedWidth = defaultSize.width + 4; 
+		lblNS.setPreferredSize(new Dimension(increasedWidth, defaultSize.height));
+		lblGT.setPreferredSize(new Dimension(increasedWidth, defaultSize.height));
+		lblSDT.setPreferredSize(new Dimension(increasedWidth, defaultSize.height));
+		lblCCCD.setPreferredSize(new Dimension(increasedWidth, defaultSize.height));
+		lblCV.setPreferredSize(new Dimension(increasedWidth, defaultSize.height));
+		lblMK.setPreferredSize(new Dimension(increasedWidth, defaultSize.height));
+
 		
 		btnCapNhat.setPreferredSize(btnThem.getPreferredSize());
 		btnXoa.setPreferredSize(btnThem.getPreferredSize());
@@ -240,6 +269,79 @@ public class BanVe_UI extends JFrame implements ActionListener, MouseListener{
 		vb1.add(Box.createVerticalStrut(25));
 		vb1.add(hb10);
         
+		JCen1=new JPanel(new BorderLayout());
+		pnnhanvien.add(JCen1,BorderLayout.CENTER);
+		JNorth1nv=new JPanel(new GridLayout(1, 12));
+		JCen1nv=new JPanel(new BorderLayout());
+		String[] header="Mã nhân viên;Tên nhân viên;Giới tính;Ngày sinh;Số điện thoại;Chức vụ;Mật khẩu;Trình trạng".split(";");
+		tablemodel=new DefaultTableModel(header, 0);
+		tablenv=new JTable(tablemodel);
+		scrollnv= new JScrollPane(tablenv);
+		JCen1nv.add(scrollnv);
+		JCen1.add(JCen1nv,BorderLayout.CENTER);
+		JCen1.add(JNorth1nv,BorderLayout.NORTH);
+		
+		Box hbnv=Box.createHorizontalBox();
+		JPSmall1=new JPanel();
+		JPSmall2=new JPanel();
+		JPSmall1.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.BLACK),"Lọc"));
+		JPSmall2.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.BLACK),"Tra cứu"));
+		hbnv.add(JPSmall1);
+		hbnv.add(JPSmall2);
+		JNorth1nv.add(hbnv);
+		vbnv1=Box.createVerticalBox();
+		vbnv2=Box.createVerticalBox();
+		hbnv1=Box.createHorizontalBox();
+		hbnv2=Box.createHorizontalBox();
+		hbnv3=Box.createHorizontalBox();
+		hbnv4=Box.createHorizontalBox();
+		vbnv1.add(Box.createVerticalStrut(10));
+		vbnv1.add(hbnv1);
+		vbnv1.add(Box.createVerticalStrut(15));
+		vbnv1.add(hbnv2);
+		vbnv1.add(Box.createVerticalStrut(10));
+		vbnv2.add(Box.createVerticalStrut(10));
+		vbnv2.add(hbnv3);
+		vbnv2.add(Box.createVerticalStrut(15));
+		vbnv2.add(hbnv4);
+		vbnv2.add(Box.createVerticalStrut(10));
+		JPSmall1.add(vbnv1);
+		JPSmall2.add(vbnv2);
+		
+		
+		lblchucvu=new JLabel("Chức vụ:     ");
+		String[] cv= {"","Nhân viên","Quản lý"};
+		JComboBox<String> cbxchucvu=new JComboBox<String>(cv);
+		lbltinhtrang=new JLabel("Tình trạng:  ");
+		String[] tt= {"","Tất cả","Có mặt"};
+		JComboBox<String> cbxtinhtrang=new JComboBox<String>(tt);
+		
+		cbxtinhtrang.setPreferredSize(new Dimension(200, 25));
+		
+		hbnv1.add(lblchucvu);
+		hbnv1.add(cbxchucvu);
+		hbnv2.add(lbltinhtrang);
+		hbnv2.add(cbxtinhtrang);
+		
+		lbltennv=new JLabel("Tên nhân viên:  ");
+		txttennv=new JTextField();
+		btnTimnv=new JButton("Tìm");
+		lblsodienthoai=new JLabel("Số điện thoại:    ");
+		txtsodienthoai=new JTextField();
+		btnLammoinv=new JButton("Làm mới");
+		
+		hbnv3.add(lbltennv);
+		hbnv3.add(txttennv);
+		hbnv3.add(btnTimnv);
+		hbnv4.add(lblsodienthoai);
+		hbnv4.add(txtsodienthoai);
+		hbnv4.add(btnLammoinv);
+		
+		txttennv.setPreferredSize(new Dimension(200, 25));
+		txtsodienthoai.setPreferredSize(new Dimension(200, 25));
+		btnTimnv.setPreferredSize(new Dimension(100, 25));
+		btnLammoinv.setPreferredSize(new Dimension(100, 25));
+		
 		pnhoadon = new JPanel(new BorderLayout());
 		//hóa đơn
 		
@@ -317,7 +419,7 @@ public class BanVe_UI extends JFrame implements ActionListener, MouseListener{
 		tabbedPane.add(pntrangchu, "Trang Chủ");
 		tabbedPane.add(pnphim, "Phim");
 		tabbedPane.add(pndatve, "Đặt Vé");
-		tabbedPane.add(pnkhachhang, "Khách Hàng");
+		tabbedPane.add(pnnhanvien, "Nhân Viên");
 		tabbedPane.add(pnhoadon, "Hóa Đơn");
 		tabbedPane.add(pnthongke, "Thống Kê");
 		add(tabbedPane);
