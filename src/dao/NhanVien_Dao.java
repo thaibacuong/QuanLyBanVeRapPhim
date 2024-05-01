@@ -6,13 +6,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.List;
 
 import connectDB.ConnectDB;
 import entity.NhanVien;
-
-
-
 
 public class NhanVien_Dao {
 	public NhanVien_Dao() {}
@@ -42,7 +38,7 @@ public class NhanVien_Dao {
 				ds.add(nhanVien);
 				
 			}
-		} catch (Exception e) {
+		} catch (SQLException e) {
 			// TODO: handle exception
 			e.printStackTrace();
 		}
@@ -66,14 +62,14 @@ public class NhanVien_Dao {
 			pst.setString(7, nv.getMatKH());
 			pst.setBoolean(8, nv.isTrangThai());
 			n= pst.executeUpdate();
-		} catch (Exception e) {
+		} catch (SQLException e) {
 			// TODO: handle exception
 			e.printStackTrace();
 		}
 		 finally {
 		try {
 			 pst.close();
-		} catch (Exception e2) {
+		} catch (SQLException e2) {
 			// TODO: handle exception
 			e2.printStackTrace();
 		}	 
@@ -98,7 +94,7 @@ public class NhanVien_Dao {
 				pst.setString(7, nv.getMatKH());
 				pst.setBoolean(8, nv.isTrangThai());
 			 pst.executeUpdate() ;
-		} catch (Exception e) {
+		} catch (SQLException e) {
 			// TODO: handle exception
 			e.printStackTrace();
 		}
@@ -117,7 +113,7 @@ public class NhanVien_Dao {
 			pst = con.prepareStatement(sql);
 			pst.setString(1, ma);
 			pst.executeUpdate();
-		} catch (Exception e) {
+		} catch (SQLException e) {
 			// TODO: handle exception
 			e.printStackTrace();
 		} finally {
@@ -128,7 +124,7 @@ public class NhanVien_Dao {
 		if (pst !=null) {
 			try {
 				pst.close();
-			} catch (Exception e) {
+			} catch (SQLException e) {
 				// TODO: handle exception
 				e.printStackTrace();
 			}
