@@ -12,13 +12,14 @@ import entity.GheNgoi;
 import entity.HoaDon;
 import entity.KhachHang;
 import entity.NhanVien;
+import entity.PhongChieu;
 
 
-public class GheNgoi_Dao {
-    public GheNgoi_Dao() {}
+public class PhongChieu_Dao {
+    public PhongChieu_Dao() {}
 
-    public ArrayList<GheNgoi> getAllGheNgoi() {
-        ArrayList<GheNgoi> ds = new ArrayList<GheNgoi>();
+    public ArrayList<PhongChieu> getAllPhongChieu() {
+        ArrayList<PhongChieu> ds = new ArrayList<PhongChieu>();
         try {
             ConnectDB.getInstance();
             Connection con = ConnectDB.getConnection();
@@ -27,13 +28,14 @@ public class GheNgoi_Dao {
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery(sql);
             while(rs.next()) {
-                String MaGN = rs.getString(1);
-                String ViTriGN = rs.getString(2);
-                Boolean TrangThai = rs.getBoolean(3);
-                String LoaiGN = rs.getString(4);
+                String MaPC = rs.getString(1);
+                String TenPC = rs.getString(2);
+                int DienTich = rs.getInt(3);
+                Boolean TrangThai = rs.getBoolean(4);
+                GheNgoi ghe=new GheNgoi(rs.getString(5));
                
-                GheNgoi ghengoi = new GheNgoi(MaGN, ViTriGN, TrangThai, LoaiGN);
-                ds.add(ghengoi);
+                PhongChieu phong = new PhongChieu(MaPC, TenPC, DienTich, TrangThai,ghe);
+                ds.add(phong);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -41,18 +43,19 @@ public class GheNgoi_Dao {
         return ds;
     }
 
-    public boolean addGheNgoi(GheNgoi ghengoi) {
+    public boolean addPhongChieu(PhongChieu phong) {
         ConnectDB.getInstance();
         Connection con = ConnectDB.getConnection();
         int n = 0;
-        String sql ="INSERT INTO GHENGOI VALUES (?, ?, ?, ?)";
+        String sql ="INSERT INTO PHONGCHIEU VALUES (?, ?, ?, ?, ?)";
         PreparedStatement pst = null;
         try {
             pst = con.prepareStatement(sql);
-            pst.setString(1, ghengoi.getMaGN());
-            pst.setString(2, ghengoi.getViTriGN());
-            pst.setBoolean(3, ghengoi.getTrangThai());
-            pst.setString(4, ghengoi.getLoaiGN());
+            pst.setString(1, phong.getMaPC());
+            pst.setString(2, phong.getTenPC());
+            pst.setInt(3, phong.getDienTich());
+            pst.setBoolean(4, phong.isTrangThai());
+            pst.setString(5, phong.getGheNgoi().getMaGN());
             n = pst.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -62,17 +65,18 @@ public class GheNgoi_Dao {
         return n > 0;
     }
 
-    public void updateGheNgoi(GheNgoi ghengoi) {
+    public void updatePhongChieu(PhongChieu phong) {
         ConnectDB.getInstance();
         PreparedStatement pst = null;
         Connection con = ConnectDB.getConnection();
-        String sql ="UPDATE GHENGOI SET viTriGhe=?, trangThai=? loaiGhe=? WHERE maGhe = ?";
+        String sql ="UPDATE PHONGCHIEU SET tenPhongChieu=?, trangThai=?  WHERE maPhongChieu = ?";
         try {    
             pst = con.prepareStatement(sql);
-            pst.setString(1, ghengoi.getMaGN());
-            pst.setString(2, ghengoi.getViTriGN());
-            pst.setBoolean(3, ghengoi.getTrangThai());
-            pst.setString(4, ghengoi.getLoaiGN());
+            pst.setString(1, phong.getMaPC());
+            pst.setString(2, phong.getTenPC());
+            pst.setInt(3, phong.getDienTich());
+            pst.setBoolean(4, phong.isTrangThai());
+            pst.setString(5, phong.getGheNgoi().getMaGN());
             pst.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -81,14 +85,14 @@ public class GheNgoi_Dao {
         }
     }
 
-    public void delete(String maGhe) {
+    public void deletePhongChieu(String maPhongChieu) {
         ConnectDB.getInstance();
         PreparedStatement pst = null;
         Connection con = ConnectDB.getConnection();
-        String sql = "DELETE FROM GHENGOI WHERE maGhe = ?";
+        String sql = "DELETE FROM PHONGCHIEU WHERE maPhongChieu = ?";
         try {
             pst = con.prepareStatement(sql);
-            pst.setString(1, maGhe);
+            pst.setString(1, maPhongChieu);
             pst.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
