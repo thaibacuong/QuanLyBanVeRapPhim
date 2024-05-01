@@ -4,18 +4,16 @@ public class KhachHang {
 	private String MaKH;
 	private String TenKH;
 	private String SoDT;
-	private boolean GioiTinh;
 	private String NgaySinh;
 	
 	public KhachHang(String maKH) {
 		super();
 		this.MaKH = maKH;
 	}
-	public KhachHang(String maKH, String tenKH, String soDT, boolean gioiTinh, String ngaySinh) {
+	public KhachHang(String maKH, String tenKH, String soDT, String ngaySinh) {
 		this.MaKH = maKH;
 		this.TenKH = tenKH;
 		this.SoDT = soDT;
-		this.GioiTinh = gioiTinh;
 		this.NgaySinh = ngaySinh;
 	}
 	public String getMaKH() {
@@ -36,13 +34,7 @@ public class KhachHang {
 	public void setSoDT(String soDT) {
 		SoDT = soDT;
 	}
-	public boolean isGioiTinh() {
-		return GioiTinh;
-	}
 
-	public void setGioiTinh(boolean gioiTinh) {
-		GioiTinh = gioiTinh;
-	}
 	public String getNgaySinh() {
 		return NgaySinh;
 	}
@@ -51,8 +43,7 @@ public class KhachHang {
 	}
 	@Override
 	public String toString() {
-		return "KhachHang [MaKH=" + MaKH + ", TenKH=" + TenKH + ", SoDT=" + SoDT + ", GioiTinh=" + GioiTinh
-				+ ", NgaySinh=" + NgaySinh + "]";
+		return "KhachHang [MaKH=" + MaKH + ", TenKH=" + TenKH + ", SoDT=" + SoDT + ", NgaySinh=" + NgaySinh + "]";
 	}
 	
 }

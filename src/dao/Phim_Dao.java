@@ -8,14 +8,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Time;
 import java.util.ArrayList;
-import java.util.List;
 
 import connectDB.ConnectDB;
 import entity.Phim;
-
-
-
-
 
 public class Phim_Dao {
 	public Phim_Dao() {}
