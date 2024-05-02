@@ -11,124 +11,156 @@ import connectDB.ConnectDB;
 import entity.NhanVien;
 
 public class NhanVien_Dao {
-	public NhanVien_Dao() {}
-	
+    public NhanVien_Dao() {}
 
-	public ArrayList<NhanVien> getAllNhanVien(){
-		ArrayList<NhanVien> ds = new ArrayList<NhanVien>();
-		try {
-			ConnectDB.getInstance();
-			Connection con = ConnectDB.getConnection();
-		
-			String sql ="SELECT * FROM NHANVIEN";		 
-			Statement st =  con.createStatement();
-			ResultSet rs = st.executeQuery(sql);
-			while(rs.next()) {
-				String ma=rs.getString(1);
-				String ten=rs.getString(2);
-				Boolean gioiTinh =rs.getBoolean(3);
-				String ngaySinh=rs.getString(4);
-				String soDT=rs.getString(5);
-				String chucVU=rs.getString(6);
-				String matKhau=rs.getString(7);
-				Boolean trangThai=rs.getBoolean(8);
-				
-				NhanVien nhanVien = new NhanVien(ma,ten,gioiTinh,ngaySinh,soDT,chucVU,matKhau,trangThai);
-				
-				ds.add(nhanVien);
-				
-			}
-		} catch (SQLException e) {
-			// TODO: handle exception
-			e.printStackTrace();
-		}
-		
-		return ds;
-	}
-	public boolean addNhanVien(NhanVien nv) {
-		ConnectDB.getInstance();
-		 Connection con = ConnectDB.getConnection();
-		int n=0;
-		 String sql ="insert into NHANVIEN values(?,?,?,?,?,?,?,?)";
-		 PreparedStatement pst = null;
-		 try {
-			pst = con.prepareStatement(sql);
-			pst.setString(1, nv.getMaNV());
-			pst.setString(2, nv.getTenNV());
-			pst.setBoolean(3, nv.isGioiTinh());
-			pst.setString(4, nv.getNgaySinh());
-			pst.setString(5, nv.getSoDT());
-			pst.setString(6, nv.getChuVu());
-			pst.setString(7, nv.getMatKH());
-			pst.setBoolean(8, nv.isTrangThai());
-			n= pst.executeUpdate();
-		} catch (SQLException e) {
-			// TODO: handle exception
-			e.printStackTrace();
-		}
-		 finally {
-		try {
-			 pst.close();
-		} catch (SQLException e2) {
-			// TODO: handle exception
-			e2.printStackTrace();
-		}	 
-		 
-		 }
-		return n>0;
-}
-	public void updateNhanVien(NhanVien nv) {
-		ConnectDB.getInstance();
-		PreparedStatement pst =null;
-		 Connection con = ConnectDB.getConnection();
-		
-		 String sql ="update NHANVIEN  set maNhanVien = ?,tenNhanVien=?,gioiTinh=?,ngaySing=?,soDienThoai=?,chucVu=?,matKhau=?,trangThai=? where soKhung =?";
-		 try {	
-			 pst = con.prepareStatement(sql);
-				pst.setString(1, nv.getMaNV());
-				pst.setString(2, nv.getTenNV());
-				pst.setBoolean(3, nv.isGioiTinh());
-				pst.setString(4, nv.getNgaySinh());
-				pst.setString(5, nv.getSoDT());
-				pst.setString(6, nv.getChuVu());
-				pst.setString(7, nv.getMatKH());
-				pst.setBoolean(8, nv.isTrangThai());
-			 pst.executeUpdate() ;
-		} catch (SQLException e) {
-			// TODO: handle exception
-			e.printStackTrace();
-		}
-		finally {
-			close(pst);
-		}
-	}
+    public ArrayList<NhanVien> getAllNhanVien() {
+        ArrayList<NhanVien> ds = new ArrayList<NhanVien>();
+        ConnectDB.getInstance().connect();
+        try (Connection con = ConnectDB.getConnection();
+             Statement st = con.createStatement();
+             ResultSet rs = st.executeQuery("SELECT * FROM NHANVIEN")) {
 
-	public void DeleteNhanVien(String ma) {
-		ConnectDB.getInstance();
-		PreparedStatement pst = null;
-		Connection con = ConnectDB.getConnection();
+            while (rs.next()) {
+                String ma = rs.getString("maNhanVien");
+                String ten = rs.getString("tenNhanVien");
+                boolean gioiTinh = rs.getBoolean("gioiTinh");
+                String ngaySinh = rs.getString("ngaySing");
+                String soDT = rs.getString("soDienThoai");
+                String chuVu = rs.getString("chucVu");
+                String matKhau = rs.getString("matKhau");
+                boolean trangThai = rs.getBoolean("trangThai");
 
-		String sql = "DELETE FROM NHANVIEN WHERE sokhung =?";
-		try {
-			pst = con.prepareStatement(sql);
-			pst.setString(1, ma);
-			pst.executeUpdate();
-		} catch (SQLException e) {
-			// TODO: handle exception
-			e.printStackTrace();
-		} finally {
-			close(pst);
-		}
-	}
-	private void close(PreparedStatement pst) {
-		if (pst !=null) {
-			try {
-				pst.close();
-			} catch (SQLException e) {
-				// TODO: handle exception
-				e.printStackTrace();
-			}
-		}
-	}
+                NhanVien nhanVien = new NhanVien(ma, ten, gioiTinh, ngaySinh, soDT, chuVu, matKhau, trangThai);
+                ds.add(nhanVien);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return ds;
+    }
+
+    public boolean addNhanVien(NhanVien nv) {
+        ConnectDB.getInstance().connect();
+        
+        Connection con = ConnectDB.getConnection();
+        
+        int n = 0;
+        String sql = "insert into NHANVIEN values(?,?,?,?,?,?,?,?)";
+        PreparedStatement pst = null;
+        try {
+            pst = con.prepareStatement(sql);
+            pst.setString(1, nv.getMaNV());
+            pst.setString(2, nv.getTenNV());
+            pst.setBoolean(3, nv.isGioiTinh());
+            pst.setString(4, nv.getNgaySinh());
+            pst.setString(5, nv.getSoDT());
+            pst.setString(6, nv.getChuVu());
+            pst.setString(7, nv.getMatKH());
+            pst.setBoolean(8, nv.isTrangThai());
+            n = pst.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            if (pst != null) {
+                try {
+                    pst.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+        return n > 0;
+    }
+
+    public void updateNhanVien(NhanVien nv) {
+    	ConnectDB.getInstance().connect();
+        String sql = "UPDATE NHANVIEN SET tenNhanVien = ?, gioiTinh = ?, ngaySing = ?, soDienThoai = ?, chucVu = ?, matKhau = ?, trangThai = ? WHERE maNhanVien = ?";
+        try (Connection con = ConnectDB.getConnection();
+             PreparedStatement pst = con.prepareStatement(sql)) {
+
+            pst.setString(1, nv.getTenNV());
+            pst.setBoolean(2, nv.isGioiTinh());
+            pst.setString(3, nv.getNgaySinh());
+            pst.setString(4, nv.getSoDT());
+            pst.setString(5, nv.getChuVu());
+            pst.setString(6, nv.getMatKH());
+            pst.setBoolean(7, nv.isTrangThai());
+            pst.setString(8, nv.getMaNV());
+
+            pst.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public ArrayList<NhanVien> getAllNhanVienByTen(String name) {
+        ArrayList<NhanVien> ds = new ArrayList<NhanVien>();
+        ConnectDB.getInstance().connect();
+        String sql = "SELECT * FROM NHANVIEN WHERE tenNhanVien= ?";
+        try (Connection con = ConnectDB.getConnection();
+            PreparedStatement pst = con.prepareStatement(sql)) {
+            pst.setString(1, name);
+            ResultSet rs = pst.executeQuery();
+
+            while (rs.next()) {
+                String ma = rs.getString("maNhanVien");
+                String ten = rs.getString("tenNhanVien");
+                boolean gioiTinh = rs.getBoolean("gioiTinh");
+                String ngaySinh = rs.getString("ngaySing");
+                String soDT = rs.getString("soDienThoai");
+                String chuVu = rs.getString("chucVu");
+                String matKhau = rs.getString("matKhau");
+                boolean trangThai = rs.getBoolean("trangThai");
+
+                NhanVien nhanVien = new NhanVien(ma, ten, gioiTinh, ngaySinh, soDT, chuVu, matKhau, trangThai);
+                ds.add(nhanVien);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return ds;
+    }
+
+    public ArrayList<NhanVien> getAllNhanVienBySDT(String sdt) {
+        ArrayList<NhanVien> ds = new ArrayList<NhanVien>();
+        ConnectDB.getInstance().connect();
+        String sql = "SELECT * FROM NHANVIEN WHERE soDienThoai=?";
+        try (Connection con = ConnectDB.getConnection();
+            PreparedStatement pst = con.prepareStatement(sql)) {
+            pst.setString(1, sdt);
+            ResultSet rs = pst.executeQuery();
+
+            while (rs.next()) {
+                String ma = rs.getString("maNhanVien");
+                String ten = rs.getString("tenNhanVien");
+                boolean gioiTinh = rs.getBoolean("gioiTinh");
+                String ngaySinh = rs.getString("ngaySing");
+                String soDT = rs.getString("soDienThoai");
+                String chuVu = rs.getString("chucVu");
+                String matKhau = rs.getString("matKhau");
+                boolean trangThai = rs.getBoolean("trangThai");
+
+                NhanVien nhanVien = new NhanVien(ma, ten, gioiTinh, ngaySinh, soDT, chuVu, matKhau, trangThai);
+                ds.add(nhanVien);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return ds;
+    }
+    
+    public void deleteNhanVien(String ma) {
+    	ConnectDB.getInstance().connect();
+        String sql = "DELETE FROM NHANVIEN WHERE maNhanVien = ?";
+        try (Connection con = ConnectDB.getConnection();
+             PreparedStatement pst = con.prepareStatement(sql)) {
+
+            pst.setString(1, ma);
+            pst.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }
 

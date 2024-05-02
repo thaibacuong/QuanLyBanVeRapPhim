@@ -11,27 +11,26 @@ public class ConnectDB {
 		return instance;
 	}
 	public void connect() {
-		String url = "jdbc:sqlserver://localhost:1433;databasename=QLVRP";
+		String url = "jdbc:sqlserver://localhost:1433;databasename=QLBV1RP";
 		String user = "sa";
-		String password="123456";
+		String password="sapassword";
 		try {
 			con = DriverManager.getConnection(url,user,password);
 		} catch (SQLException e) {
-			// TODO: handle exception
 			e.printStackTrace();
 		}
 	}
-	public static Connection getConnection() {
-		return con;
-	}
+	
 	public void disconnect() {
 		if(con !=null) {
 			try {
 				con.close();
 			} catch (SQLException e) {
-				// TODO: handle exception
 				e.printStackTrace();
 			}
 		}
+	}
+	public static Connection getConnection() {
+		return con;
 	}
 }

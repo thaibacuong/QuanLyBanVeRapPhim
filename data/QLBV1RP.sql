@@ -14,18 +14,19 @@ SIZE=15MB,
 MAXSIZE=25MB,
 FILEGROWTH=3MB
 )
-
+use QLBV1RP
+drop table  NHANVIEN 
 CREATE TABLE NHANVIEN
 (maNhanVien CHAR(5) NOT NULL,
 tenNhanVien NVARCHAR(30) NOT NULL,
 gioiTinh bit,
-ngaySing DATE,
+ngaySing NVARCHAR(20),
 soDienThoai CHAR(10),
 chucVu NVARCHAR(20),
 matKhau CHAR(20) Not Null,
 trangThai BIT Not Null
 )
-
+select * from NHANVIEN
 CREATE TABLE KHACHHANG
 (maKhachHang CHAR(5) NOT NULL,
 tenKhachHang NVARCHAR(30),
