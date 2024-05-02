@@ -9,9 +9,6 @@ import java.util.ArrayList;
 
 import connectDB.ConnectDB;
 import entity.GheNgoi;
-import entity.HoaDon;
-import entity.KhachHang;
-import entity.NhanVien;
 
 
 public class GheNgoi_Dao {
@@ -31,7 +28,6 @@ public class GheNgoi_Dao {
                 String ViTriGN = rs.getString(2);
                 Boolean TrangThai = rs.getBoolean(3);
                 String LoaiGN = rs.getString(4);
-               
                 GheNgoi ghengoi = new GheNgoi(MaGN, ViTriGN, TrangThai, LoaiGN);
                 ds.add(ghengoi);
             }
@@ -69,10 +65,10 @@ public class GheNgoi_Dao {
         String sql ="UPDATE GHENGOI SET viTriGhe=?, trangThai=? loaiGhe=? WHERE maGhe = ?";
         try {    
             pst = con.prepareStatement(sql);
-            pst.setString(1, ghengoi.getMaGN());
-            pst.setString(2, ghengoi.getViTriGN());
-            pst.setBoolean(3, ghengoi.getTrangThai());
-            pst.setString(4, ghengoi.getLoaiGN());
+            pst.setString(1, ghengoi.getViTriGN());
+            pst.setBoolean(2, ghengoi.getTrangThai());
+            pst.setString(3, ghengoi.getLoaiGN());
+            pst.setString(4, ghengoi.getMaGN());
             pst.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();

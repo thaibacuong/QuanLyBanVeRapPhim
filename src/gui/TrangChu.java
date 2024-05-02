@@ -5,7 +5,8 @@ import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Font;
-
+import java.awt.*;
+import javax.swing.*;
 import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.ImageIcon;
@@ -75,11 +76,14 @@ public class TrangChu extends JFrame{
 	    JWest.add(lbltenUse, BorderLayout.CENTER);
 	    lbltenUse.setFont(font);
 	    
-	    JPanel Jsouth = new JPanel();
-	    Jsouth.setBounds(500, 0, 500, 100);
-	    JWest.add(Jsouth, BorderLayout.SOUTH);
-	    Jsouth.add(btnCPass = new JButton("change Password"));
-	    Jsouth.add(btnExit = new JButton("exit"));
+	    JPanel Jsouth = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        Jsouth.setPreferredSize(new Dimension(500, 300));
+        JWest.add(Jsouth, BorderLayout.SOUTH);
+
+        btnCPass = new JButton("Change Password");
+        btnExit = new JButton("Exit");
+        Jsouth.add(btnCPass);
+        Jsouth.add(btnExit);
         
 	    JLayeredPane layeredPane = new JLayeredPane();
         getContentPane().add(layeredPane);

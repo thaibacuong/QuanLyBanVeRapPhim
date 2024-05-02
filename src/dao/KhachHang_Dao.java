@@ -8,10 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import connectDB.ConnectDB;
-
 import entity.KhachHang;
-
-
 
 public class KhachHang_Dao {
     public KhachHang_Dao() {}

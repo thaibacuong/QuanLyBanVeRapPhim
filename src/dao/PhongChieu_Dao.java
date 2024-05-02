@@ -9,9 +9,6 @@ import java.util.ArrayList;
 
 import connectDB.ConnectDB;
 import entity.GheNgoi;
-import entity.HoaDon;
-import entity.KhachHang;
-import entity.NhanVien;
 import entity.PhongChieu;
 
 
@@ -71,12 +68,10 @@ public class PhongChieu_Dao {
         Connection con = ConnectDB.getConnection();
         String sql ="UPDATE PHONGCHIEU SET tenPhongChieu=?, trangThai=?  WHERE maPhongChieu = ?";
         try {    
-            pst = con.prepareStatement(sql);
-            pst.setString(1, phong.getMaPC());
-            pst.setString(2, phong.getTenPC());
-            pst.setInt(3, phong.getDienTich());
-            pst.setBoolean(4, phong.isTrangThai());
-            pst.setString(5, phong.getGheNgoi().getMaGN());
+        	pst = con.prepareStatement(sql);
+            pst.setString(1, phong.getTenPC());
+            pst.setBoolean(2, phong.isTrangThai());
+            pst.setString(3, phong.getMaPC());
             pst.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
