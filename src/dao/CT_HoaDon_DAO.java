@@ -10,7 +10,6 @@ import java.util.ArrayList;
 import connectDB.ConnectDB;
 import entity.ChiTietHoaDon;
 import entity.HoaDon;
-import entity.Phim;
 import entity.Ve;
 
 public class CT_HoaDon_DAO {

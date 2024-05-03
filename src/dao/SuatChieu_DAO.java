@@ -9,7 +9,6 @@ import java.sql.Time;
 import java.util.ArrayList;
 
 import connectDB.ConnectDB;
-import entity.NhanVien;
 import entity.Phim;
 import entity.SuatChieu;
 

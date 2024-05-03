@@ -1,7 +1,6 @@
 package entity;
 
 import java.sql.Time;
-import java.sql.Date;
 
 public class Phim {
 	private String MaPHIM;
