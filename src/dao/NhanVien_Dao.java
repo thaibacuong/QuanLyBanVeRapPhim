@@ -21,15 +21,14 @@ public class NhanVien_Dao {
              ResultSet rs = st.executeQuery("SELECT * FROM NHANVIEN")) {
 
             while (rs.next()) {
-                String ma = rs.getString("maNhanVien");
-                String ten = rs.getString("tenNhanVien");
-                boolean gioiTinh = rs.getBoolean("gioiTinh");
-                String ngaySinh = rs.getString("ngaySing");
-                String soDT = rs.getString("soDienThoai");
-                String chuVu = rs.getString("chucVu");
-                String matKhau = rs.getString("matKhau");
-                boolean trangThai = rs.getBoolean("trangThai");
-
+                String ma = rs.getString(1);
+                String ten = rs.getString(2);
+                boolean gioiTinh = rs.getBoolean(3);
+                String ngaySinh = rs.getString(4);
+                String soDT = rs.getString(5);
+                String chuVu = rs.getString(6);
+                String matKhau = rs.getString(7);
+                boolean trangThai = rs.getBoolean(8);
                 NhanVien nhanVien = new NhanVien(ma, ten, gioiTinh, ngaySinh, soDT, chuVu, matKhau, trangThai);
                 ds.add(nhanVien);
             }
@@ -78,7 +77,6 @@ public class NhanVien_Dao {
         String sql = "UPDATE NHANVIEN SET tenNhanVien = ?, gioiTinh = ?, ngaySing = ?, soDienThoai = ?, chucVu = ?, matKhau = ?, trangThai = ? WHERE maNhanVien = ?";
         try (Connection con = ConnectDB.getConnection();
              PreparedStatement pst = con.prepareStatement(sql)) {
-
             pst.setString(1, nv.getTenNV());
             pst.setBoolean(2, nv.isGioiTinh());
             pst.setString(3, nv.getNgaySinh());
@@ -87,7 +85,6 @@ public class NhanVien_Dao {
             pst.setString(6, nv.getMatKH());
             pst.setBoolean(7, nv.isTrangThai());
             pst.setString(8, nv.getMaNV());
-
             pst.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -103,14 +100,14 @@ public class NhanVien_Dao {
             pst.setString(1, name);
             ResultSet rs = pst.executeQuery();
             while (rs.next()) {
-                String ma = rs.getString("maNhanVien");
-                String ten = rs.getString("tenNhanVien");
-                boolean gioiTinh = rs.getBoolean("gioiTinh");
-                String ngaySinh = rs.getString("ngaySing");
-                String soDT = rs.getString("soDienThoai");
-                String chuVu = rs.getString("chucVu");
-                String matKhau = rs.getString("matKhau");
-                boolean trangThai = rs.getBoolean("trangThai");
+                String ma = rs.getString(1);
+                String ten = rs.getString(2);
+                boolean gioiTinh = rs.getBoolean(3);
+                String ngaySinh = rs.getString(4);
+                String soDT = rs.getString(5);
+                String chuVu = rs.getString(6);
+                String matKhau = rs.getString(7);
+                boolean trangThai = rs.getBoolean(8);
                 NhanVien nhanVien = new NhanVien(ma, ten, gioiTinh, ngaySinh, soDT, chuVu, matKhau, trangThai);
                 ds.add(nhanVien);
             }
@@ -129,14 +126,14 @@ public class NhanVien_Dao {
             pst.setString(1, sdt);
             ResultSet rs = pst.executeQuery();
             while (rs.next()) {
-                String ma = rs.getString("maNhanVien");
-                String ten = rs.getString("tenNhanVien");
-                boolean gioiTinh = rs.getBoolean("gioiTinh");
-                String ngaySinh = rs.getString("ngaySing");
-                String soDT = rs.getString("soDienThoai");
-                String chuVu = rs.getString("chucVu");
-                String matKhau = rs.getString("matKhau");
-                boolean trangThai = rs.getBoolean("trangThai");
+            	String ma = rs.getString(1);
+                String ten = rs.getString(2);
+                boolean gioiTinh = rs.getBoolean(3);
+                String ngaySinh = rs.getString(4);
+                String soDT = rs.getString(5);
+                String chuVu = rs.getString(6);
+                String matKhau = rs.getString(7);
+                boolean trangThai = rs.getBoolean(8);
                 NhanVien nhanVien = new NhanVien(ma, ten, gioiTinh, ngaySinh, soDT, chuVu, matKhau, trangThai);
                 ds.add(nhanVien);
             }
@@ -151,7 +148,6 @@ public class NhanVien_Dao {
         String sql = "DELETE FROM NHANVIEN WHERE maNhanVien = ?";
         try (Connection con = ConnectDB.getConnection();
              PreparedStatement pst = con.prepareStatement(sql)) {
-
             pst.setString(1, ma);
             pst.executeUpdate();
         } catch (SQLException e) {

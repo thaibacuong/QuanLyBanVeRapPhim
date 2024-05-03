@@ -21,7 +21,7 @@ public class PhongChieu_Dao {
             ConnectDB.getInstance();
             Connection con = ConnectDB.getConnection();
 
-            String sql = "SELECT * FROM GHENGOI";
+            String sql = "SELECT * FROM PHONGCHIEU";
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery(sql);
             while(rs.next()) {

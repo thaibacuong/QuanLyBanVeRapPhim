@@ -4,14 +4,19 @@ public class GheNgoi {
 	private String ViTriGN;
 	private Boolean TrangThai;
 	private String LoaiGN;
+	private PhongChieu phongchieu;
 	
 	public GheNgoi(String MaGN) {
 		super();
 		this.MaGN = MaGN;
 	}
 
-	
 
+
+	public GheNgoi(PhongChieu phongchieu) {
+		super();
+		this.phongchieu = phongchieu;
+	}
 
 	/**
 	 * @param maGN
@@ -19,14 +24,17 @@ public class GheNgoi {
 	 * @param trangThai
 	 * @param loaiGN
 	 */
-	public GheNgoi(String maGN, String viTriGN, Boolean trangThai, String loaiGN) {
-		super();
-		MaGN = maGN;
-		ViTriGN = viTriGN;
-		TrangThai = trangThai;
-		LoaiGN = loaiGN;
-	}
 
+
+
+	public GheNgoi(String maGN, String viTriGN, Boolean trangThai, String loaiGN, PhongChieu phongchieu) {
+		super();
+		this.MaGN = maGN;
+		this.ViTriGN = viTriGN;
+		this.TrangThai = trangThai;
+		this.LoaiGN = loaiGN;
+		this.phongchieu = phongchieu;
+	}
 
 
 
@@ -86,18 +94,23 @@ public class GheNgoi {
 
 
 
-	@Override
-	public String toString() {
-		return "GheNgoi [MaGN=" + MaGN + ", ViTriGN=" + ViTriGN + ", TrangThai=" + TrangThai + ", LoaiGN=" + LoaiGN
-				+ "]";
+	public PhongChieu getPhongchieu() {
+		return phongchieu;
 	}
 
 
 
+	public void setPhongchieu(PhongChieu phongchieu) {
+		this.phongchieu = phongchieu;
+	}
 
-	
-	
-	
+
+
+	@Override
+	public String toString() {
+		return "GheNgoi [MaGN=" + MaGN + ", ViTriGN=" + ViTriGN + ", TrangThai=" + TrangThai + ", LoaiGN=" + LoaiGN
+				+ ", phongchieu=" + phongchieu + "]";
+	}
 	
 
 }

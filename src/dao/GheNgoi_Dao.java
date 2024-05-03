@@ -9,6 +9,7 @@ import java.util.ArrayList;
 
 import connectDB.ConnectDB;
 import entity.GheNgoi;
+import entity.PhongChieu;
 
 
 public class GheNgoi_Dao {
@@ -27,7 +28,9 @@ public class GheNgoi_Dao {
                 String ViTriGN = rs.getString(2);
                 Boolean TrangThai = rs.getBoolean(3);
                 String LoaiGN = rs.getString(4);
-                GheNgoi ghengoi = new GheNgoi(MaGN, ViTriGN, TrangThai, LoaiGN);
+                String maphonghcieu = rs.getString(5);
+                PhongChieu phongchieu = new PhongChieu(maphonghcieu);
+                GheNgoi ghengoi = new GheNgoi(MaGN, ViTriGN, TrangThai, LoaiGN,phongchieu);
                 ds.add(ghengoi);
             }
         } catch (SQLException e) {
@@ -40,7 +43,7 @@ public class GheNgoi_Dao {
         ConnectDB.getInstance();
         Connection con = ConnectDB.getConnection();
         int n = 0;
-        String sql ="INSERT INTO GHENGOI VALUES (?, ?, ?, ?)";
+        String sql ="INSERT INTO GHENGOI VALUES (?, ?, ?, ?, ?)";
         PreparedStatement pst = null;
         try {
             pst = con.prepareStatement(sql);
@@ -48,6 +51,7 @@ public class GheNgoi_Dao {
             pst.setString(2, ghengoi.getViTriGN());
             pst.setBoolean(3, ghengoi.getTrangThai());
             pst.setString(4, ghengoi.getLoaiGN());
+            pst.setString(5, ghengoi.getPhongchieu().getMaPC());
             n = pst.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -61,13 +65,14 @@ public class GheNgoi_Dao {
         ConnectDB.getInstance();
         PreparedStatement pst = null;
         Connection con = ConnectDB.getConnection();
-        String sql ="UPDATE GHENGOI SET viTriGhe=?, trangThai=? loaiGhe=? WHERE maGhe = ?";
+        String sql ="UPDATE GHENGOI SET viTriGhe=?, trangThai=? loaiGhe=?, maphongchieu = ? WHERE maGhe = ?";
         try {    
             pst = con.prepareStatement(sql);
             pst.setString(1, ghengoi.getViTriGN());
             pst.setBoolean(2, ghengoi.getTrangThai());
             pst.setString(3, ghengoi.getLoaiGN());
-            pst.setString(4, ghengoi.getMaGN());
+            pst.setString(4, ghengoi.getPhongchieu().getMaPC());
+            pst.setString(5, ghengoi.getMaGN());
             pst.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();

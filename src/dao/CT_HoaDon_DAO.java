@@ -24,9 +24,9 @@ public class CT_HoaDon_DAO {
 	        Statement st =  con.createStatement();
 	        ResultSet rs = st.executeQuery(sql);
 	        while(rs.next()) {
-	            String mahoadon = rs.getString("maHoaDon");
-	            String mave = rs.getString("maVe");
-	            int soluong = rs.getInt("SoLuong");
+	            String mahoadon = rs.getString(1);
+	            String mave = rs.getString(2);
+	            int soluong = rs.getInt(3);
 	            HoaDon hoadon = new HoaDon(mahoadon);
 	            Ve ve= new Ve(mave);
 	            ChiTietHoaDon CTHoaDon = new ChiTietHoaDon(hoadon, soluong, ve); 
@@ -62,7 +62,7 @@ public class CT_HoaDon_DAO {
 	    ConnectDB.getInstance();
 	    PreparedStatement pst = null;
 	    Connection con = ConnectDB.getConnection();
-	    String sql = "UPDATE CT_HOADON SET  soluong = ? WHERE maHoaDon = ? end maVe = ?";
+	    String sql = "UPDATE CT_HOADON SET  soLuong = ? WHERE hoaDon = ? end maVe = ?";
 	    try {    
 	        pst = con.prepareStatement(sql);
 

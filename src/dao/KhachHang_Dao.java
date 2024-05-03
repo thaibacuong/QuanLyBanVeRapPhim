@@ -19,15 +19,15 @@ public class KhachHang_Dao {
             ConnectDB.getInstance();
             Connection con = ConnectDB.getConnection();
 
-            String sql = "SELECT * FROM HOADON";
+            String sql = "SELECT * FROM KHACHHANG";
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery(sql);
             while(rs.next()) {
             	String maKH=rs.getString(1);
 				String tenKH=rs.getString(2);
-				String ngaySinh=rs.getString(4);
-				String soDT=rs.getString(5);
-                KhachHang khachhang = new KhachHang(maKH, tenKH, ngaySinh, soDT);
+				String soDT=rs.getString(3);
+				String ngaySinh=rs.getString(4);				
+                KhachHang khachhang = new KhachHang(maKH, tenKH, soDT, ngaySinh);
                 ds.add(khachhang);
             }
         } catch (SQLException e) {
@@ -40,14 +40,14 @@ public class KhachHang_Dao {
         ConnectDB.getInstance();
         Connection con = ConnectDB.getConnection();
         int n = 0;
-        String sql ="INSERT INTO VE VALUES (?, ?, ?, ?)";
+        String sql ="INSERT INTO KHACHHANG VALUES (?, ?, ?, ?)";
         PreparedStatement pst = null;
         try {
             pst = con.prepareStatement(sql);
             pst.setString(1, khachhang.getMaKH());
             pst.setString(2, khachhang.getTenKH());
-            pst.setString(3, khachhang.getNgaySinh());
-            pst.setString(4, khachhang.getSoDT());
+            pst.setString(3, khachhang.getSoDT());
+            pst.setString(4, khachhang.getNgaySinh());
             n = pst.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -61,12 +61,12 @@ public class KhachHang_Dao {
         ConnectDB.getInstance();
         PreparedStatement pst = null;
         Connection con = ConnectDB.getConnection();
-        String sql ="UPDATE HOADON SET tenKhachHang = ?,soDienThoai=?, ngaySinh=? WHERE maKhachHang = ?";
+        String sql ="UPDATE KHACHHANG SET tenKhachHang = ?,soDienThoai=?, ngaySinh=? WHERE maKhachHang = ?";
         try {    
             pst = con.prepareStatement(sql);
             pst.setString(1, khachhang.getTenKH());
-            pst.setString(2, khachhang.getNgaySinh());
-            pst.setString(3, khachhang.getSoDT());
+            pst.setString(2, khachhang.getSoDT());
+            pst.setString(3, khachhang.getNgaySinh());
             pst.setString(4, khachhang.getMaKH());
             pst.executeUpdate();
         } catch (SQLException e) {

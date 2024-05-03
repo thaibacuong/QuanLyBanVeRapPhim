@@ -22,11 +22,11 @@ public class SuatChieu_DAO {
              Statement st = con.createStatement();
              ResultSet rs = st.executeQuery("SELECT * FROM SUATCHIEU")) {
             while (rs.next()) {
-                String masuatchieu = rs.getString("maSuatChieu");
-                Time giobatdau = rs.getTime("gioBatDau");
-                Time gioketthuc = rs.getTime("gioKetThuc");
-                String ngaychieu = rs.getString("ngayChieu");
-                String maphim = rs.getString("maPhim");
+                String masuatchieu = rs.getString(1);
+                Time giobatdau = rs.getTime(2);
+                Time gioketthuc = rs.getTime(3);
+                String ngaychieu = rs.getString(4);
+                String maphim = rs.getString(5);
                 Phim phim = new Phim(maphim);
                 SuatChieu suatchieu = new SuatChieu(masuatchieu, giobatdau, gioketthuc, ngaychieu, phim);
                 ds.add(suatchieu);
@@ -68,7 +68,7 @@ public class SuatChieu_DAO {
 
     public void updateSuatChieu(SuatChieu sc) {
     	ConnectDB.getInstance().connect();
-        String sql = "UPDATE SUATCHIEU SET giobatdau = ?, gioketthuc = ?, ngaychieu = ?, maphim = ? WHERE maSuatChieu = ?";
+        String sql = "UPDATE SUATCHIEU SET gioBatDau = ?, gioKetThuc = ?, ngayChieu = ?, maPhim = ? WHERE maSuatChieu = ?";
         try (Connection con = ConnectDB.getConnection();
              PreparedStatement pst = con.prepareStatement(sql)) {
             pst.setTime(1, sc.getGioBD());
@@ -82,58 +82,6 @@ public class SuatChieu_DAO {
         }
     }
 
-//    public ArrayList<NhanVien> getAllSuatChieuByTen(String name) {
-//        ArrayList<NhanVien> ds = new ArrayList<NhanVien>();
-//        ConnectDB.getInstance().connect();
-//        String sql = "SELECT * FROM NHANVIEN WHERE tenNhanVien= ?";
-//        try (Connection con = ConnectDB.getConnection();
-//            PreparedStatement pst = con.prepareStatement(sql)) {
-//            pst.setString(1, name);
-//            ResultSet rs = pst.executeQuery();
-//            while (rs.next()) {
-//                String ma = rs.getString("maNhanVien");
-//                String ten = rs.getString("tenNhanVien");
-//                boolean gioiTinh = rs.getBoolean("gioiTinh");
-//                String ngaySinh = rs.getString("ngaySing");
-//                String soDT = rs.getString("soDienThoai");
-//                String chuVu = rs.getString("chucVu");
-//                String matKhau = rs.getString("matKhau");
-//                boolean trangThai = rs.getBoolean("trangThai");
-//                NhanVien nhanVien = new NhanVien(ma, ten, gioiTinh, ngaySinh, soDT, chuVu, matKhau, trangThai);
-//                ds.add(nhanVien);
-//            }
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
-//        return ds;
-//    }
-//
-//    public ArrayList<NhanVien> getAllNhanVienBySDT(String sdt) {
-//        ArrayList<NhanVien> ds = new ArrayList<NhanVien>();
-//        ConnectDB.getInstance().connect();
-//        String sql = "SELECT * FROM NHANVIEN WHERE soDienThoai=?";
-//        try (Connection con = ConnectDB.getConnection();
-//            PreparedStatement pst = con.prepareStatement(sql)) {
-//            pst.setString(1, sdt);
-//            ResultSet rs = pst.executeQuery();
-//            while (rs.next()) {
-//                String ma = rs.getString("maNhanVien");
-//                String ten = rs.getString("tenNhanVien");
-//                boolean gioiTinh = rs.getBoolean("gioiTinh");
-//                String ngaySinh = rs.getString("ngaySing");
-//                String soDT = rs.getString("soDienThoai");
-//                String chuVu = rs.getString("chucVu");
-//                String matKhau = rs.getString("matKhau");
-//                boolean trangThai = rs.getBoolean("trangThai");
-//                NhanVien nhanVien = new NhanVien(ma, ten, gioiTinh, ngaySinh, soDT, chuVu, matKhau, trangThai);
-//                ds.add(nhanVien);
-//            }
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
-//        return ds;
-//    }
-    
     public void deleteSuatChieu(String masc) {
     	ConnectDB.getInstance().connect();
         String sql = "DELETE FROM SUATCHIEU WHERE maSuatChieu = ?";

@@ -3,10 +3,10 @@ package entity;
 
 public class Ve {
 	private String MaVe;
+	private String LoaiVe;
 	private String NgayBD;
 	private String NgayKT;
 	private SuatChieu suatChieu;
-	private String LoaiVe;
 	private PhongChieu Phongchieu;
 	private Double GiaVe;
 	
@@ -21,13 +21,14 @@ public class Ve {
 		Phongchieu = phongchieu;
 	}
 
-	public Ve(String maVe, String ngayBD, String ngayKT, SuatChieu suatChieu, String loaiVe, PhongChieu phongchieu,
+	public Ve(String maVe, String loaiVe, String ngayBD, String ngayKT, SuatChieu suatChieu, PhongChieu phongchieu,
 			Double giaVe) {
 		this.MaVe = maVe;
+		this.LoaiVe = loaiVe;
 		this.NgayBD = ngayBD;
 		this.NgayKT = ngayKT;
 		this.suatChieu = suatChieu;
-		this.LoaiVe = loaiVe;
+
 		this.Phongchieu = phongchieu;
 		this.GiaVe = giaVe;
 	}

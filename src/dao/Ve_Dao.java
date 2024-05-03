@@ -25,16 +25,16 @@ public class Ve_Dao {
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery(sql);
             while(rs.next()) {
-                String maVe = rs.getString("maVe");
-                String ngayBD = rs.getString("ngayBatDau");
-                String ngayKT = rs.getString("ngayKetThuc");
-                String maPhongChieu = rs.getString("maPhongChieu");
-                String maSuatChieu = rs.getString("maSuatChieu");
-                double giaVe = rs.getDouble("giaVe");
-                String loaive=rs.getString("loaiVe");
+                String maVe = rs.getString(1);
+                String loaive=rs.getString(2);
+                String ngayBD = rs.getString(3);
+                String ngayKT = rs.getString(4);
+                String maPhongChieu = rs.getString(5);
+                String maSuatChieu = rs.getString(6);
+                double giaVe = rs.getDouble(6);
                 PhongChieu phong=new PhongChieu(maPhongChieu);
                 SuatChieu suat=new SuatChieu(maSuatChieu);
-                Ve ve = new Ve(maVe, ngayBD, ngayKT, suat, loaive, phong, giaVe);
+                Ve ve = new Ve(maVe,loaive, ngayBD, ngayKT, suat, phong, giaVe);
                 ds.add(ve);
             }
         } catch (SQLException e) {

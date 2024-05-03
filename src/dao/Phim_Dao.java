@@ -24,13 +24,13 @@ public class Phim_Dao {
 	        Statement st =  con.createStatement();
 	        ResultSet rs = st.executeQuery(sql);
 	        while(rs.next()) {
-	            String maPhim = rs.getString("maPhim");
-	            String tenPhim = rs.getString("tenPhim");
-	            Time thoiLuong = rs.getTime("thoiLuong");
-	            int gioiHanTuoi = rs.getInt("gioiHanTuoi");
-	            String ngayCongChieu = rs.getString("ngayCongChieu"); 
-	            String nhaSanXuat = rs.getString("nhaSanXuat");
-	            String loaiPhim = rs.getString("loaiPhim"); 
+	            String maPhim = rs.getString(1);
+	            String tenPhim = rs.getString(2);
+	            Time thoiLuong = rs.getTime(3);
+	            int gioiHanTuoi = rs.getInt(4);
+	            String ngayCongChieu = rs.getString(5); 
+	            String nhaSanXuat = rs.getString(6);
+	            String loaiPhim = rs.getString(7); 
 	            Phim phim = new Phim(maPhim, tenPhim, thoiLuong, gioiHanTuoi, ngayCongChieu, nhaSanXuat, loaiPhim); 
 	            ds.add(phim);            
 	        }

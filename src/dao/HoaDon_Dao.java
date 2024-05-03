@@ -26,10 +26,10 @@ public class HoaDon_Dao {
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery(sql);
             while(rs.next()) {
-                String maHoaDon = rs.getString("maHoaDon");
-                String ngayXHD = rs.getString("ngayXuatHD");
-                String MaNV = rs.getString("maNhanVien");
-                String MaKH = rs.getString("maKhachHang");
+                String maHoaDon = rs.getString(1);
+                String ngayXHD = rs.getString(2);
+                String MaNV = rs.getString(3);
+                String MaKH = rs.getString(4);
                 NhanVien nhanvien=new NhanVien(MaNV);
                 KhachHang khachhang=new KhachHang(MaKH);
                 HoaDon hoadon = new HoaDon(maHoaDon, ngayXHD, nhanvien, khachhang);
@@ -45,7 +45,7 @@ public class HoaDon_Dao {
         ConnectDB.getInstance();
         Connection con = ConnectDB.getConnection();
         int n = 0;
-        String sql ="INSERT INTO VE VALUES (?, ?, ?, ?)";
+        String sql ="INSERT INTO HOADON VALUES (?, ?, ?, ?)";
         PreparedStatement pst = null;
         try {
             pst = con.prepareStatement(sql);
