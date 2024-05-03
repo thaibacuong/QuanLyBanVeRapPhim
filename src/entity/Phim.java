@@ -8,7 +8,7 @@ public class Phim {
 	private String TenPhim;
 	private Time ThoiLuong;
 	private int DoTuoi;
-	private Date NgayCongChieu;
+	private String NgayCongChieu;
 	private String NhaSX;
 	private String LoaiPhim;
 
@@ -17,7 +17,7 @@ public class Phim {
 		MaPHIM = maPHIM;
 	}
 
-	public Phim(String maPHIM, String tenPhim, Time thoiLuong, int doTuoi, Date ngayCongChieu, String nhaSX,
+	public Phim(String maPHIM, String tenPhim, Time thoiLuong, int doTuoi, String ngayCongChieu, String nhaSX,
 			String loaiPhim) {
 		this.MaPHIM = maPHIM;
 		this.TenPhim = tenPhim;
@@ -60,11 +60,11 @@ public class Phim {
 		DoTuoi = doTuoi;
 	}
 
-	public Date getNgayCongChieu() {
+	public String getNgayCongChieu() {
 		return NgayCongChieu;
 	}
 
-	public void setNgayCongChieu(Date ngayCongChieu) {
+	public void setNgayCongChieu(String ngayCongChieu) {
 		NgayCongChieu = ngayCongChieu;
 	}
 

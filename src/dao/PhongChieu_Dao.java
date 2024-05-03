@@ -30,7 +30,6 @@ public class PhongChieu_Dao {
                 int DienTich = rs.getInt(3);
                 Boolean TrangThai = rs.getBoolean(4);
                 GheNgoi ghe=new GheNgoi(rs.getString(5));
-               
                 PhongChieu phong = new PhongChieu(MaPC, TenPC, DienTich, TrangThai,ghe);
                 ds.add(phong);
             }
@@ -66,12 +65,14 @@ public class PhongChieu_Dao {
         ConnectDB.getInstance();
         PreparedStatement pst = null;
         Connection con = ConnectDB.getConnection();
-        String sql ="UPDATE PHONGCHIEU SET tenPhongChieu=?, trangThai=?  WHERE maPhongChieu = ?";
+        String sql ="UPDATE PHONGCHIEU SET tenPhongChieu=?,dientich = ?, trangThai=?, maghe=?  WHERE maPhongChieu = ?";
         try {    
         	pst = con.prepareStatement(sql);
             pst.setString(1, phong.getTenPC());
-            pst.setBoolean(2, phong.isTrangThai());
-            pst.setString(3, phong.getMaPC());
+            pst.setInt(2,phong.getDienTich());
+            pst.setBoolean(3, phong.isTrangThai());
+            pst.setString(4, phong.getGheNgoi().getMaGN());
+            pst.setString(5, phong.getMaPC());
             pst.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -80,21 +81,6 @@ public class PhongChieu_Dao {
         }
     }
 
-    public void deletePhongChieu(String maPhongChieu) {
-        ConnectDB.getInstance();
-        PreparedStatement pst = null;
-        Connection con = ConnectDB.getConnection();
-        String sql = "DELETE FROM PHONGCHIEU WHERE maPhongChieu = ?";
-        try {
-            pst = con.prepareStatement(sql);
-            pst.setString(1, maPhongChieu);
-            pst.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            close(pst);
-        }
-    }
 
     private void close(PreparedStatement pst) {
         if (pst != null) {

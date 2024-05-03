@@ -102,7 +102,6 @@ public class NhanVien_Dao {
             PreparedStatement pst = con.prepareStatement(sql)) {
             pst.setString(1, name);
             ResultSet rs = pst.executeQuery();
-
             while (rs.next()) {
                 String ma = rs.getString("maNhanVien");
                 String ten = rs.getString("tenNhanVien");
@@ -112,7 +111,6 @@ public class NhanVien_Dao {
                 String chuVu = rs.getString("chucVu");
                 String matKhau = rs.getString("matKhau");
                 boolean trangThai = rs.getBoolean("trangThai");
-
                 NhanVien nhanVien = new NhanVien(ma, ten, gioiTinh, ngaySinh, soDT, chuVu, matKhau, trangThai);
                 ds.add(nhanVien);
             }
@@ -130,7 +128,6 @@ public class NhanVien_Dao {
             PreparedStatement pst = con.prepareStatement(sql)) {
             pst.setString(1, sdt);
             ResultSet rs = pst.executeQuery();
-
             while (rs.next()) {
                 String ma = rs.getString("maNhanVien");
                 String ten = rs.getString("tenNhanVien");
@@ -140,7 +137,6 @@ public class NhanVien_Dao {
                 String chuVu = rs.getString("chucVu");
                 String matKhau = rs.getString("matKhau");
                 boolean trangThai = rs.getBoolean("trangThai");
-
                 NhanVien nhanVien = new NhanVien(ma, ten, gioiTinh, ngaySinh, soDT, chuVu, matKhau, trangThai);
                 ds.add(nhanVien);
             }

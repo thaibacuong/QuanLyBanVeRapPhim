@@ -67,12 +67,12 @@ public class HoaDon_Dao {
         PreparedStatement pst = null;
         Connection con = ConnectDB.getConnection();
         String sql ="UPDATE HOADON SET ngayXuatHD = ?,maNhanVien=?, maKhachHang=? WHERE maHoaDon = ?";
-        try {    
+        try {
             pst = con.prepareStatement(sql);
-            pst.setString(1, hoadon.getMaHD());
-            pst.setString(2, hoadon.getNgayXHD());
-            pst.setString(3, hoadon.getNhanVien().getMaNV());
-            pst.setString(4, hoadon.getKhachhang().getMaKH());
+            pst.setString(1, hoadon.getNgayXHD());
+            pst.setString(2, hoadon.getNhanVien().getMaNV());
+            pst.setString(3, hoadon.getKhachhang().getMaKH());
+            pst.setString(4, hoadon.getMaHD());
             pst.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -81,21 +81,6 @@ public class HoaDon_Dao {
         }
     }
 
-    public void deleteVe(String maHD) {
-        ConnectDB.getInstance();
-        PreparedStatement pst = null;
-        Connection con = ConnectDB.getConnection();
-        String sql = "DELETE FROM VE WHERE maHoaDon = ?";
-        try {
-            pst = con.prepareStatement(sql);
-            pst.setString(1, maHD);
-            pst.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            close(pst);
-        }
-    }
 
     private void close(PreparedStatement pst) {
         if (pst != null) {

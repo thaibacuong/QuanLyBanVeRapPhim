@@ -19,7 +19,6 @@ public class GheNgoi_Dao {
         try {
             ConnectDB.getInstance();
             Connection con = ConnectDB.getConnection();
-
             String sql = "SELECT * FROM GHENGOI";
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery(sql);
@@ -69,22 +68,6 @@ public class GheNgoi_Dao {
             pst.setBoolean(2, ghengoi.getTrangThai());
             pst.setString(3, ghengoi.getLoaiGN());
             pst.setString(4, ghengoi.getMaGN());
-            pst.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            close(pst);
-        }
-    }
-
-    public void delete(String maGhe) {
-        ConnectDB.getInstance();
-        PreparedStatement pst = null;
-        Connection con = ConnectDB.getConnection();
-        String sql = "DELETE FROM GHENGOI WHERE maGhe = ?";
-        try {
-            pst = con.prepareStatement(sql);
-            pst.setString(1, maGhe);
             pst.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();

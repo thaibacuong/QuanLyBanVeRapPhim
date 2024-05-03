@@ -1,9 +1,11 @@
 package entity;
 
+import java.sql.Time;
+
 public class SuatChieu {
 	private String MaSC;
-	private String GioBD;
-	private String GioKT;
+	private Time GioBD;
+	private Time GioKT;
 	private String NgayChieu;
 	private Phim phim;
 
@@ -17,7 +19,7 @@ public class SuatChieu {
 		this.phim = phim;
 	}
 
-	public SuatChieu(String maSC, String gioBD, String gioKT, String ngayChieu,
+	public SuatChieu(String maSC, Time gioBD, Time gioKT, String ngayChieu,
 			Phim phim) {
 		this.MaSC = maSC;
 		this.GioBD = gioBD;
@@ -34,19 +36,19 @@ public class SuatChieu {
 		MaSC = maSC;
 	}
 
-	public String getGioBD() {
+	public Time getGioBD() {
 		return GioBD;
 	}
 
-	public void setGioBD(String gioBD) {
+	public void setGioBD(Time gioBD) {
 		GioBD = gioBD;
 	}
 
-	public String getGioKT() {
+	public Time getGioKT() {
 		return GioKT;
 	}
 
-	public void setGioKT(String gioKT) {
+	public void setGioKT(Time gioKT) {
 		GioKT = gioKT;
 	}
 

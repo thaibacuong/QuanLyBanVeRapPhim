@@ -64,11 +64,10 @@ public class KhachHang_Dao {
         String sql ="UPDATE HOADON SET tenKhachHang = ?,soDienThoai=?, ngaySinh=? WHERE maKhachHang = ?";
         try {    
             pst = con.prepareStatement(sql);
-            pst = con.prepareStatement(sql);
-            pst.setString(1, khachhang.getMaKH());
-            pst.setString(2, khachhang.getTenKH());
-            pst.setString(3, khachhang.getNgaySinh());
-            pst.setString(4, khachhang.getSoDT());
+            pst.setString(1, khachhang.getTenKH());
+            pst.setString(2, khachhang.getNgaySinh());
+            pst.setString(3, khachhang.getSoDT());
+            pst.setString(4, khachhang.getMaKH());
             pst.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -77,21 +76,6 @@ public class KhachHang_Dao {
         }
     }
 
-    public void deleteKhachHang(String maKH) {
-        ConnectDB.getInstance();
-        PreparedStatement pst = null;
-        Connection con = ConnectDB.getConnection();
-        String sql = "DELETE FROM VE WHERE maKhachHang = ?";
-        try {
-            pst = con.prepareStatement(sql);
-            pst.setString(1, maKH);
-            pst.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            close(pst);
-        }
-    }
 
     private void close(PreparedStatement pst) {
         if (pst != null) {

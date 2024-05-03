@@ -56,7 +56,7 @@ public class Ve_Dao {
             pst.setString(3, ve.getNgayBD());
             pst.setString(4, ve.getNgayKT());
             pst.setString(5, ve.getPhongchieu().getMaPC());
-            pst.setString(5, ve.getSuatChieu().getMaSC());
+            pst.setString(6, ve.getSuatChieu().getMaSC());
             pst.setDouble(7, ve.getGiaVe());
             n = pst.executeUpdate();
         } catch (SQLException e) {
@@ -81,22 +81,6 @@ public class Ve_Dao {
             pst.setString(5, ve.getSuatChieu().getMaSC());
             pst.setDouble(6, ve.getGiaVe());
             pst.setString(7, ve.getMaVe());
-            pst.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            close(pst);
-        }
-    }
-
-    public void deleteVe(String maVe) {
-        ConnectDB.getInstance();
-        PreparedStatement pst = null;
-        Connection con = ConnectDB.getConnection();
-        String sql = "DELETE FROM VE WHERE maVe = ?";
-        try {
-            pst = con.prepareStatement(sql);
-            pst.setString(1, maVe);
             pst.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
