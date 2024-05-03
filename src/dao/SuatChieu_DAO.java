@@ -82,6 +82,32 @@ public class SuatChieu_DAO {
         }
     }
 
+    public ArrayList<SuatChieu> getAllSuatChieuByNgayChieu(String ngayChieu) {
+        ArrayList<SuatChieu> ds = new ArrayList<SuatChieu>();
+        ConnectDB.getInstance().connect();
+        String sql = "SELECT * FROM SUATCHIEU WHERE ngayChieu=?";
+        try (Connection con = ConnectDB.getConnection();
+            PreparedStatement pst = con.prepareStatement(sql)) {
+            pst.setString(1, ngayChieu);
+            ResultSet rs = pst.executeQuery();
+            while (rs.next()) {
+                String maSC = rs.getString(1);
+                String gioBD = rs.getString(2);
+                String gioKT = rs.getString(3);
+                String ngay = rs.getString(4);
+                String maPhim = rs.getString(5);
+                
+                Phim phim = new Phim(maPhim);
+                SuatChieu suatChieu = new SuatChieu(maSC, gioBD, gioKT, ngay, phim);
+                ds.add(suatChieu);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return ds;
+    }
+
+    
     public void deleteSuatChieu(String masc) {
     	ConnectDB.getInstance().connect();
         String sql = "DELETE FROM SUATCHIEU WHERE maSuatChieu = ?";

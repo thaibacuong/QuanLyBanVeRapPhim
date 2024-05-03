@@ -1,7 +1,5 @@
 package entity;
 
-import java.sql.Time;
-
 public class SuatChieu {
 	private String MaSC;
 	private String GioBD;
