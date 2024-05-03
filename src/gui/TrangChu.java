@@ -27,7 +27,7 @@ public class TrangChu extends JFrame{
 	private JPanel JWest;
 	private ImageIcon backgrounfImg;
 	private JLabel myLabel;
-	private JLabel lbltenUse;
+	private JLabel lbltenUse,l;
 	private JPanel JCen;
 	private Container layeredPane;
 	private ImageIcon originalIcon;
@@ -46,6 +46,7 @@ public class TrangChu extends JFrame{
 	private JButton btnCPass;
 	private JButton btnLogin;
 	private JButton btnExit;
+	private JButton btnMovie,nv,thongke,datve,hoadon,dangxuat;
 
 	
 	public TrangChu() {
@@ -71,7 +72,7 @@ public class TrangChu extends JFrame{
 	    Font font = new Font("Arial",Font.BOLD,30);
 	   
 	    // Thêm JLabel mới để hiển thị văn bản
-	    lbltenUse = new JLabel("Hi add"); 
+	    lbltenUse = new JLabel("Hi"); 
 	    lbltenUse.setHorizontalAlignment(JLabel.CENTER);
 	    JWest.add(lbltenUse, BorderLayout.CENTER);
 	    lbltenUse.setFont(font);
@@ -80,22 +81,76 @@ public class TrangChu extends JFrame{
         Jsouth.setPreferredSize(new Dimension(500, 300));
         JWest.add(Jsouth, BorderLayout.SOUTH);
 
-        btnCPass = new JButton("Change Password");
-        btnExit = new JButton("Exit");
+        btnCPass = new JButton("Đổi mật khẩu");
+        btnExit = new JButton("Thoát");
         Jsouth.add(btnCPass);
         Jsouth.add(btnExit);
         
 	    JLayeredPane layeredPane = new JLayeredPane();
+	   
         getContentPane().add(layeredPane);
         
-	    Jcen = new JPanel();
-	    backgrounfImg1 = new ImageIcon(getClass().getResource("Image/LoginBackground.jpg"));
-	    myLabel = new JLabel(backgrounfImg1);
-        myLabel.setBounds(0, 0, 2000, 1000);
+        
+	    Jcen = new JPanel(new GridLayout(2,3));
+	   
+	    btnMovie=new JButton("Phim", new ImageIcon(getClass().getResource("Image/Movies.png")));
+	    ImageIcon originalIcon = new ImageIcon(getClass().getResource("Image/Movies.png"));
+	    int scaledWidth = 50 ;
+	    int scaledHeight = 50 ;
+	    ImageIcon scaledIcon = new ImageIcon(originalIcon.getImage().getScaledInstance(scaledWidth, scaledHeight, java.awt.Image.SCALE_SMOOTH));
+	    btnMovie.setIcon(scaledIcon);
+	    Jcen.add(btnMovie);
+	    
+	    nv=new JButton("Nhân Viên", new ImageIcon(getClass().getResource("Image/Customer.png")));
+	    ImageIcon originalInv = new ImageIcon(getClass().getResource("Image/Customer.png"));
+	    ImageIcon scaledIconNv = new ImageIcon(originalInv.getImage().getScaledInstance(scaledWidth, scaledHeight, java.awt.Image.SCALE_SMOOTH));
+	    nv.setIcon(scaledIconNv);
+	    Jcen.add(nv);
+	    
+	    thongke=new JButton("Thống Kê", new ImageIcon(getClass().getResource("Image/Statistic.png")));
+	    ImageIcon originalItk = new ImageIcon(getClass().getResource("Image/Statistic.png"));
+	    ImageIcon scaledIcontk = new ImageIcon(originalItk.getImage().getScaledInstance(scaledWidth, scaledHeight, java.awt.Image.SCALE_SMOOTH));
+	    thongke.setIcon(scaledIcontk);
+	    Jcen.add(thongke);
+	    
+	    datve=new JButton("Đặt Vé", new ImageIcon(getClass().getResource("Image/Rooms.png")));
+	    ImageIcon originalIdv = new ImageIcon(getClass().getResource("Image/Rooms.png"));
+	    ImageIcon scaledIcondv = new ImageIcon(originalIdv.getImage().getScaledInstance(scaledWidth, scaledHeight, java.awt.Image.SCALE_SMOOTH));
+	    datve.setIcon(scaledIcondv);
+	    Jcen.add(datve);
+	    
+	    hoadon=new JButton("Hóa Đơn", new ImageIcon(getClass().getResource("Image/History.png")));
+	    hoadon.setBounds(0, 0, 400, 0);
+	    ImageIcon originalIhd = new ImageIcon(getClass().getResource("Image/History.png"));
+	    ImageIcon scaledIconhd = new ImageIcon(originalIhd.getImage().getScaledInstance(scaledWidth, scaledHeight, java.awt.Image.SCALE_SMOOTH));
+	    hoadon.setIcon(scaledIconhd);
+	    Jcen.add(hoadon);
+	    
+	    dangxuat=new JButton("Đăng Xuất", new ImageIcon(getClass().getResource("Image/Back.png")));
+	    ImageIcon originalIdx = new ImageIcon(getClass().getResource("Image/Back.png"));
+	    ImageIcon scaledIcondx = new ImageIcon(originalIdx.getImage().getScaledInstance(scaledWidth, scaledHeight, java.awt.Image.SCALE_SMOOTH));
+	    dangxuat.setIcon(scaledIcondx);
+	    Jcen.add(dangxuat);
+
+	    
+	    add(Jcen);
+	    Jcen.setLayout(new GridLayout(2, 3, 10, 10)); // 10 là khoảng cách ngang và dọc giữa các thành phần
+
+	 // Hoặc sử dụng EmptyBorder cho từng JButton
+	 int padding = 10; // Đặt khoảng cách mong muốn
+	 Border emptyBorder = BorderFactory.createEmptyBorder(padding, padding, padding, padding);
+
+	 btnMovie.setBorder(emptyBorder);
+	 nv.setBorder(emptyBorder);
+	 thongke.setBorder(emptyBorder);
+	 datve.setBorder(emptyBorder);
+	 hoadon.setBorder(emptyBorder);
+	 dangxuat.setBorder(emptyBorder);
         layeredPane.add(myLabel, Integer.valueOf(0)); 
         
 //        Jcen.add(myLabel11, BorderLayout.CENTER);
         
+
 	    setTitle("Trang chủ");
 	    setDefaultCloseOperation(EXIT_ON_CLOSE);
 	    setResizable(false);
