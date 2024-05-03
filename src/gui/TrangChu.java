@@ -47,15 +47,15 @@ public class TrangChu extends JFrame {
         Jcen = new JPanel();
         ImageIcon backgroundImage = new ImageIcon(getClass().getResource("Image/LoginBackground.jpg"));
         JLabel backgroundLabel = new JLabel(backgroundImage);
-        backgroundLabel.setBounds(0, 0, 350, 500);
+        backgroundLabel.setBounds(0, 200, 350, 500);
 
         ImageIcon backgroundImage1 = new ImageIcon(getClass().getResource("Image/poster.png"));
         JLabel backgroundLabel1 = new JLabel(backgroundImage1);
-        backgroundLabel1.setBounds(350, 0, 350, 500);
+        backgroundLabel1.setBounds(350, 200, 350, 500);
         
         ImageIcon backgroundImage2 = new ImageIcon(getClass().getResource("Image/Poster2.png"));
         JLabel backgroundLabel2 = new JLabel(backgroundImage2);
-        backgroundLabel2.setBounds(700, 0, 350, 500);
+        backgroundLabel2.setBounds(700, 200, 350, 500);
         
 
         layeredPane.add(backgroundLabel, Integer.valueOf(0));
