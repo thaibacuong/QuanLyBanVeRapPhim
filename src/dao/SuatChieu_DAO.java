@@ -23,8 +23,8 @@ public class SuatChieu_DAO {
              ResultSet rs = st.executeQuery("SELECT * FROM SUATCHIEU")) {
             while (rs.next()) {
                 String masuatchieu = rs.getString(1);
-                Time giobatdau = rs.getTime(2);
-                Time gioketthuc = rs.getTime(3);
+                String giobatdau = rs.getString(2);
+                String gioketthuc = rs.getString(3);
                 String ngaychieu = rs.getString(4);
                 String maphim = rs.getString(5);
                 Phim phim = new Phim(maphim);
@@ -46,8 +46,8 @@ public class SuatChieu_DAO {
         try {
             pst = con.prepareStatement(sql);
             pst.setString(1, sc.getMaSC());
-            pst.setTime(2, sc.getGioBD());
-            pst.setTime(3, sc.getGioKT());
+            pst.setString(2, sc.getGioBD());
+            pst.setString(3, sc.getGioKT());
             pst.setString(4, sc.getNgayChieu());
             pst.setString(5, sc.getPhim().getMaPHIM());
             n = pst.executeUpdate();
@@ -71,8 +71,8 @@ public class SuatChieu_DAO {
         String sql = "UPDATE SUATCHIEU SET gioBatDau = ?, gioKetThuc = ?, ngayChieu = ?, maPhim = ? WHERE maSuatChieu = ?";
         try (Connection con = ConnectDB.getConnection();
              PreparedStatement pst = con.prepareStatement(sql)) {
-            pst.setTime(1, sc.getGioBD());
-            pst.setTime(2, sc.getGioKT());
+            pst.setString(1, sc.getGioBD());
+            pst.setString(2, sc.getGioKT());
             pst.setString(3, sc.getNgayChieu());
             pst.setString(4, sc.getPhim().getMaPHIM());
             pst.setString(5, sc.getMaSC());

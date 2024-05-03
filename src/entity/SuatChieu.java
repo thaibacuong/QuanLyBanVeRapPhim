@@ -4,8 +4,8 @@ import java.sql.Time;
 
 public class SuatChieu {
 	private String MaSC;
-	private Time GioBD;
-	private Time GioKT;
+	private String GioBD;
+	private String GioKT;
 	private String NgayChieu;
 	private Phim phim;
 
@@ -19,7 +19,7 @@ public class SuatChieu {
 		this.phim = phim;
 	}
 
-	public SuatChieu(String maSC, Time gioBD, Time gioKT, String ngayChieu,
+	public SuatChieu(String maSC, String gioBD, String gioKT, String ngayChieu,
 			Phim phim) {
 		this.MaSC = maSC;
 		this.GioBD = gioBD;
@@ -36,19 +36,19 @@ public class SuatChieu {
 		MaSC = maSC;
 	}
 
-	public Time getGioBD() {
+	public String getGioBD() {
 		return GioBD;
 	}
 
-	public void setGioBD(Time gioBD) {
+	public void setGioBD(String gioBD) {
 		GioBD = gioBD;
 	}
 
-	public Time getGioKT() {
+	public String getGioKT() {
 		return GioKT;
 	}
 
-	public void setGioKT(Time gioKT) {
+	public void setGioKT(String gioKT) {
 		GioKT = gioKT;
 	}
 

@@ -60,9 +60,9 @@ soLuong int
 
 CREATE TABLE SUATCHIEU
 (maSuatChieu CHAR(5) NOT NULL,
-gioBatDau DATE,
-gioKetThuc DATE,
-ngayChieu DATE,
+gioBatDau NVARCHAR(10),
+gioKetThuc NVARCHAR(10),
+ngayChieu NVARCHAR(10),
 maPhim CHAR(5)
 )
 
