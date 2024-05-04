@@ -62,20 +62,25 @@ public class TrangChu extends JFrame{
 	    JWest.add(Jsouth, BorderLayout.SOUTH);
 	    Jsouth.add(btnCPass = new JButton("change Password"));
 	    Jsouth.add(btnExit = new JButton("exit"));
-	    
-//	    btnCPass.set
+	    Jsouth.setBorder(BorderFactory.createEmptyBorder(0, 0, 150, 0));
 	    
 	    JLayeredPane layeredPane = new JLayeredPane();
         getContentPane().add(layeredPane);
 
 	    Jcen = new JPanel();
 	    backgrounfImg1 = new ImageIcon(getClass().getResource("Image/TCdaomai.png"));
-	    scaledImage = backgrounfImg1.getImage().getScaledInstance(200, 200, Image.SCALE_SMOOTH);
+	    scaledImage = backgrounfImg1.getImage().getScaledInstance(1300, 1000, Image.SCALE_SMOOTH);
         ImageIcon scaledIcon = new ImageIcon(scaledImage);
 	    myLabel = new JLabel(scaledIcon);
-        myLabel.setBounds(20, 0, 1000, 1000);
+        myLabel.setBounds(20, 100, 1400, 950);
 
         layeredPane.add(myLabel, Integer.valueOf(0)); 
+        
+        JLabel textLabel = new JLabel("RẠP VÉ XEM PHIM");
+        textLabel.setFont(new Font("Courier New", Font.BOLD, 50));
+        textLabel.setForeground(Color.RED); // Chỉnh màu chữ
+        textLabel.setBounds(500, 0, 600, 100); // Đặt vị trí
+        layeredPane.add(textLabel, Integer.valueOf(1)); // Đặt lớp vị trí
         
 	    setTitle("Trang chủ");
 	    setDefaultCloseOperation(EXIT_ON_CLOSE);

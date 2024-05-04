@@ -6,7 +6,6 @@ public class HoaDon {
 	private String MaHD;
 	private String NgayXHD;
 	private NhanVien nhanVien;
-	private KhachHang khachhang;
     private ArrayList<ChiTietHoaDon> chiTietHoaDonList;
     
 	public HoaDon(String maHD) {
@@ -14,21 +13,16 @@ public class HoaDon {
 		MaHD = maHD;
 	}
 
-	public HoaDon(KhachHang khachhang) {
-		super();
-		this.khachhang = khachhang;
-	}
 
 	public HoaDon(NhanVien nhanVien) {
 		super();
 		this.nhanVien = nhanVien;
 	}
 
-	public HoaDon(String maHD, String ngayXHD, NhanVien nhanVien, KhachHang khachhang) {
+	public HoaDon(String maHD, String ngayXHD, NhanVien nhanVien) {
 		this.MaHD = maHD;
 		this.NgayXHD = ngayXHD;
 		this.nhanVien = nhanVien;
-		this.khachhang = khachhang;
 	}
 
 	public String getMaHD() {
@@ -55,14 +49,6 @@ public class HoaDon {
 		this.nhanVien = nhanVien;
 	}
 
-	public KhachHang getKhachhang() {
-		return khachhang;
-	}
-
-	public void setKhachhang(KhachHang khachhang) {
-		this.khachhang = khachhang;
-	}
-	
 	public double tinhTongTien() {
 	    double tongTien = 0.0;
 	    for (ChiTietHoaDon chiTiet : chiTietHoaDonList) {
@@ -73,7 +59,7 @@ public class HoaDon {
 
 	@Override
 	public String toString() {
-		return "HoaDon [MaHD=" + MaHD + ", NgayXHD=" + NgayXHD + ", nhanVien=" + nhanVien + ", khachhang=" + khachhang
-				+ "]";
+		return "HoaDon [MaHD=" + MaHD + ", NgayXHD=" + NgayXHD + ", nhanVien=" + nhanVien + ", chiTietHoaDonList="
+				+ chiTietHoaDonList + "]";
 	}
 }

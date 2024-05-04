@@ -31,8 +31,7 @@ select * from NHANVIEN
 CREATE TABLE HOADON
 (maHoaDon CHAR(5) NOT NULL,
 ngayXuatHD DATE,
-maNhanVien CHAR(5),
-maKhachHang CHAR(5)
+maNhanVien CHAR(5)
 )
 
 CREATE TABLE VE
