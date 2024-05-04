@@ -18,22 +18,15 @@ FILEGROWTH=3MB
 CREATE TABLE NHANVIEN
 (maNhanVien CHAR(5) NOT NULL,
 tenNhanVien NVARCHAR(30) NOT NULL,
-gioiTinh NVARCHAR(5),
+gioiTinh bit,
 ngaySing NVARCHAR(20),
 soDienThoai CHAR(10),
 chucVu NVARCHAR(20),
 matKhau CHAR(20) Not Null,
-trangThai NVARCHAR(30) Not Null
+trangThai bit Not Null
 )
 
 select * from NHANVIEN
-
-CREATE TABLE KHACHHANG
-(maKhachHang CHAR(5) NOT NULL,
-tenKhachHang NVARCHAR(30),
-soDienThoai CHAR(10),
-ngaySinh DATE Not Null
-)
 
 CREATE TABLE HOADON
 (maHoaDon CHAR(5) NOT NULL,
@@ -81,22 +74,19 @@ CREATE TABLE PHONGCHIEU
 (maPhongChieu CHAR(5) NOT NULL,
 tenPhongChieu CHAR(5) NOT NULL,
 DienTich INT,
-trangThai NVARCHAR(30) Not Null,
+trangThai bit Not Null,
 )
 
 CREATE TABLE GHENGOI
 (maGhe CHAR(5) NOT NULL,
 viTriGhe CHAR(5) NOT NULL,
-trangThai NVARCHAR(30) Not Null,
+trangThai bit Not Null,
 loaiGhe CHAR(5),
 maphongchieu CHAR(5)
 )
 
 ALTER TABLE NHANVIEN
 	ADD CONSTRAINT PK_maNhanVien PRIMARY KEY (maNhanVien)
-
-ALTER TABLE KHACHHANG
-	ADD CONSTRAINT PK_maKhachHang PRIMARY KEY (maKhachHang)
 
 ALTER TABLE HOADON
 	ADD CONSTRAINT PK_maHoaDon PRIMARY KEY (maHoaDon)
@@ -121,11 +111,6 @@ ALTER TABLE PHIM
 
 ALTER TABLE HOADON
 ADD CONSTRAINT FK_HD_maNhanVien FOREIGN KEY (maNhanVien) REFERENCES NHANVIEN(maNhanVien)
-ON DELETE Cascade
-ON UPDATE Cascade
-
-ALTER TABLE HOADON
-ADD CONSTRAINT FK_HD_maKhachHang FOREIGN KEY (maKhachHang) REFERENCES KHACHHANG(maKhachHang)
 ON DELETE Cascade
 ON UPDATE Cascade
 

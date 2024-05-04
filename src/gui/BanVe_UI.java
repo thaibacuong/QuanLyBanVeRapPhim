@@ -669,15 +669,15 @@ public class BanVe_UI extends JFrame implements ActionListener, MouseListener {
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
-//		JLabel clickedSeat = (JLabel) e.getSource();
-//		Color originalColor = Color.GREEN;
-//		Color selectedColor = Color.RED;
-//
-//		if (clickedSeat.getBackground().equals(originalColor)) {
-//			clickedSeat.setBackground(selectedColor);
-//		} else {
-//			clickedSeat.setBackground(originalColor);
-//		}
+		JLabel clickedSeat = (JLabel) e.getSource();
+		Color originalColor = Color.GREEN;
+		Color selectedColor = Color.RED;
+
+		if (clickedSeat.getBackground().equals(originalColor)) {
+			clickedSeat.setBackground(selectedColor);
+		} else {
+			clickedSeat.setBackground(originalColor);
+		}
 		int row= tablenv.getSelectedRow();
 		txtManv.setText(tablenv.getValueAt(row, 0).toString());
         txtTen.setText(tablenv.getValueAt(row, 1).toString());
@@ -715,8 +715,6 @@ public class BanVe_UI extends JFrame implements ActionListener, MouseListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-
-
 		Object o = e.getSource();
 		if (e.getSource() == btnCapNhat) {
 	        int selectedRow = tablenv.getSelectedRow();

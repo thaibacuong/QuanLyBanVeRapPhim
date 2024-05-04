@@ -38,7 +38,6 @@ public class ChiTietHoaDon {
 		SoLuong = soLuong;
 	}
 
-
 	public Ve getVe() {
 		return ve;
 	}

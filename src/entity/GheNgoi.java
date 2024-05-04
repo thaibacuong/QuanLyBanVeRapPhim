@@ -25,8 +25,6 @@ public class GheNgoi {
 	 * @param loaiGN
 	 */
 
-
-
 	public GheNgoi(String maGN, String viTriGN, Boolean trangThai, String loaiGN, PhongChieu phongchieu) {
 		super();
 		this.MaGN = maGN;

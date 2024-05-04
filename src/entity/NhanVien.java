@@ -4,20 +4,20 @@ package entity;
 public class NhanVien {
 	private String MaNV;
 	private String TenNV;
-	private String GioiTinh;
+	private boolean GioiTinh;
 	private String NgaySinh;
 	private String SoDT;
 	private String ChuVu;
 	private String MatKH;
-	private String TrangThai;
+	private boolean TrangThai;
 	
 	public NhanVien(String maNV) {
 		super();
 		this.MaNV = maNV;
 	}
 
-	public NhanVien(String maNV, String tenNV, String gioiTinh, String ngaySinh, String soDT, String chuVu, String matKH,
-			String Trangthai) {
+	public NhanVien(String maNV, String tenNV, boolean gioiTinh, String ngaySinh, String soDT, String chuVu, String matKH,
+			boolean Trangthai) {
 		this.MaNV = maNV;
 		this.TenNV = tenNV;
 		this.SoDT = soDT;
@@ -61,11 +61,11 @@ public class NhanVien {
 		ChuVu = chuVu;
 	}
 
-	public String isGioiTinh() {
+	public boolean isGioiTinh() {
 		return GioiTinh;
 	}
 
-	public void setGioiTinh(String gioiTinh) {
+	public void setGioiTinh(boolean gioiTinh) {
 		GioiTinh = gioiTinh;
 	}
 
@@ -86,11 +86,11 @@ public class NhanVien {
 	}
 	
 
-	public String isTrangThai() {
+	public boolean isTrangThai() {
 		return TrangThai;
 	}
 
-	public void setTrangThai(String trangThai) {
+	public void setTrangThai(boolean trangThai) {
 		TrangThai = trangThai;
 	}
 

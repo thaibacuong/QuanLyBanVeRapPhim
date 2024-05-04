@@ -23,12 +23,12 @@ public class NhanVien_Dao {
             while (rs.next()) {
                 String ma = rs.getString(1);
                 String ten = rs.getString(2);
-                String gioiTinh = rs.getString(3);
+                boolean gioiTinh = rs.getBoolean(3);
                 String ngaySinh = rs.getString(4);
                 String soDT = rs.getString(5);
                 String chuVu = rs.getString(6);
                 String matKhau = rs.getString(7);
-                String trangThai = rs.getString(8);
+                boolean trangThai = rs.getBoolean(8);
                 NhanVien nhanVien = new NhanVien(ma, ten, gioiTinh, ngaySinh, soDT, chuVu, matKhau, trangThai);
                 ds.add(nhanVien);
             }
@@ -50,12 +50,12 @@ public class NhanVien_Dao {
             pst = con.prepareStatement(sql);
             pst.setString(1, nv.getMaNV());
             pst.setString(2, nv.getTenNV());
-            pst.setString(3, nv.isGioiTinh());
+            pst.setBoolean(3, nv.isGioiTinh());
             pst.setString(4, nv.getNgaySinh());
             pst.setString(5, nv.getSoDT());
             pst.setString(6, nv.getChuVu());
             pst.setString(7, nv.getMatKH());
-            pst.setString(8, nv.isTrangThai());
+            pst.setBoolean(8, nv.isTrangThai());
             n = pst.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -78,12 +78,12 @@ public class NhanVien_Dao {
         try (Connection con = ConnectDB.getConnection();
              PreparedStatement pst = con.prepareStatement(sql)) {
             pst.setString(1, nv.getTenNV());
-            pst.setString(2, nv.isGioiTinh());
+            pst.setBoolean(2, nv.isGioiTinh());
             pst.setString(3, nv.getNgaySinh());
             pst.setString(4, nv.getSoDT());
             pst.setString(5, nv.getChuVu());
             pst.setString(6, nv.getMatKH());
-            pst.setString(7, nv.isTrangThai());
+            pst.setBoolean(7, nv.isTrangThai());
             pst.setString(8, nv.getMaNV());
             pst.executeUpdate();
         } catch (SQLException e) {
@@ -102,12 +102,12 @@ public class NhanVien_Dao {
             while (rs.next()) {
                 String ma = rs.getString(1);
                 String ten = rs.getString(2);
-                String gioiTinh = rs.getString(3);
+                Boolean gioiTinh = rs.getBoolean(3);
                 String ngaySinh = rs.getString(4);
                 String soDT = rs.getString(5);
                 String chuVu = rs.getString(6);
                 String matKhau = rs.getString(7);
-                String trangThai = rs.getString(8);
+                Boolean trangThai = rs.getBoolean(8);
                 NhanVien nhanVien = new NhanVien(ma, ten, gioiTinh, ngaySinh, soDT, chuVu, matKhau, trangThai);
                 ds.add(nhanVien);
             }
@@ -128,12 +128,12 @@ public class NhanVien_Dao {
             while (rs.next()) {
             	String ma = rs.getString(1);
                 String ten = rs.getString(2);
-                String gioiTinh = rs.getString(3);
+                Boolean gioiTinh = rs.getBoolean(3);
                 String ngaySinh = rs.getString(4);
                 String soDT = rs.getString(5);
                 String chuVu = rs.getString(6);
                 String matKhau = rs.getString(7);
-                String trangThai = rs.getString(8);
+                Boolean trangThai = rs.getBoolean(8);
                 NhanVien nhanVien = new NhanVien(ma, ten, gioiTinh, ngaySinh, soDT, chuVu, matKhau, trangThai);
                 ds.add(nhanVien);
             }
