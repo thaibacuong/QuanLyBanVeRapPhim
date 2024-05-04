@@ -18,12 +18,12 @@ FILEGROWTH=3MB
 CREATE TABLE NHANVIEN
 (maNhanVien CHAR(5) NOT NULL,
 tenNhanVien NVARCHAR(30) NOT NULL,
-gioiTinh bit,
+gioiTinh NVARCHAR(5),
 ngaySing NVARCHAR(20),
 soDienThoai CHAR(10),
 chucVu NVARCHAR(20),
 matKhau CHAR(20) Not Null,
-trangThai BIT Not Null
+trangThai NVARCHAR(30) Not Null
 )
 
 select * from NHANVIEN
@@ -66,8 +66,6 @@ ngayChieu NVARCHAR(10),
 maPhim CHAR(5)
 )
 
-use QLBV1RP
-drop table PHIM
 
 CREATE TABLE PHIM
 (maPhim CHAR(5) NOT NULL,
@@ -83,13 +81,13 @@ CREATE TABLE PHONGCHIEU
 (maPhongChieu CHAR(5) NOT NULL,
 tenPhongChieu CHAR(5) NOT NULL,
 DienTich INT,
-trangThai BIT Not Null,
+trangThai NVARCHAR(30) Not Null,
 )
 
 CREATE TABLE GHENGOI
 (maGhe CHAR(5) NOT NULL,
 viTriGhe CHAR(5) NOT NULL,
-trangThai BIT Not Null,
+trangThai NVARCHAR(30) Not Null,
 loaiGhe CHAR(5),
 maphongchieu CHAR(5)
 )

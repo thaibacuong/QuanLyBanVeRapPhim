@@ -1,76 +1,100 @@
 package gui;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Container;
+import java.awt.Dimension;
+import java.awt.Font;
 
-import java.awt.*;
-import javax.swing.*;
+import javax.swing.BorderFactory;
+import javax.swing.Box;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JLayeredPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.border.Border;
+import javax.swing.border.EmptyBorder;
 
-public class TrangChu extends JFrame {
+public class TrangChu extends JFrame{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private JPanel JWest;
+	private ImageIcon backgrounfImg;
+	private JLabel myLabel;
+	private JLabel lbltenUse;
 
-    private JButton btnCPass;
-    private JButton btnExit;
-    private JPanel Jcen;
+	private ImageIcon scaledIcon;
 
-    public TrangChu() {
-        Container contentPane = getContentPane();
-        contentPane.setLayout(new BorderLayout());
-        contentPane.setBackground(Color.DARK_GRAY);
-        // Thêm tiêu đề
-        JPanel Jnorth =new JPanel();
-        JLabel titleLabel = new JLabel("Hệ thống quản lý rạp phim", SwingConstants.CENTER);
-        titleLabel.setFont(new Font("Arial", Font.BOLD, 24));
-        Jnorth.add(titleLabel, BorderLayout.NORTH);
-        add(Jnorth,BorderLayout.NORTH);
-       
+	private int scaledWidth;
+	private int scaledHeight;
 
-        JPanel JWest = new JPanel(new BorderLayout());
-        JWest.setPreferredSize(new Dimension(500, 300));
-        JWest.setBackground(Color.LIGHT_GRAY);
-        contentPane.add(JWest, BorderLayout.WEST);
+	private ImageIcon backgrounfImg1;
+	private JButton btnCPass;
+	private JButton btnExit;
+	private JPanel Jcen;
 
-        JLabel lbltenUse = new JLabel("Welcome");
-        lbltenUse.setHorizontalAlignment(SwingConstants.CENTER);
-        JWest.add(lbltenUse, BorderLayout.CENTER);
-        lbltenUse.setFont(new Font("Arial", Font.PLAIN, 20));
 
-        JPanel Jsouth = new JPanel(new FlowLayout(FlowLayout.CENTER));
-        Jsouth.setPreferredSize(new Dimension(500, 100));
-        JWest.add(Jsouth, BorderLayout.SOUTH);
 
-        btnCPass = new JButton("Change Password");
-        btnExit = new JButton("Exit");
-        Jsouth.setBackground(Color.LIGHT_GRAY);
-        Jsouth.add(btnCPass);
-        Jsouth.add(btnExit);
+	public TrangChu() {
+		// Khởi tạo JPanel và đặt layout
+	    JWest = new JPanel(new BorderLayout());
+	    add(JWest, BorderLayout.WEST);
+	    JWest.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.BLACK)));
+	    // Tạo JLabel để hiển thị hình ảnh
+	    backgrounfImg = new ImageIcon(getClass().getResource("Image/useDangNhap.jpg"));
+	    myLabel = new JLabel(backgrounfImg);
+	    
+	    scaledWidth = backgrounfImg.getIconWidth() / 2;
+        scaledHeight = backgrounfImg.getIconHeight() / 2;
+        scaledIcon = new ImageIcon(backgrounfImg.getImage().getScaledInstance(scaledWidth, scaledHeight, java.awt.Image.SCALE_SMOOTH));
+        myLabel = new JLabel(scaledIcon);
 
-        JLayeredPane layeredPane = new JLayeredPane();
-        contentPane.add(layeredPane);
+        myLabel.setBorder(BorderFactory.createEmptyBorder(100, 50, 0, 50)); // Bố trí khoảng trống
+        myLabel.setBorder(BorderFactory.createEmptyBorder(100, 100, 0, 100)); // Bố trí khoảng trống
 
-        Jcen = new JPanel();
-        ImageIcon backgroundImage = new ImageIcon(getClass().getResource("Image/LoginBackground.jpg"));
-        JLabel backgroundLabel = new JLabel(backgroundImage);
-        backgroundLabel.setBounds(0, 200, 350, 500);
+	    // Thêm JLabel vào JPanel
+	    JWest.add(myLabel, BorderLayout.NORTH);
+	    
+	    Font font = new Font("Arial",Font.BOLD,30);
+	   
+	    // Thêm JLabel mới để hiển thị văn bản
+	    lbltenUse = new JLabel("Hi add"); 
+	    lbltenUse.setHorizontalAlignment(JLabel.CENTER);
+	    JWest.add(lbltenUse, BorderLayout.CENTER);
+	    lbltenUse.setFont(font);
 
-        ImageIcon backgroundImage1 = new ImageIcon(getClass().getResource("Image/poster.png"));
-        JLabel backgroundLabel1 = new JLabel(backgroundImage1);
-        backgroundLabel1.setBounds(350, 200, 350, 500);
+
+	    JPanel Jsouth = new JPanel();
+	    Jsouth.setBounds(500, 0, 500, 100);
+	    JWest.add(Jsouth, BorderLayout.SOUTH);
+	    Jsouth.add(btnCPass = new JButton("change Password"));
+	    Jsouth.add(btnExit = new JButton("exit"));
+	    
+	    JLayeredPane layeredPane = new JLayeredPane();
+        getContentPane().add(layeredPane);
+
+	    Jcen = new JPanel();
+	    backgrounfImg1 = new ImageIcon(getClass().getResource("Image/LoginBackground.jpg"));
+	    myLabel = new JLabel(backgrounfImg1);
+        myLabel.setBounds(0, 0, 1000, 1000);
+        myLabel.setBounds(0, 0, 2000, 1000);
+        layeredPane.add(myLabel, Integer.valueOf(0)); 
+
+//        Jcen.add(myLabel11, BorderLayout.CENTER);
         
-        ImageIcon backgroundImage2 = new ImageIcon(getClass().getResource("Image/Poster2.png"));
-        JLabel backgroundLabel2 = new JLabel(backgroundImage2);
-        backgroundLabel2.setBounds(700, 200, 350, 500);
-        
-
-        layeredPane.add(backgroundLabel, Integer.valueOf(0));
-        layeredPane.add(backgroundLabel1, Integer.valueOf(1));
-        layeredPane.add(backgroundLabel2, Integer.valueOf(2));
-
-        setTitle("Trang chủ");
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setResizable(false);
-        setExtendedState(JFrame.MAXIMIZED_BOTH);
-        setLocationRelativeTo(null);
-        setVisible(true);
-    }
-
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> new TrangChu());
-    }
+	    setTitle("Trang chủ");
+	    setDefaultCloseOperation(EXIT_ON_CLOSE);
+	    setResizable(false);
+	    setExtendedState(JFrame.MAXIMIZED_BOTH);
+	    setSize(500, 400);
+	    setLocationRelativeTo(null);
+	    setVisible(true);
+	}
+	public static void main(String[] args) {
+		new TrangChu();
+	}
 }
