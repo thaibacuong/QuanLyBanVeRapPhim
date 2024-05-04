@@ -26,7 +26,6 @@ matKhau CHAR(20) Not Null,
 trangThai bit Not Null
 )
 
-select * from NHANVIEN
 
 CREATE TABLE HOADON
 (maHoaDon CHAR(5) NOT NULL,
