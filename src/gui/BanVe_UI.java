@@ -232,177 +232,7 @@ public class BanVe_UI extends JFrame implements ActionListener, MouseListener {
 	private void UI() {
 		nv_dao = new NhanVien_Dao();
 
-		pnphim = new JPanel(new BorderLayout());
-
-		// phim ui
-		JWestphim = new JPanel();
-		pnphim.add(JWestphim, BorderLayout.WEST);
-		JWestphim.setBorder(
-				BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.black), "Thông tin nhân viên"));
-
-		Box vb1phim = Box.createVerticalBox();
-		Box hb1phim = Box.createHorizontalBox();
-		Box hb2phim = Box.createHorizontalBox();
-		Box hb3phim = Box.createHorizontalBox();
-		Box hb4phim = Box.createHorizontalBox();
-		Box hb5phim = Box.createHorizontalBox();
-		Box hb6phim = Box.createHorizontalBox();
-		Box hb7phim = Box.createHorizontalBox();
-		Box hb8phim = Box.createHorizontalBox();
-		Box hb9phim = Box.createHorizontalBox();
-		Box hb10phim = Box.createHorizontalBox();
-
-		JWestphim.add(vb1phim);
-		String[] loaiphim = { null, "Hài", "Tình cảm" };
-
-		lbltenphim = new JLabel("Tên phim   ");
-		txttenphim = new JTextField(25);
-		lblthoiluong = new JLabel("Thời lượng  ");
-		txtthoiluong = new JTextField(25);
-		lbltuoi = new JLabel("Giới hạn tuổi  ");
-		txttuoi = new JTextField(25);
-		lblngayck = new JLabel("Ngày công chiếu ");
-		txtngayck = new JTextField(25);
-		lblnhasx = new JLabel("Nhà sản xuất  ");
-		txtnhasx = new JTextField(20);
-		lblloaiphim = new JLabel("Loại phim  ");
-		cbxloaiphim = new JComboBox<>(loaiphim);
-
-		btnThemphim = new JButton("Thêm mới");
-		btnCapNhatphim = new JButton("Cập nhật");
-		btnXoaphim = new JButton("Xóa");
-		btnLamMoiphim = new JButton("Làm mới");
-		btnThoatphim = new JButton("Thoát");
-
-		Dimension defaultSize = lblngayck.getPreferredSize();
-		int increasedWidth = defaultSize.width + 4;
-		lbltenphim.setPreferredSize(new Dimension(increasedWidth, defaultSize.height));
-		lblthoiluong.setPreferredSize(new Dimension(increasedWidth, defaultSize.height));
-		lbltuoi.setPreferredSize(new Dimension(increasedWidth, defaultSize.height));
-		lblngayck.setPreferredSize(new Dimension(increasedWidth, defaultSize.height));
-		lblnhasx.setPreferredSize(new Dimension(increasedWidth, defaultSize.height));
-		lblloaiphim.setPreferredSize(new Dimension(increasedWidth, defaultSize.height));
-
-		btnCapNhatphim.setPreferredSize(btnThemphim.getPreferredSize());
-		btnXoaphim.setPreferredSize(btnThemphim.getPreferredSize());
-		btnLamMoiphim.setPreferredSize(btnThemphim.getPreferredSize());
-		JWestphim.revalidate();
-		JWestphim.repaint();
-
-		hb1phim.add(lbltenphim);
-		hb1phim.add(txttenphim);
-		hb2phim.add(lblthoiluong);
-		hb2phim.add(txtthoiluong);
-		hb3phim.add(lbltuoi);
-		hb3phim.add(txttuoi);
-		hb4phim.add(lblngayck);
-		hb4phim.add(txtngayck);
-		hb5phim.add(lblnhasx);
-		hb5phim.add(txtnhasx);
-		hb6phim.add(lblloaiphim);
-		hb6phim.add(cbxloaiphim);
-
-		hb8phim.add(btnThemphim);
-		hb8phim.add(Box.createHorizontalStrut(30));
-		hb8phim.add(btnCapNhatphim);
-		hb9phim.add(btnXoaphim);
-		hb9phim.add(Box.createHorizontalStrut(30));
-		hb9phim.add(btnLamMoiphim);
-		hb10phim.add(btnThoatphim);
-
-		vb1phim.add(hb1phim);
-		vb1phim.add(Box.createVerticalStrut(25));
-		vb1phim.add(hb2phim);
-		vb1phim.add(Box.createVerticalStrut(25));
-		vb1phim.add(hb3phim);
-		vb1phim.add(Box.createVerticalStrut(25));
-		vb1phim.add(hb4phim);
-		vb1phim.add(Box.createVerticalStrut(25));
-		vb1phim.add(hb5phim);
-		vb1phim.add(Box.createVerticalStrut(25));
-		vb1phim.add(hb6phim);
-		vb1phim.add(Box.createVerticalStrut(25));
-		vb1phim.add(hb7phim);
-		vb1phim.add(Box.createVerticalStrut(30));
-		vb1phim.add(hb8phim);
-		vb1phim.add(Box.createVerticalStrut(25));
-		vb1phim.add(hb9phim);
-		vb1phim.add(Box.createVerticalStrut(25));
-		vb1phim.add(hb10phim);
-
-		JCen1p = new JPanel(new BorderLayout());
-		pnphim.add(JCen1p, BorderLayout.CENTER);
-		JNorth1phim = new JPanel(new GridLayout(1, 12));
-		JCen1phim = new JPanel(new BorderLayout());
-		String[] headerphim = "Mã nhân viên;Tên nhân viên;Giới tính;Ngày sinh;Số điện thoại;Chức vụ;Mật khẩu;Trình trạng"
-				.split(";");
-		tablemodelphim = new DefaultTableModel(headerphim, 0);
-		tablephim = new JTable(tablemodelphim);
-		scrollphim = new JScrollPane(tablephim);
-		JCen1phim.add(scrollphim);
-		JCen1p.add(JCen1phim, BorderLayout.CENTER);
-		JCen1p.add(JNorth1phim, BorderLayout.NORTH);
-
-		Box hbphim = Box.createHorizontalBox();
-		JPSmall1phim = new JPanel();
-		JPSmall2phim = new JPanel();
-		JPSmall1phim.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.BLACK), "Lọc"));
-		JPSmall2phim
-				.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.BLACK), "Tra cứu"));
-		hbphim.add(JPSmall1phim);
-		hbphim.add(JPSmall2phim);
-		JNorth1phim.add(hbphim);
-		vbphim1 = Box.createVerticalBox();
-		vbphim2 = Box.createVerticalBox();
-		hbphim1 = Box.createHorizontalBox();
-		hbphim2 = Box.createHorizontalBox();
-		hbphim3 = Box.createHorizontalBox();
-		hbphim4 = Box.createHorizontalBox();
-		vbphim1.add(Box.createVerticalStrut(10));
-		vbphim1.add(hbphim1);
-		vbphim1.add(Box.createVerticalStrut(15));
-		vbphim1.add(hbphim2);
-		vbphim1.add(Box.createVerticalStrut(10));
-		vbphim2.add(Box.createVerticalStrut(10));
-		vbphim2.add(hbphim3);
-		vbphim2.add(Box.createVerticalStrut(15));
-		vbphim2.add(hbphim4);
-		vbphim2.add(Box.createVerticalStrut(10));
-		JPSmall1phim.add(vbphim1);
-		JPSmall2phim.add(vbphim2);
-
-		lbltenphimtk = new JLabel("Tên phim:     ");
-		String[] tp = { "", "Nhân viên", "Quản lý" };
-		JComboBox<String> cbxtenphim = new JComboBox<String>(tp);
-		lblnn = new JLabel("Tình trạng:  ");
-		String[] tgt = { "", "Tất cả", "Có mặt" };
-		JComboBox<String> cbxtgt = new JComboBox<String>(tgt);
-
-		cbxtgt.setPreferredSize(new Dimension(200, 25));
-
-		hbphim1.add(lbltenphimtk);
-		hbphim1.add(lbltenphimtk);
-		hbphim2.add(lblnn);
-		hbphim2.add(cbxtgt);
-
-		lbltenphimt = new JLabel("Tên phim:  ");
-		txttenphimt = new JTextField();
-		btnTimphim = new JButton("Tìm");
-		lblloaiphimt = new JLabel("Loại phim:    ");
-		txtloaiphimt = new JTextField();
-		btnLammoinvw = new JButton("Làm mới");
-
-		hbphim3.add(lbltenphimt);
-		hbphim3.add(txttenphimt);
-		hbphim3.add(btnTimphim);
-		hbphim4.add(lblloaiphimt);
-		hbphim4.add(txtloaiphimt);
-		hbphim4.add(btnLammoinvw);
-
-		txttenphimt.setPreferredSize(new Dimension(200, 25));
-		txtloaiphimt.setPreferredSize(new Dimension(200, 25));
-		btnTimphim.setPreferredSize(new Dimension(100, 25));
-		btnLammoinvw.setPreferredSize(new Dimension(100, 25));
+		
 
 		pndatve = new JPanel(new BorderLayout());
 
@@ -553,12 +383,12 @@ public class BanVe_UI extends JFrame implements ActionListener, MouseListener {
 
 		Dimension defaultSize1 = lblTen.getPreferredSize();
 		int increasedWidth1 = defaultSize1.width + 4;
-		lblNS.setPreferredSize(new Dimension(increasedWidth1, defaultSize.height));
-		lblGT.setPreferredSize(new Dimension(increasedWidth1, defaultSize.height));
-		lblSDT.setPreferredSize(new Dimension(increasedWidth1, defaultSize.height));
-		lblTT.setPreferredSize(new Dimension(increasedWidth1, defaultSize.height));
-		lblCV.setPreferredSize(new Dimension(increasedWidth1, defaultSize.height));
-		lblMK.setPreferredSize(new Dimension(increasedWidth1, defaultSize.height));
+		lblNS.setPreferredSize(new Dimension(increasedWidth1, defaultSize1.height));
+		lblGT.setPreferredSize(new Dimension(increasedWidth1, defaultSize1.height));
+		lblSDT.setPreferredSize(new Dimension(increasedWidth1, defaultSize1.height));
+		lblTT.setPreferredSize(new Dimension(increasedWidth1, defaultSize1.height));
+		lblCV.setPreferredSize(new Dimension(increasedWidth1, defaultSize1.height));
+		lblMK.setPreferredSize(new Dimension(increasedWidth1, defaultSize1.height));
 
 		btnCapNhat.setPreferredSize(btnThem.getPreferredSize());
 		btnXoa.setPreferredSize(btnThem.getPreferredSize());

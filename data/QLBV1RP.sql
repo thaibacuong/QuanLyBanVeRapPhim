@@ -66,12 +66,15 @@ ngayChieu NVARCHAR(10),
 maPhim CHAR(5)
 )
 
+use QLBV1RP
+drop table PHIM
+
 CREATE TABLE PHIM
 (maPhim CHAR(5) NOT NULL,
 tenPhim NVARCHAR(20) NOT NULL,
-thoiLuong TIME,
+thoiLuong NVARCHAR(20),
 gioiHanTuoi int Not Null,
-ngayCongChieu DATE,
+ngayCongChieu NVARCHAR(20),
 nhaSanXuat NVARCHAR(20) NOT NULL,
 loaiPhim NVARCHAR(10) NOT NULL,
 )

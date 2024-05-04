@@ -1,11 +1,10 @@
 package entity;
 
-import java.sql.Time;
 
 public class Phim {
 	private String MaPHIM;
 	private String TenPhim;
-	private Time ThoiLuong;
+	private String ThoiLuong;
 	private int DoTuoi;
 	private String NgayCongChieu;
 	private String NhaSX;
@@ -16,7 +15,7 @@ public class Phim {
 		MaPHIM = maPHIM;
 	}
 
-	public Phim(String maPHIM, String tenPhim, Time thoiLuong, int doTuoi, String ngayCongChieu, String nhaSX,
+	public Phim(String maPHIM, String tenPhim, String thoiLuong, int doTuoi, String ngayCongChieu, String nhaSX,
 			String loaiPhim) {
 		this.MaPHIM = maPHIM;
 		this.TenPhim = tenPhim;
@@ -43,11 +42,11 @@ public class Phim {
 		TenPhim = tenPhim;
 	}
 
-	public Time getThoiLuong() {
+	public String getThoiLuong() {
 		return ThoiLuong;
 	}
 
-	public void setThoiLuong(Time thoiLuong) {
+	public void setThoiLuong(String thoiLuong) {
 		ThoiLuong = thoiLuong;
 	}
 

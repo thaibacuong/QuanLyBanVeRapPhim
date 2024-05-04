@@ -15,6 +15,7 @@ public class Phim_Dao {
 	public Phim_Dao() {}
 
 	public ArrayList<Phim> getAllPhim(){
+		ConnectDB.getInstance().connect();
 	    ArrayList<Phim> ds = new ArrayList<Phim>();
 	    try {
 	        ConnectDB.getInstance();
@@ -26,7 +27,7 @@ public class Phim_Dao {
 	        while(rs.next()) {
 	            String maPhim = rs.getString(1);
 	            String tenPhim = rs.getString(2);
-	            Time thoiLuong = rs.getTime(3);
+	            String thoiLuong = rs.getString(3);
 	            int gioiHanTuoi = rs.getInt(4);
 	            String ngayCongChieu = rs.getString(5); 
 	            String nhaSanXuat = rs.getString(6);
@@ -39,8 +40,42 @@ public class Phim_Dao {
 	    }
 	    return ds;
 	}
+	
+	public ArrayList<Phim> getAllPhimByTenLoai(String tenPhim, String loaiPhim) {
+	    ConnectDB.getInstance().connect();
+	    ArrayList<Phim> ds = new ArrayList<>();
+	    try {
+	        ConnectDB.getInstance();
+	        Connection con = ConnectDB.getConnection();
+	        
+	        String sql = "SELECT * FROM PHIM WHERE tenPhim=? AND loaiPhim=?";
+	        PreparedStatement pst = con.prepareStatement(sql);
+	        pst.setString(1, tenPhim);
+	        pst.setString(2, loaiPhim);
+	        ResultSet rs = pst.executeQuery();
+	        
+	        while (rs.next()) {
+	            String maPhim = rs.getString(1);
+	            String thoiLuong = rs.getString(3);
+	            int gioiHanTuoi = rs.getInt(4);
+	            String ngayCongChieu = rs.getString(5);
+	            String nhaSanXuat = rs.getString(6);
+	            Phim phim = new Phim(maPhim, tenPhim, thoiLuong, gioiHanTuoi, ngayCongChieu, nhaSanXuat, loaiPhim);
+	            ds.add(phim);
+	        }
+	        
+	        pst.close();
+	        con.close();
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+	    return ds;
+	}
+
+
 
 	public boolean addPhim(Phim phim) {
+		ConnectDB.getInstance().connect();
 	    ConnectDB.getInstance();
 	    Connection con = ConnectDB.getConnection();
 	    int n = 0;
@@ -50,7 +85,7 @@ public class Phim_Dao {
 	        pst = con.prepareStatement(sql);
 	        pst.setString(1, phim.getMaPHIM());
 	        pst.setString(2, phim.getTenPhim());
-	        pst.setTime(3, phim.getThoiLuong());
+	        pst.setString(3, phim.getThoiLuong());
 	        pst.setInt(4, phim.getDoTuoi()); 
 	        pst.setString(5, phim.getNgayCongChieu());
 	        pst.setString(6, phim.getNhaSX());
@@ -65,6 +100,7 @@ public class Phim_Dao {
 	}
 
 	public void updatePhim(Phim phim) {
+		ConnectDB.getInstance().connect();
 	    ConnectDB.getInstance();
 	    PreparedStatement pst = null;
 	    Connection con = ConnectDB.getConnection();
@@ -72,7 +108,7 @@ public class Phim_Dao {
 	    try {    
 	        pst = con.prepareStatement(sql);
 	        pst.setString(1, phim.getTenPhim());
-	        pst.setTime(2, phim.getThoiLuong());
+	        pst.setString(2, phim.getThoiLuong());
 	        pst.setInt(3, phim.getDoTuoi());
 	        pst.setString(4, phim.getNgayCongChieu());
 	        pst.setString(5, phim.getNhaSX());
@@ -86,6 +122,19 @@ public class Phim_Dao {
 	    }
 	}
 
+	public void deletePhim(String maPhim) {
+	    ConnectDB.getInstance().connect();
+	    String sql = "DELETE FROM PHIM WHERE maPhim = ?";
+	    try (Connection con = ConnectDB.getConnection();
+	         PreparedStatement pst = con.prepareStatement(sql)) {
+	        pst.setString(1, maPhim);
+	        pst.executeUpdate();
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+	}
+
+	
 	private void close(PreparedStatement pst) {
 	    if (pst != null) {
 	        try {
