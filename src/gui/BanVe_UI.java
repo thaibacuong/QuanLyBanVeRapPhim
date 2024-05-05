@@ -669,15 +669,15 @@ public class BanVe_UI extends JFrame implements ActionListener, MouseListener {
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		JLabel clickedSeat = (JLabel) e.getSource();
-		Color originalColor = Color.GREEN;
-		Color selectedColor = Color.RED;
-
-		if (clickedSeat.getBackground().equals(originalColor)) {
-			clickedSeat.setBackground(selectedColor);
-		} else {
-			clickedSeat.setBackground(originalColor);
-		}
+//		JLabel clickedSeat = (JLabel) e.getSource();
+//		Color originalColor = Color.GREEN;
+//		Color selectedColor = Color.RED;
+//
+//		if (clickedSeat.getBackground().equals(originalColor)) {
+//			clickedSeat.setBackground(selectedColor);
+//		} else {
+//			clickedSeat.setBackground(originalColor);
+//		}
 		int row= tablenv.getSelectedRow();
 		txtManv.setText(tablenv.getValueAt(row, 0).toString());
         txtTen.setText(tablenv.getValueAt(row, 1).toString());
@@ -749,7 +749,8 @@ public class BanVe_UI extends JFrame implements ActionListener, MouseListener {
 		if (o.equals(btnLammoinv)) {
 			txttennv.setText("");
 			txtsodienthoai.setText("");
-		} else if (o.equals(btnLamMoinv1)) {
+		}
+		if (o.equals(btnLamMoinv1)) {
 			txtManv.setText("");
 			txtTen.setText("");
 			txtNS.setText("");
@@ -779,6 +780,7 @@ public class BanVe_UI extends JFrame implements ActionListener, MouseListener {
 			try {
 				boolean success = nv_dao.addNhanVien(nv);
 				if (success) {
+					tablemodel.setRowCount(0);
 					loaddataNhanVien();
 					JOptionPane.showMessageDialog(this, "Thêm nhân viên thành công!");
 				} else {
