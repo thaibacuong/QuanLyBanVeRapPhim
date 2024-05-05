@@ -55,7 +55,7 @@ public class HoaDon_UI extends JFrame implements ActionListener, MouseListener{
 		add(JCenp, BorderLayout.CENTER);
 		JNorth = new JPanel(new GridLayout(1, 12));
 		JCen1 = new JPanel(new BorderLayout());
-		String[] header = "Mã hóa đơn;Ngày thanh toán;Giờ thanh toán;Tên nhân viên;Số vé;Tổng hóa đơn"
+		String[] header = "Mã hóa đơn;Ngày thanh toán;Giờ thanh toán;Mã nhân viên;Số vé;Tổng hóa đơn"
 				.split(";");
 		tablemodel = new DefaultTableModel(header, 0);
 		table = new JTable(tablemodel);

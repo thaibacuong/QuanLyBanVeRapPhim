@@ -1,29 +1,23 @@
 package entity;
 
-import java.util.ArrayList;
+
 
 public class HoaDon {
-	private String MaHD;
-	private String NgayXHD;
-	private NhanVien nhanVien;
-    private ArrayList<ChiTietHoaDon> chiTietHoaDonList;
-    
-	public HoaDon(String maHD) {
-		super();
-		MaHD = maHD;
-	}
+    private String MaHD;
+    private String NgayXHD;
+    private String GioXHD; 
+    private NhanVien nhanVien;
+    private int soVe; 
+    private double tongHoaDon; 
 
-
-	public HoaDon(NhanVien nhanVien) {
-		super();
-		this.nhanVien = nhanVien;
-	}
-
-	public HoaDon(String maHD, String ngayXHD, NhanVien nhanVien) {
-		this.MaHD = maHD;
-		this.NgayXHD = ngayXHD;
-		this.nhanVien = nhanVien;
-	}
+    public HoaDon(String maHD, String ngayXHD, String gioXHD, NhanVien nhanVien, int soVe, double tongHoaDon) {
+        this.MaHD = maHD;
+        this.NgayXHD = ngayXHD;
+        this.GioXHD = gioXHD;
+        this.nhanVien = nhanVien;
+        this.soVe = soVe;
+        this.tongHoaDon = tongHoaDon;
+    }
 
 	public String getMaHD() {
 		return MaHD;
@@ -41,6 +35,14 @@ public class HoaDon {
 		NgayXHD = ngayXHD;
 	}
 
+	public String getGioXHD() {
+		return GioXHD;
+	}
+
+	public void setGioXHD(String gioXHD) {
+		GioXHD = gioXHD;
+	}
+
 	public NhanVien getNhanVien() {
 		return nhanVien;
 	}
@@ -49,17 +51,27 @@ public class HoaDon {
 		this.nhanVien = nhanVien;
 	}
 
-	public double tinhTongTien() {
-	    double tongTien = 0.0;
-	    for (ChiTietHoaDon chiTiet : chiTietHoaDonList) {
-	        tongTien += chiTiet.thanhTien();
-	    }
-	    return tongTien;
+	public int getSoVe() {
+		return soVe;
+	}
+
+	public void setSoVe(int soVe) {
+		this.soVe = soVe;
+	}
+
+	public double getTongHoaDon() {
+		return tongHoaDon;
+	}
+
+	public void setTongHoaDon(double tongHoaDon) {
+		this.tongHoaDon = tongHoaDon;
 	}
 
 	@Override
 	public String toString() {
-		return "HoaDon [MaHD=" + MaHD + ", NgayXHD=" + NgayXHD + ", nhanVien=" + nhanVien + ", chiTietHoaDonList="
-				+ chiTietHoaDonList + "]";
+		return "HoaDon [MaHD=" + MaHD + ", NgayXHD=" + NgayXHD + ", GioXHD=" + GioXHD + ", nhanVien=" + nhanVien
+				+ ", soVe=" + soVe + ", tongHoaDon=" + tongHoaDon + "]";
 	}
+    
+	
 }

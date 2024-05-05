@@ -1,4 +1,4 @@
-CREATE DATABASE QLBV1RP
+﻿CREATE DATABASE QLBV1RP
 
 ON PRIMARY
 (NAME=QLBV1RP_DATA,
@@ -14,6 +14,17 @@ SIZE=15MB,
 MAXSIZE=25MB,
 FILEGROWTH=3MB
 )
+use QLBV1RP
+
+
+
+CREATE TABLE HOADON 
+(maHoaDon CHAR(5) NOT NULL,
+ngayXuatHD NVARCHAR(20),
+gioXuatHD NVARCHAR(20),
+soVe int,
+tongHoaDon int)
+
 
 CREATE TABLE NHANVIEN
 (maNhanVien CHAR(5) NOT NULL,
@@ -26,7 +37,7 @@ matKhau CHAR(20) Not Null,
 trangThai BIT Not Null
 )
 
-select * from NHANVIEN
+
 
 CREATE TABLE KHACHHANG
 (maKhachHang CHAR(5) NOT NULL,
@@ -35,12 +46,6 @@ soDienThoai CHAR(10),
 ngaySinh DATE Not Null
 )
 
-CREATE TABLE HOADON
-(maHoaDon CHAR(5) NOT NULL,
-ngayXuatHD DATE,
-maNhanVien CHAR(5),
-maKhachHang CHAR(5)
-)
 
 CREATE TABLE VE
 (maVe CHAR(5) NOT NULL,
@@ -66,8 +71,8 @@ ngayChieu NVARCHAR(10),
 maPhim CHAR(5)
 )
 
-use QLBV1RP
-drop table PHONGCHIEU
+
+
 
 CREATE TABLE PHIM
 (maPhim CHAR(5) NOT NULL,
@@ -89,7 +94,7 @@ trangThai NVARCHAR(20) Not Null,
 CREATE TABLE GHENGOI
 (maGhe CHAR(5) NOT NULL,
 trangThai BIT Not Null,
-loaiGhe CHAR(5),
+loaiGhe NVARCHAR(20),
 maphongchieu CHAR(5)
 )
 
@@ -163,43 +168,45 @@ ON UPDATE Cascade
 SET DATEFORMAT 'DMY'
 
 
-
-
 INSERT INTO GHENGOI (maGhe, trangThai, loaiGhe, maphongchieu)
 VALUES 
-('A1', true, 'th??ng', 'PC001'),
-('A2', true, 'th??ng', 'PC001'),
-('A3', true, 'th??ng', 'PC001'),
-('A4', true, 'th??ng', 'PC001'),
-('A5', true, 'th??ng', 'PC001'),
-('A6', true, 'th??ng', 'PC001'),
-('B1', true, 'th??ng', 'PC001'),
-('B2', true, 'th??ng', 'PC001'),
-('B3', true, 'th??ng', 'PC001'),
-('B4', true, 'th??ng', 'PC001'),
-('B5', true, 'th??ng', 'PC001'),
-('B6', true, 'th??ng', 'PC001'),
-('C1', true, 'th??ng', 'PC001'),
-('C2', true, 'th??ng', 'PC001'),
-('C3', true, 'th??ng', 'PC001'),
-('C4', true, 'th??ng', 'PC001'),
-('C5', true, 'th??ng', 'PC001'),
-('C6', true, 'th??ng', 'PC001'),
-('D1', true, 'th??ng', 'PC001'),
-('D2', true, 'th??ng', 'PC001'),
-('D3', true, 'th??ng', 'PC001'),
-('D4', true, 'th??ng', 'PC001'),
-('D5', true, 'th??ng', 'PC001'),
-('D6', true, 'th??ng', 'PC001'),
-('E1', true, 'vip', 'PC001'),
-('E2', true, 'vip', 'PC001'),
-('E3', true, 'vip', 'PC001'),
-('E4', true, 'vip', 'PC001'),
-('E5', true, 'vip', 'PC001'),
-('E6', true, 'vip', 'PC001'),
-('F1', true, 'vip', 'PC001'),
-('F2', true, 'vip', 'PC001'),
-('F3', true, 'vip', 'PC001'),
-('F4', true, 'vip', 'PC001'),
-('F5', true, 'vip', 'PC001'),
-('F6', true, 'vip', 'PC001');
+('A1', 1, 'thường', 'PC001'),
+('A2', 1, 'thường', 'PC001'),
+('A3', 1, 'thường', 'PC001'),
+('A4', 1, 'thường', 'PC001'),
+('A5', 1, 'thường', 'PC001'),
+('A6', 1, 'thường', 'PC001'),
+('B1', 1, 'thường', 'PC001'),
+('B2', 1, 'thường', 'PC001'),
+('B3', 1, 'thường', 'PC001'),
+('B4', 1, 'thường', 'PC001'),
+('B5', 1, 'thường', 'PC001'),
+('B6', 1, 'thường', 'PC001'),
+('C1', 1, 'thường', 'PC001'),
+('C2', 1, 'thường', 'PC001'),
+('C3', 1, 'thường', 'PC001'),
+('C4', 1, 'thường', 'PC001'),
+('C5', 1, 'thường', 'PC001'),
+('C6', 1, 'thường', 'PC001'),
+('D1', 1, 'thường', 'PC001'),
+('D2', 1, 'thường', 'PC001'),
+('D3', 1, 'thường', 'PC001'),
+('D4', 1, 'thường', 'PC001'),
+('D5', 1, 'thường', 'PC001'),
+('D6', 1, 'thường', 'PC001'),
+('E1', 1, 'VIP', 'PC001'),
+('E2', 1, 'VIP', 'PC001'),
+('E3', 1, 'VIP', 'PC001'),
+('E4', 1, 'VIP', 'PC001'),
+('E5', 1, 'VIP', 'PC001'),
+('E6', 1, 'VIP', 'PC001'),
+('F1', 1, 'VIP', 'PC001'),
+('F2', 1, 'VIP', 'PC001'),
+('F3', 1, 'VIP', 'PC001'),
+('F4', 1, 'VIP', 'PC001'),
+('F5', 1, 'VIP', 'PC001'),
+('F6', 1, 'VIP', 'PC001');
+
+
+
+
