@@ -74,7 +74,7 @@ public class NhanVien_Dao {
 
     public void updateNhanVien(NhanVien nv) {
     	ConnectDB.getInstance().connect();
-        String sql = "UPDATE NHANVIEN SET tenNhanVien = ?, gioiTinh = ?, ngaySing = ?, soDienThoai = ?, chucVu = ?, matKhau = ?, trangThai = ? WHERE maNhanVien = ?";
+        String sql = "UPDATE NHANVIEN SET tenNhanVien = ?, gioiTinh = ?, ngaySinh = ?, soDienThoai = ?, chucVu = ?, matKhau = ?, trangThai = ? WHERE maNhanVien = ?";
         try (Connection con = ConnectDB.getConnection();
              PreparedStatement pst = con.prepareStatement(sql)) {
             pst.setString(1, nv.getTenNV());
@@ -142,6 +142,25 @@ public class NhanVien_Dao {
         }
         return ds;
     }
+    
+    public static String getMatKhauByMaNhanVien(String maNhanVien) {
+        String matKhau = null;
+        ConnectDB.getInstance().connect();
+        String sql = "SELECT matKhau FROM NHANVIEN WHERE maNhanVien=?";
+        try (Connection con = ConnectDB.getConnection();
+             PreparedStatement pst = con.prepareStatement(sql)) {
+            pst.setString(1, maNhanVien);
+            ResultSet rs = pst.executeQuery();
+            if (rs.next()) {
+                matKhau = rs.getString("matKhau");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return matKhau;
+    }
+
+    
     public void delete(String manv) {
         ConnectDB.getInstance();
         PreparedStatement pst = null;
@@ -172,6 +191,15 @@ public class NhanVien_Dao {
             pst.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
+        }
+    }
+    private void close(PreparedStatement pst) {
+        if (pst != null) {
+            try {
+                pst.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
     }
 }

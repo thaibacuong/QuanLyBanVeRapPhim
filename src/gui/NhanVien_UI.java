@@ -106,7 +106,7 @@ public class NhanVien_UI extends JPanel implements ActionListener, MouseListener
 		// nhân viên ui
 
 		JWest = new JPanel();
-		pnnhanvien.add(JWest, BorderLayout.WEST);
+		add(JWest, BorderLayout.WEST);
 		JWest.setBorder(
 				BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.black), "Thông tin nhân viên"));
 
@@ -212,7 +212,7 @@ public class NhanVien_UI extends JPanel implements ActionListener, MouseListener
 		vb1.add(hb10);
 
 		JCen1 = new JPanel(new BorderLayout());
-		pnnhanvien.add(JCen1, BorderLayout.CENTER);
+		add(JCen1, BorderLayout.CENTER);
 		JNorth1nv = new JPanel(new GridLayout(1, 12));
 		JCen1nv = new JPanel(new BorderLayout());
 		String[] header = "Mã nhân viên;Tên nhân viên;Giới tính;Ngày sinh;Số điện thoại;Chức vụ;Mật khẩu;Trình trạng"
@@ -284,7 +284,7 @@ public class NhanVien_UI extends JPanel implements ActionListener, MouseListener
 		btnTimnv.setPreferredSize(new Dimension(100, 25));
 		btnLammoinv.setPreferredSize(new Dimension(100, 25));
 
-		
+		loaddataNhanVien();
 
 		
 //		add(pnnhanvien, "Nhân Viên");
@@ -453,7 +453,7 @@ public class NhanVien_UI extends JPanel implements ActionListener, MouseListener
 		ArrayList<NhanVien> danhSachNhanVien = nhanVienDao.getAllNhanVien();
 
 		for (NhanVien nv : danhSachNhanVien) {
-			tablemodel.addRow(new Object[] { nv.getMaNV(), nv.getTenNV(), nv.isGioiTinh() ? "Nam" : "Nữ",
+			tablemodel.addRow(new Object[] { nv.getMaNV(), nv.getTenNV(), nv.isGioiTinh() ? "Nữ" : "Nam",
 					nv.getNgaySinh(), nv.getSoDT(), nv.getChuVu(), nv.getMatKH(),
 					nv.isTrangThai() ? "Nghỉ việc" : "Còn làm việc" });
 		}
@@ -468,18 +468,18 @@ public class NhanVien_UI extends JPanel implements ActionListener, MouseListener
 		for (NhanVien nv : danhSachNhanVien) {
 			if (selectedTrangThai.equals("Tất cả")) {
 				if (selectedChucvu.equals("Tất cả")) {
-					tablemodel.addRow(new Object[] { nv.getMaNV(), nv.getTenNV(), nv.isGioiTinh() ? "Nam" : "Nữ",
+					tablemodel.addRow(new Object[] { nv.getMaNV(), nv.getTenNV(), nv.isGioiTinh() ? "Nữ" : "Nam",
 							nv.getNgaySinh(), nv.getSoDT(), nv.getChuVu(), nv.getMatKH(),
 							nv.isTrangThai() ? "Nghỉ việc" : "Còn làm việc" });
 				} else if (selectedChucvu.equals("Nhân viên")) {
 					if (nv.getChuVu().equals("Nhân viên bán vé")) {
-						tablemodel.addRow(new Object[] { nv.getMaNV(), nv.getTenNV(), nv.isGioiTinh() ? "Nam" : "Nữ",
+						tablemodel.addRow(new Object[] { nv.getMaNV(), nv.getTenNV(), nv.isGioiTinh() ? "Nữ" : "Nam",
 								nv.getNgaySinh(), nv.getSoDT(), nv.getChuVu(), nv.getMatKH(),
 								nv.isTrangThai() ? "Nghỉ việc" : "Còn làm việc" });
 					}
 				} else {
 					if (nv.getChuVu().equals("Quản lý")) {
-						tablemodel.addRow(new Object[] { nv.getMaNV(), nv.getTenNV(), nv.isGioiTinh() ? "Nam" : "Nữ",
+						tablemodel.addRow(new Object[] { nv.getMaNV(), nv.getTenNV(), nv.isGioiTinh() ? "Nữ" : "Nam",
 								nv.getNgaySinh(), nv.getSoDT(), nv.getChuVu(), nv.getMatKH(),
 								nv.isTrangThai() ? "Nghỉ việc" : "Còn làm việc" });
 					}
@@ -487,19 +487,19 @@ public class NhanVien_UI extends JPanel implements ActionListener, MouseListener
 			} else if (selectedTrangThai.equals("Còn làm việc")) {
 				if (selectedChucvu.equals("Tất cả")) {
 					if (!nv.isTrangThai()) {
-						tablemodel.addRow(new Object[] { nv.getMaNV(), nv.getTenNV(), nv.isGioiTinh() ? "Nam" : "Nữ",
+						tablemodel.addRow(new Object[] { nv.getMaNV(), nv.getTenNV(), nv.isGioiTinh() ? "Nữ" : "Nam",
 								nv.getNgaySinh(), nv.getSoDT(), nv.getChuVu(), nv.getMatKH(),
 								nv.isTrangThai() ? "Nghỉ việc" : "Còn làm việc" });
 					}
 				} else if (selectedChucvu.equals("Nhân viên")) {
 					if (nv.getChuVu().equals("Nhân viên bán vé") && !nv.isTrangThai()) {
-						tablemodel.addRow(new Object[] { nv.getMaNV(), nv.getTenNV(), nv.isGioiTinh() ? "Nam" : "Nữ",
+						tablemodel.addRow(new Object[] { nv.getMaNV(), nv.getTenNV(), nv.isGioiTinh() ? "Nữ" : "Nam",
 								nv.getNgaySinh(), nv.getSoDT(), nv.getChuVu(), nv.getMatKH(),
 								nv.isTrangThai() ? "Nghỉ việc" : "Còn làm việc" });
 					}
 				} else {
 					if (nv.getChuVu().equals("Quản lý") && !nv.isTrangThai()) {
-						tablemodel.addRow(new Object[] { nv.getMaNV(), nv.getTenNV(), nv.isGioiTinh() ? "Nam" : "Nữ",
+						tablemodel.addRow(new Object[] { nv.getMaNV(), nv.getTenNV(), nv.isGioiTinh() ? "Nữ" : "Nam",
 								nv.getNgaySinh(), nv.getSoDT(), nv.getChuVu(), nv.getMatKH(),
 								nv.isTrangThai() ? "Nghỉ việc" : "Còn làm việc" });
 					}
@@ -507,19 +507,19 @@ public class NhanVien_UI extends JPanel implements ActionListener, MouseListener
 			} else if (selectedTrangThai.equals("Nghỉ việc")) {
 				if (selectedChucvu.equals("Tất cả")) {
 					if (nv.isTrangThai()) {
-						tablemodel.addRow(new Object[] { nv.getMaNV(), nv.getTenNV(), nv.isGioiTinh() ? "Nam" : "Nữ",
+						tablemodel.addRow(new Object[] { nv.getMaNV(), nv.getTenNV(), nv.isGioiTinh() ? "Nữ" : "Nam",
 								nv.getNgaySinh(), nv.getSoDT(), nv.getChuVu(), nv.getMatKH(),
 								nv.isTrangThai() ? "Nghỉ việc" : "Còn làm việc" });
 					}
 				} else if (selectedChucvu.equals("Nhân viên")) {
 					if (nv.getChuVu().equals("Nhân viên bán vé") && nv.isTrangThai()) {
-						tablemodel.addRow(new Object[] { nv.getMaNV(), nv.getTenNV(), nv.isGioiTinh() ? "Nam" : "Nữ",
+						tablemodel.addRow(new Object[] { nv.getMaNV(), nv.getTenNV(), nv.isGioiTinh() ? "Nữ" : "Nam",
 								nv.getNgaySinh(), nv.getSoDT(), nv.getChuVu(), nv.getMatKH(),
 								nv.isTrangThai() ? "Nghỉ việc" : "Còn làm việc" });
 					}
 				} else {
 					if (nv.getChuVu().equals("Quản lý") && nv.isTrangThai()) {
-						tablemodel.addRow(new Object[] { nv.getMaNV(), nv.getTenNV(), nv.isGioiTinh() ? "Nam" : "Nữ",
+						tablemodel.addRow(new Object[] { nv.getMaNV(), nv.getTenNV(), nv.isGioiTinh() ? "Nữ" : "Nam",
 								nv.getNgaySinh(), nv.getSoDT(), nv.getChuVu(), nv.getMatKH(),
 								nv.isTrangThai() ? "Nghỉ việc" : "Còn làm việc" });
 					}
@@ -535,7 +535,7 @@ public class NhanVien_UI extends JPanel implements ActionListener, MouseListener
 			tablemodel.setRowCount(0);
 			
 			for (NhanVien nv : danhSachNhanVien) {
-				tablemodel.addRow(new Object[] { nv.getMaNV(), nv.getTenNV(), nv.isGioiTinh() ? "Nam" : "Nữ",
+				tablemodel.addRow(new Object[] { nv.getMaNV(), nv.getTenNV(), nv.isGioiTinh() ? "Nữ" : "Nam",
 						nv.getNgaySinh(), nv.getSoDT(), nv.getChuVu(), nv.getMatKH(),
 						nv.isTrangThai() ? "Nghỉ việc" : "Còn làm việc" });
 			}
@@ -547,7 +547,7 @@ public class NhanVien_UI extends JPanel implements ActionListener, MouseListener
 			tablemodel.setRowCount(0);
 
 			for (NhanVien nv : danhSachNhanVien) {
-				tablemodel.addRow(new Object[] { nv.getMaNV(), nv.getTenNV(), nv.isGioiTinh() ? "Nam" : "Nữ",
+				tablemodel.addRow(new Object[] { nv.getMaNV(), nv.getTenNV(), nv.isGioiTinh() ? "Nữ" : "Nam",
 						nv.getNgaySinh(), nv.getSoDT(), nv.getChuVu(), nv.getMatKH(),
 						nv.isTrangThai() ? "Nghỉ việc" : "Còn làm việc" });
 

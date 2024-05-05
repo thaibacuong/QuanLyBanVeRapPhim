@@ -14,28 +14,37 @@ SIZE=15MB,
 MAXSIZE=25MB,
 FILEGROWTH=3MB
 )
-
+use QLBV1RP
+drop table HOADON
 
 CREATE TABLE HOADON 
 (maHoaDon CHAR(5) NOT NULL,
 ngayXuatHD NVARCHAR(20),
 gioXuatHD NVARCHAR(20),
+maNhanVien CHAR(5),
 soVe int,
-tongHoaDon int
-)
+tongHoaDon int)
 
 
 CREATE TABLE NHANVIEN
 (maNhanVien CHAR(5) NOT NULL,
 tenNhanVien NVARCHAR(30) NOT NULL,
 gioiTinh bit,
-ngaySinh NVARCHAR(20),
+ngaySing NVARCHAR(20),
 soDienThoai CHAR(10),
 chucVu NVARCHAR(20),
 matKhau CHAR(20) Not Null,
 trangThai BIT Not Null
 )
 
+
+
+CREATE TABLE KHACHHANG
+(maKhachHang CHAR(5) NOT NULL,
+tenKhachHang NVARCHAR(30),
+soDienThoai CHAR(10),
+ngaySinh DATE Not Null
+)
 
 
 CREATE TABLE VE
@@ -92,6 +101,9 @@ maphongchieu CHAR(5)
 ALTER TABLE NHANVIEN
 	ADD CONSTRAINT PK_maNhanVien PRIMARY KEY (maNhanVien)
 
+ALTER TABLE KHACHHANG
+	ADD CONSTRAINT PK_maKhachHang PRIMARY KEY (maKhachHang)
+
 ALTER TABLE HOADON
 	ADD CONSTRAINT PK_maHoaDon PRIMARY KEY (maHoaDon)
 
@@ -115,6 +127,11 @@ ALTER TABLE PHIM
 
 ALTER TABLE HOADON
 ADD CONSTRAINT FK_HD_maNhanVien FOREIGN KEY (maNhanVien) REFERENCES NHANVIEN(maNhanVien)
+ON DELETE Cascade
+ON UPDATE Cascade
+
+ALTER TABLE HOADON
+ADD CONSTRAINT FK_HD_maKhachHang FOREIGN KEY (maKhachHang) REFERENCES KHACHHANG(maKhachHang)
 ON DELETE Cascade
 ON UPDATE Cascade
 
@@ -153,46 +170,43 @@ SET DATEFORMAT 'DMY'
 
 INSERT INTO GHENGOI (maGhe, trangThai, loaiGhe, maphongchieu)
 VALUES 
-('A1', 1, N'thường', 'PC001'),
-('A2', 1, N'thường', 'PC001'),
-('A3', 1, N'thường', 'PC001'),
-('A4', 1, N'thường', 'PC001'),
-('A5', 1, N'thường', 'PC001'),
-('A6', 1, N'thường', 'PC001'),
-('B1', 1, N'thường', 'PC001'),
-('B2', 1, N'thường', 'PC001'),
-('B3', 1, N'thường', 'PC001'),
-('B4', 1, N'thường', 'PC001'),
-('B5', 1, N'thường', 'PC001'),
-('B6', 1, N'thường', 'PC001'),
-('C1', 1, N'thường', 'PC001'),
-('C2', 1, N'thường', 'PC001'),
-('C3', 1, N'thường', 'PC001'),
-('C4', 1, N'thường', 'PC001'),
-('C5', 1, N'thường', 'PC001'),
-('C6', 1, N'thường', 'PC001'),
-('D1', 1, N'thường', 'PC001'),
-('D2', 1, N'thường', 'PC001'),
-('D3', 1, N'thường', 'PC001'),
-('D4', 1, N'thường', 'PC001'),
-('D5', 1, N'thường', 'PC001'),
-('D6', 1, N'thường', 'PC001'),
-('E1', 1, N'VIP', 'PC001'),
-('E2', 1, N'VIP', 'PC001'),
-('E3', 1, N'VIP', 'PC001'),
-('E4', 1, N'VIP', 'PC001'),
-('E5', 1, N'VIP', 'PC001'),
-('E6', 1, N'VIP', 'PC001'),
-('F1', 1, N'VIP', 'PC001'),
-('F2', 1, N'VIP', 'PC001'),
-('F3', 1, N'VIP', 'PC001'),
-('F4', 1, N'VIP', 'PC001'),
-('F5', 1, N'VIP', 'PC001'),
-('F6', 1, N'VIP', 'PC001');
+('A1', 1, 'thường', 'PC001'),
+('A2', 1, 'thường', 'PC001'),
+('A3', 1, 'thường', 'PC001'),
+('A4', 1, 'thường', 'PC001'),
+('A5', 1, 'thường', 'PC001'),
+('A6', 1, 'thường', 'PC001'),
+('B1', 1, 'thường', 'PC001'),
+('B2', 1, 'thường', 'PC001'),
+('B3', 1, 'thường', 'PC001'),
+('B4', 1, 'thường', 'PC001'),
+('B5', 1, 'thường', 'PC001'),
+('B6', 1, 'thường', 'PC001'),
+('C1', 1, 'thường', 'PC001'),
+('C2', 1, 'thường', 'PC001'),
+('C3', 1, 'thường', 'PC001'),
+('C4', 1, 'thường', 'PC001'),
+('C5', 1, 'thường', 'PC001'),
+('C6', 1, 'thường', 'PC001'),
+('D1', 1, 'thường', 'PC001'),
+('D2', 1, 'thường', 'PC001'),
+('D3', 1, 'thường', 'PC001'),
+('D4', 1, 'thường', 'PC001'),
+('D5', 1, 'thường', 'PC001'),
+('D6', 1, 'thường', 'PC001'),
+('E1', 1, 'VIP', 'PC001'),
+('E2', 1, 'VIP', 'PC001'),
+('E3', 1, 'VIP', 'PC001'),
+('E4', 1, 'VIP', 'PC001'),
+('E5', 1, 'VIP', 'PC001'),
+('E6', 1, 'VIP', 'PC001'),
+('F1', 1, 'VIP', 'PC001'),
+('F2', 1, 'VIP', 'PC001'),
+('F3', 1, 'VIP', 'PC001'),
+('F4', 1, 'VIP', 'PC001'),
+('F5', 1, 'VIP', 'PC001'),
+('F6', 1, 'VIP', 'PC001');
 
-INSERT INTO NHANVIEN(maNhanVien,tenNhanVien,gioiTinh,ngaySinh,soDienThoai,chucVu,matKhau,trangThai)
-VALUES 
-('NV0001',N'Thái Bá Cường',1,8/6/2003,0359874521,N'Quản Lý','abc321',1),
-('NV0001',N'Thái Bá Cường',1,5/6/2000,0359874521,N'Quản Lý','abc321',1),
-('NV0002',N'Võ Văn Bạch',1,6/10/2002,0359874521,N'Quản Lý','abc321',1),
-('NV0003',N'Lê Hoàng Bảo',1,12/5/2001,0359874521,N'Nhân Viên','abc321',1);
+
+
+

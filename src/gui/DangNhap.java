@@ -2,7 +2,10 @@ package gui;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
@@ -15,7 +18,10 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
-public class DangNhap extends JFrame {
+import dao.NhanVien_Dao;
+import entity.NhanVien;
+
+public class DangNhap extends JFrame implements ActionListener{
     private JPanel JNorth;
     private JLabel lblTieuDe;
     private JPanel JCen;
@@ -83,6 +89,9 @@ public class DangNhap extends JFrame {
         JSouth.add(btnReset = new JButton("Reset"));
         JSouth.add(btnLogin = new JButton("Login"));
 
+        btnReset.addActionListener(this);
+        btnLogin.addActionListener(this);
+        
         setSize(500, 400);
         setLocationRelativeTo(null);
         setVisible(true);
@@ -93,6 +102,30 @@ public class DangNhap extends JFrame {
     }
 
     public static void main(String[] args) throws SQLException {
-		new Tab().setVisible(true);
+		new DangNhap();
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		Object o=e.getSource();
+		if(o.equals(btnLogin)) {
+			String ma=txtMaNV.getText().toString();
+			String mk=txtMatKhau.getText().toString();
+			String matKhauFromDB = NhanVien_Dao.getMatKhauByMaNhanVien(ma).trim();
+			if (matKhauFromDB != null && matKhauFromDB.equals(mk.trim())) {
+			  
+				dispose();
+				try {
+					new Tab().setVisible(true);
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				}
+			}
+			
+		}
+		if(o.equals(btnReset)) {
+			txtMaNV.setText("");
+			txtMatKhau.setText("");
+		}
 	}
 }

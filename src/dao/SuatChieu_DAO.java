@@ -38,6 +38,7 @@ public class SuatChieu_DAO {
 
     public static ArrayList<String> getAllThoiGianSuatChieuByMaPhim(String ma) {
         ArrayList<String> ds = new ArrayList<String>();
+        ds.add("");
         ConnectDB.getInstance().connect();
         try (Connection con = ConnectDB.getConnection();
              PreparedStatement pst = con.prepareStatement("SELECT gioBatDau, gioKetThuc FROM SUATCHIEU WHERE maPhim=?")) {
@@ -138,6 +139,15 @@ public class SuatChieu_DAO {
             pst.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
+        }
+    }
+    private void close(PreparedStatement pst) {
+        if (pst != null) {
+            try {
+                pst.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
     }
 }

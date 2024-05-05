@@ -13,36 +13,41 @@ import entity.Phim;
 public class Phim_Dao {
 	public Phim_Dao() {}
 
-	public ArrayList<Phim> getAllPhim(){
-		ConnectDB.getInstance().connect();
-	    ArrayList<Phim> ds = new ArrayList<Phim>();
-	    try {
-	        ConnectDB.getInstance();
-	        Connection con = ConnectDB.getConnection();
-	    
-	        String sql ="SELECT * FROM PHIM";    
-	        Statement st =  con.createStatement();
-	        ResultSet rs = st.executeQuery(sql);
-	        while(rs.next()) {
-	            String maPhim = rs.getString(1);
-	            String tenPhim = rs.getString(2);
-	            String thoiLuong = rs.getString(3);
-	            int gioiHanTuoi = rs.getInt(4);
-	            String ngayCongChieu = rs.getString(5); 
-	            String nhaSanXuat = rs.getString(6);
-	            String loaiPhim = rs.getString(7); 
-	            Phim phim = new Phim(maPhim, tenPhim, thoiLuong, gioiHanTuoi, ngayCongChieu, nhaSanXuat, loaiPhim); 
-	            ds.add(phim);            
-	        }
-	    } catch (SQLException e) {
-	        e.printStackTrace();
-	    }
-	    return ds;
-	}
+	public ArrayList<Phim> getAllPhim() {
+        ArrayList<Phim> danhSachPhim = new ArrayList<>();
+        try {
+            ConnectDB.getInstance().connect();
+            Connection con = ConnectDB.getConnection();
+            if (con != null) {
+                String sql = "SELECT * FROM PHIM";
+                Statement st = con.createStatement();
+                ResultSet rs = st.executeQuery(sql);
+                while (rs.next()) {
+                    String maPhim = rs.getString(1);
+                    String tenPhim = rs.getString(2);
+                    String thoiLuong = rs.getString(3);
+                    int gioiHanTuoi = rs.getInt(4);
+                    String ngayCongChieu = rs.getString(5);
+                    String nhaSanXuat = rs.getString(6);
+                    String loaiPhim = rs.getString(7);
+                    Phim phim = new Phim(maPhim, tenPhim, thoiLuong, gioiHanTuoi, ngayCongChieu, nhaSanXuat, loaiPhim);
+                    danhSachPhim.add(phim);
+                }
+                rs.close();
+                st.close();
+                //ConnectDB.getInstance().disconnect();
+            } else {
+                System.out.println("Không thể kết nối đến cơ sở dữ liệu!");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return danhSachPhim;
+    }
 	
 	public String layNgayChieuTheoTenPhim(String tenPhim) {
         String ngayChieuList = "";
-        
+        ConnectDB.getInstance().connect();
         try {
             Connection con = ConnectDB.getConnection();
             String sql = "SELECT SC.NgayChieu FROM PHIM P INNER JOIN SUATCHIEU SC ON P.MaPhim = SC.MaPhim WHERE P.TenPhim = '" + tenPhim + "'";
@@ -63,7 +68,6 @@ public class Phim_Dao {
 	    ArrayList<String> ds = new ArrayList<String>();
 	    ds.add("");
 	    try {
-	        ConnectDB.getInstance();
 	        Connection con = ConnectDB.getConnection();
 	    
 	        String sql ="SELECT tenPhim FROM PHIM";    
@@ -117,7 +121,6 @@ public class Phim_Dao {
 	    ConnectDB.getInstance().connect();
 	    String maPhim = "";
 	    try {
-	        ConnectDB.getInstance();
 	        Connection con = ConnectDB.getConnection();
 	        
 	        String sql = "SELECT maPhim FROM PHIM WHERE tenPhim=?";
@@ -140,7 +143,6 @@ public class Phim_Dao {
 
 	public boolean addPhim(Phim phim) {
 		ConnectDB.getInstance().connect();
-	    ConnectDB.getInstance();
 	    Connection con = ConnectDB.getConnection();
 	    int n = 0;
 	    String sql ="INSERT INTO PHIM VALUES (?, ?, ?, ?, ?, ?, ?)"; 
@@ -165,7 +167,6 @@ public class Phim_Dao {
 
 	public void updatePhim(Phim phim) {
 		ConnectDB.getInstance().connect();
-	    ConnectDB.getInstance();
 	    PreparedStatement pst = null;
 	    Connection con = ConnectDB.getConnection();
 	    String sql = "UPDATE PHIM SET tenPhim = ?, thoiLuong = ?, gioiHanTuoi = ?, ngayCongChieu = ?, nhaSanXuat = ?, loaiPhim = ? WHERE maPhim = ?";
