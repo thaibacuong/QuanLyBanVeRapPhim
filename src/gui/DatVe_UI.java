@@ -19,6 +19,7 @@ import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
 import javax.swing.Box;
+import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -72,12 +73,17 @@ public class DatVe_UI extends JFrame implements ActionListener, MouseListener {
 	private JPanel JEast;
 	private JPanel JEastTongtien;
 	private int sumTien=0;
+	private JButton btnThanhtoan;
+	private JPanel JSouth;
+	private ArrayList<String> chairSelected = new ArrayList<>();
+	private JComboBox<String>  cbxdstenphim;
+	private JComboBox<String>  cbxdssuatchieu;
 	public DatVe_UI() throws SQLException {
 
 		// đặt vé ui
 
 		JWest = new JPanel();
-		Box hb0 = Box.createVerticalBox();
+		Box hb0 = Box.createHorizontalBox();
 		// tên phim
 		lblTenPhim = new JLabel("Tên phim:");
 
@@ -89,7 +95,7 @@ public class DatVe_UI extends JFrame implements ActionListener, MouseListener {
 		}
 
 		String[] arrayTenPhim = danhSachTenPhim.toArray(new String[danhSachTenPhim.size()]);
-		JComboBox<String> cbxdstenphim = new JComboBox<>(arrayTenPhim);
+		cbxdstenphim = new JComboBox<>(arrayTenPhim);
 
 		// lấy dữ liệu
 
@@ -101,7 +107,7 @@ public class DatVe_UI extends JFrame implements ActionListener, MouseListener {
 
 		ArrayList<String> danhSachSuatChieu = new ArrayList<>();
 		danhSachSuatChieu = SuatChieu_DAO.getAllThoiGianSuatChieuByMaPhim(maphim);
-		JComboBox<String> cbxdssuatchieu = new JComboBox<>(danhSachSuatChieu.toArray(new String[0]));
+		cbxdssuatchieu = new JComboBox<>(danhSachSuatChieu.toArray(new String[0]));
 
 		// phòng
 
@@ -112,22 +118,41 @@ public class DatVe_UI extends JFrame implements ActionListener, MouseListener {
 		cbxdsphong = new JComboBox<>(danhSachPhong.toArray(new String[0]));
 
 		lblSoGhe = new JLabel("Số ghế:");
-		txtSoGhe = new JTextField(18);
+		txtSoGhe = new JTextField(25);
 		txtSoGhe.setEditable(false);
 		JWest.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 
+		Box vb1=Box.createVerticalBox();
+		Box hb1=Box.createHorizontalBox();
+		Box hb2=Box.createHorizontalBox();
+		Box hb3=Box.createHorizontalBox();
 		hb0.add(lblTenPhim);
 		hb0.add(cbxdstenphim);
-		hb0.add(lblsuatchieuve);
-		hb0.add(cbxdssuatchieu);
-		hb0.add(lblPhong);
-		hb0.add(cbxdsphong);
-		hb0.add(lblSoGhe);
-		hb0.add(txtSoGhe);
-		hb0.add(lblSoGhe);
-		hb0.add(txtSoGhe);
-		JWest.add(hb0);
-
+		hb1.add(lblsuatchieuve);
+		hb1.add(cbxdssuatchieu);
+		hb2.add(lblPhong);
+		hb2.add(cbxdsphong);
+		hb3.add(lblSoGhe);
+		hb3.add(txtSoGhe);
+		vb1.add(Box.createVerticalStrut(25));
+		vb1.add(hb0);
+		vb1.add(Box.createVerticalStrut(25));
+		vb1.add(hb1);
+		vb1.add(Box.createVerticalStrut(25));
+		vb1.add(hb2);
+		vb1.add(Box.createVerticalStrut(25));
+		vb1.add(hb3);
+		
+		Dimension defaultSize = lblPhong.getPreferredSize();
+		int increasedWidth = defaultSize.width + 4;
+		lblsuatchieuve.setPreferredSize(new Dimension(increasedWidth, defaultSize.height));
+		lblTenPhim.setPreferredSize(new Dimension(increasedWidth, defaultSize.height));
+		lblSoGhe.setPreferredSize(new Dimension(increasedWidth, defaultSize.height));
+		
+		JWest.add(vb1);
+		
+		
+		
 		JCendatve = new JPanel(new BorderLayout());
 
 		lblManhinh = new JLabel("MÀN HÌNH");
@@ -153,6 +178,7 @@ public class DatVe_UI extends JFrame implements ActionListener, MouseListener {
 		Box hbdatve3 = Box.createHorizontalBox();
 		Box hbdatve4 = Box.createHorizontalBox();
 		Box hbdatve5 = Box.createVerticalBox();
+		Box hbdatve6 = Box.createVerticalBox();
 
 		lbldaban = new JLabel("  Ghế đã bán  ");
 		lblghedaban = new JLabel("       ");
@@ -175,6 +201,8 @@ public class DatVe_UI extends JFrame implements ActionListener, MouseListener {
 		txtTongtien = new JTextField(18);
 		txtTongtien.setEditable(false);
 		
+		btnThanhtoan=new JButton("Thanh toán");
+		
 		hbdatve1.add(lblghedaban);
 		hbdatve1.add(lbldaban);
 		hbdatve2.add(lblghechon);
@@ -185,8 +213,12 @@ public class DatVe_UI extends JFrame implements ActionListener, MouseListener {
 		hbdatve4.add(lblvip);
 		
 		hbdatve5.add(lblTongtien);
+		hbdatve5.add(Box.createVerticalStrut(20));
 		hbdatve5.add(txtTongtien);
+		hbdatve6.add(btnThanhtoan);
 		
+		
+		JSouth=new JPanel(new BorderLayout());
 		
 		
 		hbdatve.add(hbdatve1);
@@ -194,19 +226,15 @@ public class DatVe_UI extends JFrame implements ActionListener, MouseListener {
 		hbdatve.add(hbdatve3);
 		hbdatve.add(hbdatve4);
 		
-		vbdatve.add(Box.createVerticalStrut(10));
+		vbdatve.add(Box.createVerticalStrut(30));
 		vbdatve.add(hbdatve);
-		vbdatve.add(Box.createVerticalStrut(10));
+		vbdatve.add(Box.createVerticalStrut(30));
 		vbdatve.add(hbdatve5);
+		vbdatve.add(Box.createVerticalStrut(40));
+		vbdatve.add(hbdatve6);
 		
 		
 		JCendatveCenter.add(vbdatve, BorderLayout.CENTER);
-
-		String[] headerdatve = "Mã nhân viên;Tên phim;Số ghế;Giá ghế;Thành tiền".split(";");
-		tablemodeldatve = new DefaultTableModel(headerdatve, 0);
-		tabledatve = new JTable(tablemodeldatve);
-		scrolldatve = new JScrollPane(tabledatve);
-		JCendatve.add(scrolldatve, BorderLayout.SOUTH);
 	
 		add(JCendatve, BorderLayout.CENTER);
 		add(JWest, BorderLayout.WEST);
@@ -242,6 +270,8 @@ public class DatVe_UI extends JFrame implements ActionListener, MouseListener {
 			}
 		});
 		
+		btnThanhtoan.addActionListener(this);
+		
 		setTitle("Đặt vé");
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setResizable(true);
@@ -266,7 +296,7 @@ public class DatVe_UI extends JFrame implements ActionListener, MouseListener {
 	            chairLabel.setOpaque(true);
 	            chairLabel.setBorder(BorderFactory.createLineBorder(Color.BLUE));
 	            chairLabel.setBackground(Color.GREEN);
-	            chairLabel.setPreferredSize(new Dimension(40, 40));
+	            chairLabel.setPreferredSize(new Dimension(65, 65));
 	            chairLabel.addMouseListener(this);
 	            chairs[i][j] = chairLabel;
 	            seatPanel.add(chairLabel);
@@ -323,24 +353,29 @@ public class DatVe_UI extends JFrame implements ActionListener, MouseListener {
 	    if (trangThai) {
 	        if (loaiGhe.equals("VIP")) {
 	            if (originalColor.equals(vipColor)) {
+	            	chairSelected.add(seatName);
 	            	sumTien+=80000;
 	                clickedSeat.setBackground(selectedColor);
 	            } else {
+	            	chairSelected.remove(seatName);
 	            	sumTien-=80000;
 	                clickedSeat.setBackground(vipColor);
 	            }
 	        } else {
 	            if (originalColor.equals(normalColor)) {
+	            	chairSelected.add(seatName);
 	            	sumTien+=60000;
 	                clickedSeat.setBackground(selectedColor); 
 	            } else {
-	            	sumTien-=80000;
+	            	chairSelected.remove(seatName);
+	            	sumTien-=60000;
 	                clickedSeat.setBackground(normalColor);
 	            }
 	        }
 	    }
 	    txtTongtien.setText( String.valueOf(sumTien));
 	    updateNumberOfSelectedSeats(clickedSeat.getBackground());
+	    
 	}
 
 	private void updateNumberOfSelectedSeats(Color seatColor) {
@@ -387,5 +422,12 @@ public class DatVe_UI extends JFrame implements ActionListener, MouseListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		Object o=e.getSource();
+		if(o.equals(btnThanhtoan)) {
+			String tenphim=cbxdstenphim.getSelectedItem().toString();
+			String suatchieu=cbxdssuatchieu.getSelectedItem().toString();
+			String maPhong = PhongChieu_Dao.getMaPhongByTenphong(cbxdsphong.getSelectedItem().toString());
+			new Ve_UI(null,chairSelected.toString(),maPhong,suatchieu,null,tenphim,txtTongtien.getText());
+		}
 	}
 }
