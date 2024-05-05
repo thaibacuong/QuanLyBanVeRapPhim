@@ -40,19 +40,22 @@ public class SuatChieu_DAO {
         ArrayList<String> ds = new ArrayList<String>();
         ConnectDB.getInstance().connect();
         try (Connection con = ConnectDB.getConnection();
-             Statement st = con.createStatement();
-             ResultSet rs = st.executeQuery("SELECT gioBD, gioKT FROM SUATCHIEU WHERE ")) {
-            while (rs.next()) {
-                String giobatdau = rs.getString("gioBD");
-                String gioketthuc = rs.getString("gioKT");
-                String thoiGian = giobatdau + " - " + gioketthuc;
-                ds.add(thoiGian);
+             PreparedStatement pst = con.prepareStatement("SELECT gioBatDau, gioKetThuc FROM SUATCHIEU WHERE maPhim=?")) {
+            pst.setString(1, ma);
+            try (ResultSet rs = pst.executeQuery()) {
+                while (rs.next()) {
+                    String giobatdau = rs.getString("gioBatDau");
+                    String gioketthuc = rs.getString("gioKetThuc");
+                    String thoiGian = giobatdau + " - " + gioketthuc;
+                    ds.add(thoiGian);
+                }
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return ds;
     }
+
 
     
     public boolean addSuatChieu(SuatChieu sc) {

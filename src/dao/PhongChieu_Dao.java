@@ -38,6 +38,51 @@ public class PhongChieu_Dao {
         return ds;
     }
 
+    public static ArrayList<String> getTenPhong() {
+        ArrayList<String> ds = new ArrayList<String>();
+        ds.add("");
+        try {
+        	ConnectDB.getInstance().connect();
+            ConnectDB.getInstance();
+            Connection con = ConnectDB.getConnection();
+
+            String sql = "SELECT tenPhongChieu FROM PHONGCHIEU";
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            while(rs.next()) {
+                String TenPC = rs.getString(1);
+                
+                ds.add(TenPC);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return ds;
+    }
+    
+
+	public static String getMaPhongByTenphong(String ten) {
+		String ma = "";
+
+		try {
+			ConnectDB.getInstance().connect();
+			Connection con = ConnectDB.getConnection();
+
+			String sql = "SELECT maPhongChieu FROM PHONGCHIEU WHERE tenPhongChieu=?";
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setString(1, ten);
+			ResultSet rs = ps.executeQuery();
+
+			if (rs.next()) {
+				ma = rs.getString(1);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return ma;
+	}
+
+    
     public boolean addPhongChieu(PhongChieu phong) {
         ConnectDB.getInstance().connect();
         Connection con = ConnectDB.getConnection();

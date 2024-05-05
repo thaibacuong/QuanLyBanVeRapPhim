@@ -43,6 +43,7 @@ public class Phim_Dao {
 	public static ArrayList<String> layDanhSachTenPhim() throws SQLException {
 		ConnectDB.getInstance().connect();
 	    ArrayList<String> ds = new ArrayList<String>();
+	    ds.add("");
 	    try {
 	        ConnectDB.getInstance();
 	        Connection con = ConnectDB.getConnection();

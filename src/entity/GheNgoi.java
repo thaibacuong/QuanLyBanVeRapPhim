@@ -1,7 +1,6 @@
 package entity;
 public class GheNgoi {
 	private String MaGN;
-	private String ViTriGN;
 	private Boolean TrangThai;
 	private String LoaiGN;
 	private PhongChieu phongchieu;
@@ -25,10 +24,9 @@ public class GheNgoi {
 	 * @param loaiGN
 	 */
 
-	public GheNgoi(String maGN, String viTriGN, Boolean trangThai, String loaiGN, PhongChieu phongchieu) {
+	public GheNgoi(String maGN,Boolean trangThai, String loaiGN, PhongChieu phongchieu) {
 		super();
 		this.MaGN = maGN;
-		this.ViTriGN = viTriGN;
 		this.TrangThai = trangThai;
 		this.LoaiGN = loaiGN;
 		this.phongchieu = phongchieu;
@@ -50,16 +48,6 @@ public class GheNgoi {
 
 
 
-	public String getViTriGN() {
-		return ViTriGN;
-	}
-
-
-
-
-	public void setViTriGN(String viTriGN) {
-		ViTriGN = viTriGN;
-	}
 
 
 
@@ -106,7 +94,7 @@ public class GheNgoi {
 
 	@Override
 	public String toString() {
-		return "GheNgoi [MaGN=" + MaGN + ", ViTriGN=" + ViTriGN + ", TrangThai=" + TrangThai + ", LoaiGN=" + LoaiGN
+		return "GheNgoi [MaGN=" + MaGN + ", TrangThai=" + TrangThai + ", LoaiGN=" + LoaiGN
 				+ ", phongchieu=" + phongchieu + "]";
 	}
 	

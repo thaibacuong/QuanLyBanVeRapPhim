@@ -162,3 +162,44 @@ ON UPDATE Cascade
 
 SET DATEFORMAT 'DMY'
 
+
+
+
+INSERT INTO GHENGOI (maGhe, trangThai, loaiGhe, maphongchieu)
+VALUES 
+('A1', true, 'th??ng', 'PC001'),
+('A2', true, 'th??ng', 'PC001'),
+('A3', true, 'th??ng', 'PC001'),
+('A4', true, 'th??ng', 'PC001'),
+('A5', true, 'th??ng', 'PC001'),
+('A6', true, 'th??ng', 'PC001'),
+('B1', true, 'th??ng', 'PC001'),
+('B2', true, 'th??ng', 'PC001'),
+('B3', true, 'th??ng', 'PC001'),
+('B4', true, 'th??ng', 'PC001'),
+('B5', true, 'th??ng', 'PC001'),
+('B6', true, 'th??ng', 'PC001'),
+('C1', true, 'th??ng', 'PC001'),
+('C2', true, 'th??ng', 'PC001'),
+('C3', true, 'th??ng', 'PC001'),
+('C4', true, 'th??ng', 'PC001'),
+('C5', true, 'th??ng', 'PC001'),
+('C6', true, 'th??ng', 'PC001'),
+('D1', true, 'th??ng', 'PC001'),
+('D2', true, 'th??ng', 'PC001'),
+('D3', true, 'th??ng', 'PC001'),
+('D4', true, 'th??ng', 'PC001'),
+('D5', true, 'th??ng', 'PC001'),
+('D6', true, 'th??ng', 'PC001'),
+('E1', true, 'vip', 'PC001'),
+('E2', true, 'vip', 'PC001'),
+('E3', true, 'vip', 'PC001'),
+('E4', true, 'vip', 'PC001'),
+('E5', true, 'vip', 'PC001'),
+('E6', true, 'vip', 'PC001'),
+('F1', true, 'vip', 'PC001'),
+('F2', true, 'vip', 'PC001'),
+('F3', true, 'vip', 'PC001'),
+('F4', true, 'vip', 'PC001'),
+('F5', true, 'vip', 'PC001'),
+('F6', true, 'vip', 'PC001');
