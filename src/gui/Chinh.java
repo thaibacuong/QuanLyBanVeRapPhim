@@ -48,8 +48,8 @@ public class Chinh extends JFrame implements MenuListener {
     }
 
     public static void main(String[] args) {
-    	TrangChu trangChu = new TrangChu();
-        trangChu.setVisible(true);
+    	Chinh chinh = new Chinh();
+        chinh.setVisible(true);
     }
 
     @Override
