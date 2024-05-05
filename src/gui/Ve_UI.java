@@ -9,7 +9,10 @@ import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
 public class Ve_UI extends JFrame {
-	private JLabel lblMaNhanVien;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JLabel lblMaGhe;
 	private JLabel lblPhongChieu;
 	private JLabel lblSuatChieu;

@@ -45,7 +45,6 @@ public class DatVe_UI extends JFrame implements ActionListener, MouseListener {
 	private JPanel JWest;
 	private JLabel lblTenPhim;
 	private JLabel lblsuatchieuve;
-	private JTextField txtPhong;
 	private JLabel lblPhong;
 	private JLabel lblSoGhe;
 	private JPanel JCendatve;
@@ -59,22 +58,16 @@ public class DatVe_UI extends JFrame implements ActionListener, MouseListener {
 	private JLabel lblghevip;
 	private JLabel lblchon;
 	private JLabel lblvip;
-	private DefaultTableModel tablemodeldatve;
-	private JScrollPane scrolldatve;
 	private JTextField txtSoGhe;
 	private JLabel lblghedaban;
 	private JLabel lblghethuong;
 	private JLabel lblghechon;
-	private JTable tabledatve;
 	private JLabel[][] chairs;
-	private JComboBox cbxdsphong;
+	private JComboBox<String> cbxdsphong;
 	private JLabel lblTongtien;
 	private JTextField txtTongtien;
-	private JPanel JEast;
-	private JPanel JEastTongtien;
 	private int sumTien=0;
 	private JButton btnThanhtoan;
-	private JPanel JSouth;
 	private ArrayList<String> chairSelected = new ArrayList<>();
 	private JComboBox<String>  cbxdstenphim;
 	private JComboBox<String>  cbxdssuatchieu;
@@ -216,10 +209,6 @@ public class DatVe_UI extends JFrame implements ActionListener, MouseListener {
 		hbdatve5.add(Box.createVerticalStrut(20));
 		hbdatve5.add(txtTongtien);
 		hbdatve6.add(btnThanhtoan);
-		
-		
-		JSouth=new JPanel(new BorderLayout());
-		
 		
 		hbdatve.add(hbdatve1);
 		hbdatve.add(hbdatve2);
