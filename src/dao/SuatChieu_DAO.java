@@ -36,6 +36,25 @@ public class SuatChieu_DAO {
         return ds;
     }
 
+    public static ArrayList<String> getAllThoiGianSuatChieuByMaPhim(String ma) {
+        ArrayList<String> ds = new ArrayList<String>();
+        ConnectDB.getInstance().connect();
+        try (Connection con = ConnectDB.getConnection();
+             Statement st = con.createStatement();
+             ResultSet rs = st.executeQuery("SELECT gioBD, gioKT FROM SUATCHIEU WHERE ")) {
+            while (rs.next()) {
+                String giobatdau = rs.getString("gioBD");
+                String gioketthuc = rs.getString("gioKT");
+                String thoiGian = giobatdau + " - " + gioketthuc;
+                ds.add(thoiGian);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return ds;
+    }
+
+    
     public boolean addSuatChieu(SuatChieu sc) {
         ConnectDB.getInstance().connect();
         Connection con = ConnectDB.getConnection();      

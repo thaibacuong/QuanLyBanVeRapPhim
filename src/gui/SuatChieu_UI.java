@@ -178,9 +178,9 @@ public class SuatChieu_UI extends JFrame implements ActionListener, MouseListene
 		JPSmall1.add(vbsc1);
 		JPSmall2.add(vbsc2);
 		
-        lblGioBDp = new JLabel("Ngày bắt đầu   ");
+        lblGioBDp = new JLabel("Giờ bắt đầu   ");
         txtGioBDp = new JTextField(25);
-        lblGioKTp = new JLabel("Ngày kết thúc  ");
+        lblGioKTp = new JLabel("Giờ kết thúc  ");
         txtGioKTp = new JTextField(25);
         btnLocscp=new JButton("Lọc");
         

@@ -9,6 +9,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
 import javax.swing.Box;
@@ -21,6 +28,11 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableModel;
+
+import connectDB.ConnectDB;
+import dao.Phim_Dao;
+import dao.SuatChieu_DAO;
+import entity.Phim;
 
 public class DatVe_UI extends JFrame implements ActionListener, MouseListener{
 	/**
@@ -52,18 +64,38 @@ public class DatVe_UI extends JFrame implements ActionListener, MouseListener{
 	private JLabel lblghechon;
 	private JTable tabledatve;
 	private JLabel[][] chairs;
-	public DatVe_UI() {
+	public DatVe_UI() throws SQLException {
 
 		// đặt vé ui
 
 		JWest = new JPanel();
 		Box hb0 = Box.createVerticalBox();
+		// tên phim
 		lblTenPhim = new JLabel("Tên phim:");
-		String[] dstenphim = { "", "Avenger", "Mắt biếc" };
-		JComboBox<String> cbxdstenphim = new JComboBox<String>(dstenphim);
+		
+		ArrayList<String> danhSachTenPhim = new ArrayList<>();
+		try {
+		    danhSachTenPhim = Phim_Dao.layDanhSachTenPhim();
+		} catch (SQLException e) {
+		    e.printStackTrace();
+		}
+
+		String[] arrayTenPhim = danhSachTenPhim.toArray(new String[danhSachTenPhim.size()]);
+		JComboBox<String> cbxdstenphim = new JComboBox<>(arrayTenPhim);
+
+		// lấy dữ liệu
+		
+		String tenduocchon=cbxdstenphim.getSelectedItem().toString();
+		String maphim=Phim_Dao.getMaPhimByTenPhim(tenduocchon);
+		
+		// suất chiếu
 		lblsuatchieuve = new JLabel("Suất chiếu:");
-		String[] dssuatchieu = { "", "2:00-4:00", "6:00-8:00" };
-		JComboBox<String> cbxdssuatchieu = new JComboBox<String>(dssuatchieu);
+		
+		ArrayList<String> danhSachSuatChieu = new ArrayList<>();
+		danhSachSuatChieu = SuatChieu_DAO.getAllThoiGianSuatChieuByMaPhim(maphim);
+		JComboBox<String> cbxdssuatchieu = new JComboBox<>(danhSachSuatChieu.toArray(new String[0]));
+
+		
 		lblPhong = new JLabel("Tên phòng:");
 		txtPhong = new JTextField(18);
 		txtPhong.setEditable(false);
@@ -142,6 +174,9 @@ public class DatVe_UI extends JFrame implements ActionListener, MouseListener{
 
 		JCendatveCenter.add(vbdatve, BorderLayout.CENTER);
 
+	   
+
+		
 		String[] headerdatve = "Tên phim;Số ghế;Giá ghế;Thành tiền".split(";");
 		tablemodeldatve = new DefaultTableModel(headerdatve, 0);
 		tabledatve = new JTable(tablemodeldatve);
@@ -158,6 +193,8 @@ public class DatVe_UI extends JFrame implements ActionListener, MouseListener{
         setLocationRelativeTo(null);
         setVisible(true);
         setExtendedState(JFrame.MAXIMIZED_BOTH);
+        
+        
 	}
 	public void createChair() {
 		int rows = 6;
@@ -182,8 +219,19 @@ public class DatVe_UI extends JFrame implements ActionListener, MouseListener{
 	}
 	
 	public static void main(String[] args) {
-		new DatVe_UI();
+		try {
+			new DatVe_UI();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
+	
+	
+
+
+
+
 	
 	@Override
 	public void mouseClicked(MouseEvent e) {

@@ -40,6 +40,29 @@ public class Phim_Dao {
 	    return ds;
 	}
 	
+	public static ArrayList<String> layDanhSachTenPhim() throws SQLException {
+		ConnectDB.getInstance().connect();
+	    ArrayList<String> ds = new ArrayList<String>();
+	    try {
+	        ConnectDB.getInstance();
+	        Connection con = ConnectDB.getConnection();
+	    
+	        String sql ="SELECT tenPhim FROM PHIM";    
+	        Statement st =  con.createStatement();
+	        ResultSet rs = st.executeQuery(sql);
+	        while(rs.next()) {
+	            String tenPhim = rs.getString(1);
+	             
+	            
+	            ds.add(tenPhim);            
+	        }
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+	    return ds;
+
+    }
+	
 	public ArrayList<Phim> getAllPhimByTenLoai(String tenPhim, String loaiPhim) {
 	    ConnectDB.getInstance().connect();
 	    ArrayList<Phim> ds = new ArrayList<>();
@@ -71,6 +94,29 @@ public class Phim_Dao {
 	    return ds;
 	}
 
+	public static String getMaPhimByTenPhim(String tenPhim) {
+	    ConnectDB.getInstance().connect();
+	    String maPhim = "";
+	    try {
+	        ConnectDB.getInstance();
+	        Connection con = ConnectDB.getConnection();
+	        
+	        String sql = "SELECT maPhim FROM PHIM WHERE tenPhim=?";
+	        PreparedStatement pst = con.prepareStatement(sql);
+	        pst.setString(1, tenPhim);
+	        ResultSet rs = pst.executeQuery();
+	        
+	        if (rs.next()) {
+	            maPhim = rs.getString("maPhim");
+	        }
+	        
+	        pst.close();
+	        con.close();
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+	    return maPhim;
+	}
 
 
 	public boolean addPhim(Phim phim) {
