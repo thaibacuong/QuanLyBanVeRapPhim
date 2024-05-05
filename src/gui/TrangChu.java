@@ -93,7 +93,11 @@ public class TrangChu extends JPanel{
 //	    setLocationRelativeTo(null);
 //	    setVisible(true);
 	}
-	public static void main(String[] args) {
+//	public static void main(String[] args) {
+//		new TrangChu();
+//	}
+	public void getPanelTrangChu() {
+		// TODO Auto-generated method stub
 		new TrangChu();
 	}
 	public void getPanelTrangChu() {
