@@ -13,7 +13,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
 
-public class SuatChieu_UI extends JFrame implements ActionListener, MouseListener {
+public class SuatChieu_UI extends JPanel implements ActionListener, MouseListener {
    
 
     /**
@@ -209,11 +209,11 @@ public class SuatChieu_UI extends JFrame implements ActionListener, MouseListene
         
         tablesc.addMouseListener(this);
         
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
-		setResizable(true);
-		setExtendedState(JFrame.MAXIMIZED_BOTH);
-		setLocationRelativeTo(null);
-		setVisible(true);
+//        setDefaultCloseOperation(EXIT_ON_CLOSE);
+//		setResizable(true);
+//		setExtendedState(JFrame.MAXIMIZED_BOTH);
+//		setLocationRelativeTo(null);
+//		setVisible(true);
     }
 
 	public void actionPerformed(ActionEvent e) {

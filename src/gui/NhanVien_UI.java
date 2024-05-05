@@ -36,7 +36,7 @@ import javax.swing.table.DefaultTableModel;
 import dao.NhanVien_Dao;
 import entity.NhanVien;
 
-public class NhanVien_UI extends JFrame implements ActionListener, MouseListener {
+public class NhanVien_UI extends JPanel implements ActionListener, MouseListener {
 	/**
 	 * 
 	 */
@@ -287,10 +287,10 @@ public class NhanVien_UI extends JFrame implements ActionListener, MouseListener
 		
 
 		
-		add(pnnhanvien, "Nhân Viên");
-		tabbedPane.add(pnhoadon, "Hóa Đơn");
-		tabbedPane.add(pnthongke, "Thống Kê");
-		add(tabbedPane);
+//		add(pnnhanvien, "Nhân Viên");
+//		tabbedPane.add(pnhoadon, "Hóa Đơn");
+//		tabbedPane.add(pnthongke, "Thống Kê");
+//		add(tabbedPane);
 
 		btnLammoinv.addActionListener(this);
 		btnLamMoinv1.addActionListener(this);
@@ -303,11 +303,11 @@ public class NhanVien_UI extends JFrame implements ActionListener, MouseListener
 		
 		tablenv.addMouseListener(this);
 		
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		setResizable(true);
-		setExtendedState(JFrame.MAXIMIZED_BOTH);
-		setLocationRelativeTo(null);
-		setVisible(true);
+//		setDefaultCloseOperation(EXIT_ON_CLOSE);
+//		setResizable(true);
+//		setExtendedState(JFrame.MAXIMIZED_BOTH);
+//		setLocationRelativeTo(null);
+//		setVisible(true);
 	}
 
 	

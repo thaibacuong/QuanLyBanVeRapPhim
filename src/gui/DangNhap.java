@@ -2,6 +2,8 @@ package gui;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.sql.SQLException;
+
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -90,7 +92,7 @@ public class DangNhap extends JFrame {
 
     }
 
-    public static void main(String[] args) {
-        new DangNhap();
-    }
+    public static void main(String[] args) throws SQLException {
+		new Tab().setVisible(true);
+	}
 }
