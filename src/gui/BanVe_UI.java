@@ -646,8 +646,8 @@ public class BanVe_UI extends JFrame implements ActionListener, MouseListener {
 	}
 
 	public void createChair() {
-		int rows = 5;
-		int cols = 5;
+		int rows = 7;
+		int cols = 7;
 		chairs = new JLabel[rows][cols];
 		JPanel seatPanel = new JPanel(new GridLayout(rows, cols));
 

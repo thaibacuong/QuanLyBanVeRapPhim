@@ -8,7 +8,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import connectDB.ConnectDB;
-import entity.GheNgoi;
 import entity.PhongChieu;
 
 
@@ -18,6 +17,7 @@ public class PhongChieu_Dao {
     public ArrayList<PhongChieu> getAllPhongChieu() {
         ArrayList<PhongChieu> ds = new ArrayList<PhongChieu>();
         try {
+        	ConnectDB.getInstance().connect();
             ConnectDB.getInstance();
             Connection con = ConnectDB.getConnection();
 
@@ -28,9 +28,8 @@ public class PhongChieu_Dao {
                 String MaPC = rs.getString(1);
                 String TenPC = rs.getString(2);
                 int DienTich = rs.getInt(3);
-                Boolean TrangThai = rs.getBoolean(4);
-                GheNgoi ghe=new GheNgoi(rs.getString(5));
-                PhongChieu phong = new PhongChieu(MaPC, TenPC, DienTich, TrangThai,ghe);
+                String TrangThai = rs.getString(4);
+                PhongChieu phong = new PhongChieu(MaPC, TenPC, DienTich, TrangThai);
                 ds.add(phong);
             }
         } catch (SQLException e) {
@@ -40,18 +39,17 @@ public class PhongChieu_Dao {
     }
 
     public boolean addPhongChieu(PhongChieu phong) {
-        ConnectDB.getInstance();
+        ConnectDB.getInstance().connect();
         Connection con = ConnectDB.getConnection();
         int n = 0;
-        String sql ="INSERT INTO PHONGCHIEU VALUES (?, ?, ?, ?, ?)";
+        String sql ="INSERT INTO PHONGCHIEU VALUES (?, ?, ?, ?)";
         PreparedStatement pst = null;
         try {
             pst = con.prepareStatement(sql);
             pst.setString(1, phong.getMaPC());
             pst.setString(2, phong.getTenPC());
             pst.setInt(3, phong.getDienTich());
-            pst.setBoolean(4, phong.isTrangThai());
-            pst.setString(5, phong.getGheNgoi().getMaGN());
+            pst.setString(4, phong.isTrangThai());
             n = pst.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -62,17 +60,16 @@ public class PhongChieu_Dao {
     }
 
     public void updatePhongChieu(PhongChieu phong) {
-        ConnectDB.getInstance();
+    	ConnectDB.getInstance().connect();
         PreparedStatement pst = null;
         Connection con = ConnectDB.getConnection();
-        String sql ="UPDATE PHONGCHIEU SET tenPhongChieu=?,dientich = ?, trangThai=?, maghe=?  WHERE maPhongChieu = ?";
+        String sql ="UPDATE PHONGCHIEU SET tenPhongChieu=?,dientich = ?, trangThai=?  WHERE maPhongChieu = ?";
         try {    
         	pst = con.prepareStatement(sql);
             pst.setString(1, phong.getTenPC());
             pst.setInt(2,phong.getDienTich());
-            pst.setBoolean(3, phong.isTrangThai());
-            pst.setString(4, phong.getGheNgoi().getMaGN());
-            pst.setString(5, phong.getMaPC());
+            pst.setString(3, phong.isTrangThai());
+            pst.setString(4, phong.getMaPC());
             pst.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();

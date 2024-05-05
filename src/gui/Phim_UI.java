@@ -221,24 +221,24 @@ public class Phim_UI extends JFrame implements ActionListener, MouseListener{
 		JPSmall1phim.add(vbphim1);
 		JPSmall2phim.add(vbphim2);
 
-		lbltenphimtk = new JLabel("Tên phim:     ");
-		String[] tp = { "", "Nhân viên", "Quản lý" };
-		JComboBox<String> cbxtenphim = new JComboBox<String>(tp);
-		lblnn = new JLabel("Tình trạng:  ");
-		String[] tgt = { "", "Tất cả", "Có mặt" };
+		lbltenphimtk = new JLabel("Độ tuổi:   ");
+		String[] tp = { "Tất cả", "10", "18" };
+		JComboBox<String> cbxdotuoi = new JComboBox<String>(tp);
+		lblnn = new JLabel("Thể loại:  ");
+		String[] tgt = { "Tất cả", "Lãng mạn", "Hài" };
 		JComboBox<String> cbxtgt = new JComboBox<String>(tgt);
 
 		cbxtgt.setPreferredSize(new Dimension(200, 25));
 
 		hbphim1.add(lbltenphimtk);
-		hbphim1.add(lbltenphimtk);
+		hbphim1.add(cbxdotuoi);
 		hbphim2.add(lblnn);
 		hbphim2.add(cbxtgt);
 
 		lbltenphimt = new JLabel("Tên phim:  ");
 		txttenphimt = new JTextField();
 		btnTimphim = new JButton("Tìm");
-		lblloaiphimt = new JLabel("Loại phim:    ");
+		lblloaiphimt = new JLabel("Loại phim: ");
 		txtloaiphimt = new JTextField();
 		btnLammoinvw = new JButton("Làm mới");
 
@@ -316,7 +316,9 @@ public class Phim_UI extends JFrame implements ActionListener, MouseListener{
 	    }
 
 	    if(o.equals(btnLammoinvw)){
-	    	
+	    	 txtloaiphimt.setText("");
+	    	 txttenphimt.setText("");
+	    	 loaddataPhim();
 	    }
 	    
 

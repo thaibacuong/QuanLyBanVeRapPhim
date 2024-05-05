@@ -72,7 +72,11 @@ CREATE TABLE PHONGCHIEU
 (maPhongChieu CHAR(5) NOT NULL,
 tenPhongChieu CHAR(5) NOT NULL,
 DienTich INT,
+<<<<<<< Updated upstream
 trangThai bit Not Null,
+=======
+trangThai NVARCHAR(20) Not Null,
+>>>>>>> Stashed changes
 )
 
 CREATE TABLE GHENGOI

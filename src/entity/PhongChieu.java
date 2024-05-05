@@ -3,8 +3,7 @@ public class PhongChieu {
 	private String MaPC;
 	private String TenPC;
 	private int DienTich;
-	private boolean TrangThai;
-	private GheNgoi gheNgoi;
+	private String TrangThai;
 	
 	
 	public PhongChieu(String maPC) {
@@ -12,12 +11,11 @@ public class PhongChieu {
 		this.MaPC = maPC;
 	}
 	
-	public PhongChieu(String maPC, String tenPC, int dientich, boolean trangThai, GheNgoi ghengoi) {
+	public PhongChieu(String maPC, String tenPC, int dientich, String trangThai) {
 		this.MaPC = maPC;
 		this.TenPC = tenPC;
 		this.DienTich = dientich;
 		this.TrangThai = trangThai;
-		this.gheNgoi = ghengoi;
 	}
 	public String getMaPC() {
 		return MaPC;
@@ -32,10 +30,10 @@ public class PhongChieu {
 		TenPC = tenPC;
 	}
 	
-	public boolean isTrangThai() {
+	public String isTrangThai() {
 		return TrangThai;
 	}
-	public void setTrangThai(boolean trangThai) {
+	public void setTrangThai(String trangThai) {
 		TrangThai = trangThai;
 	}
 
@@ -47,18 +45,11 @@ public class PhongChieu {
 		DienTich = dienTich;
 	}
 
-	public GheNgoi getGheNgoi() {
-		return gheNgoi;
-	}
-
-	public void setGheNgoi(GheNgoi gheNgoi) {
-		this.gheNgoi = gheNgoi;
-	}
+	
 
 	@Override
 	public String toString() {
-		return "PhongChieu [MaPC=" + MaPC + ", TenPC=" + TenPC + ", DienTich=" + DienTich + ", TrangThai=" + TrangThai
-				+ ", gheNgoi=" + gheNgoi + "]";
+		return "PhongChieu [MaPC=" + MaPC + ", TenPC=" + TenPC + ", DienTich=" + DienTich + ", TrangThai=" + TrangThai + "]";
 	}
 	
 }

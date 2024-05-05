@@ -2,9 +2,7 @@ package gui;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
-import dao.NhanVien_Dao;
 import dao.SuatChieu_DAO;
-import entity.NhanVien;
 import entity.Phim;
 import entity.SuatChieu;
 
@@ -18,7 +16,11 @@ import java.util.ArrayList;
 public class SuatChieu_UI extends JFrame implements ActionListener, MouseListener {
    
 
-    private JPanel JWest;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private JPanel JWest;
 	private JLabel lblMaSC;
 	private JLabel lblGioBD;
 	private JLabel lblGioKT;
@@ -34,10 +36,6 @@ public class SuatChieu_UI extends JFrame implements ActionListener, MouseListene
 	private JButton btnXoaSC;
 	private JButton btnLamMoiSC;
 	private JButton btnThoatSC;
-	private JLabel lblNgayBD;
-	private JTextField txtNgayBD;
-	private JLabel lblNgayKT;
-	private JTextField txtNgayKT;
 	private JTextField txtGioBDp;
 	private JLabel lblGioBDp;
 	private JLabel lblGioKTp;
@@ -55,7 +53,6 @@ public class SuatChieu_UI extends JFrame implements ActionListener, MouseListene
 	private Box hbsc1;
 	private Box hbsc2;
 	private Box hbsc3;
-	private Box hbsc4;
 	private JButton btnLocscp;
 	private JLabel lblNgayp;
 	private JTextField txtNgayp;
@@ -170,7 +167,6 @@ public class SuatChieu_UI extends JFrame implements ActionListener, MouseListene
 		hbsc1 = Box.createHorizontalBox();
 		hbsc2 = Box.createHorizontalBox();
 		hbsc3 = Box.createHorizontalBox();
-		hbsc4 = Box.createHorizontalBox();
 		vbsc1.add(Box.createVerticalStrut(10));
 		vbsc1.add(hbsc1);
 		vbsc1.add(Box.createVerticalStrut(15));
