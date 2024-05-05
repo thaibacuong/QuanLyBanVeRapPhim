@@ -159,6 +159,23 @@ public class NhanVien_Dao {
         }
         return matKhau;
     }
+    
+    public static String getTenByMa(String maNhanVien) {
+        String matKhau = null;
+        ConnectDB.getInstance().connect();
+        String sql = "SELECT tenNhanVien FROM NHANVIEN WHERE maNhanVien=?";
+        try (Connection con = ConnectDB.getConnection();
+             PreparedStatement pst = con.prepareStatement(sql)) {
+            pst.setString(1, maNhanVien);
+            ResultSet rs = pst.executeQuery();
+            if (rs.next()) {
+                matKhau = rs.getString("tenNhanVien");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return matKhau;
+    }
 
     
     public void delete(String manv) {

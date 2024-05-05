@@ -111,7 +111,6 @@ public class PhongChieu_UI extends JPanel implements ActionListener, MouseListen
 		hb6.add(btnXoaPC);
 		hb6.add(Box.createHorizontalStrut(30));
 		hb6.add(btnLamMoiPC);
-		hb7.add(btnThoatPC);
 
 		vb1.add(Box.createVerticalStrut(15));
 		vb1.add(hb);
@@ -126,7 +125,6 @@ public class PhongChieu_UI extends JPanel implements ActionListener, MouseListen
 		vb1.add(Box.createVerticalStrut(25));
 		vb1.add(hb6);
 		vb1.add(Box.createVerticalStrut(25));
-		vb1.add(hb7);
 
 		JCen1 = new JPanel(new BorderLayout());
 		add(JCen1, BorderLayout.CENTER);

@@ -123,7 +123,6 @@ public class SuatChieu_UI extends JPanel implements ActionListener, MouseListene
         hb6.add(btnXoaSC);
         hb6.add(Box.createHorizontalStrut(30));
         hb6.add(btnLamMoiSC);
-        hb7.add(btnThoatSC);
 
         vb1.add(Box.createVerticalStrut(15));
         vb1.add(hb);
@@ -140,7 +139,6 @@ public class SuatChieu_UI extends JPanel implements ActionListener, MouseListene
         vb1.add(Box.createVerticalStrut(25));
         vb1.add(hb6);
         vb1.add(Box.createVerticalStrut(25));
-        vb1.add(hb7);
 
         JCen1 = new JPanel(new BorderLayout());
 		add(JCen1, BorderLayout.CENTER);
@@ -206,6 +204,8 @@ public class SuatChieu_UI extends JPanel implements ActionListener, MouseListene
         btnXoaSC.addActionListener(this);
         btnLamMoiSC.addActionListener(this);
         btnTimscp.addActionListener(this);
+        btnLocscp.addActionListener(this);
+        
         
         tablesc.addMouseListener(this);
         
@@ -296,7 +296,9 @@ public class SuatChieu_UI extends JPanel implements ActionListener, MouseListene
 	        txtNgayChieu.setText("");
 	        txtMaPhim.setText("");
 		}
-
+		if(o.equals(btnLocscp)) {
+			loaddataloc();
+		}
 	}
 
 	public void loaddataTimSC() {
@@ -311,6 +313,18 @@ public class SuatChieu_UI extends JPanel implements ActionListener, MouseListene
 	    }
 	}
 
+	public void loaddataloc() {
+		if(!txtGioBDp.getText().equals("") && !txtGioKTp.getText().equals("")) {
+			SuatChieu_DAO suatChieuDao = new SuatChieu_DAO();
+	        ArrayList<SuatChieu> danhSachSuatChieu = suatChieuDao.getAllSuatChieuByNgayChieu(txtNgayp.getText());
+	        tablemodel.setRowCount(0);
+
+	        for (SuatChieu sc : danhSachSuatChieu) {
+	            tablemodel.addRow(new Object[] { sc.getMaSC(), sc.getGioBD(), sc.getGioKT(), sc.getNgayChieu(), sc.getPhim().getMaPHIM() });
+	        }
+		}
+	}
+	
     public void deleteSuatChieu() {
     	    SuatChieu_DAO suatChieuDao = new SuatChieu_DAO();
     	    suatChieuDao.deleteSuatChieu(txtMaSC.getText());

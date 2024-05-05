@@ -32,9 +32,11 @@ import javax.swing.table.DefaultTableModel;
 
 import connectDB.ConnectDB;
 import dao.GheNgoi_Dao;
+import dao.NhanVien_Dao;
 import dao.Phim_Dao;
 import dao.PhongChieu_Dao;
 import dao.SuatChieu_DAO;
+import entity.MaNV;
 import entity.Phim;
 
 public class DatVe_UI extends JPanel implements ActionListener, MouseListener {
@@ -417,7 +419,8 @@ public class DatVe_UI extends JPanel implements ActionListener, MouseListener {
 			String suatchieu=cbxdssuatchieu.getSelectedItem().toString();
 			String maPhong = PhongChieu_Dao.getMaPhongByTenphong(cbxdsphong.getSelectedItem().toString());
 			String ngaychieu= Phim_Dao.getMaPhimByTenPhim(tenphim);
-			new Ve_UI(null,chairSelected.toString(),maPhong,suatchieu,ngaychieu,tenphim,txtTongtien.getText());
+			String tennv=NhanVien_Dao.getTenByMa(MaNV.getMa());
+			new Ve_UI(tennv,chairSelected.toString(),maPhong,suatchieu,ngaychieu,tenphim,txtTongtien.getText());
 		}
 	}
 }

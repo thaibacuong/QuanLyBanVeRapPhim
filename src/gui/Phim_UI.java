@@ -24,7 +24,9 @@ import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
+import dao.NhanVien_Dao;
 import dao.Phim_Dao;
+import entity.NhanVien;
 import entity.Phim;
 
 public class Phim_UI extends JPanel implements ActionListener, MouseListener{
@@ -53,7 +55,7 @@ public class Phim_UI extends JPanel implements ActionListener, MouseListener{
 	private JPanel JCen1p;
 	private JPanel JNorth1phim;
 	private JPanel JCen1phim;
-	private TableModel tablemodelphim;
+	private DefaultTableModel tablemodelphim;
 	
 	private JPanel JPSmall1phim;
 	private JPanel JPSmall2phim;
@@ -75,6 +77,8 @@ public class Phim_UI extends JPanel implements ActionListener, MouseListener{
 	private JScrollPane scrollphim;
 	private JLabel lblmaphim;
 	private JTextField txtmaphim;
+	private JComboBox<String> cbxdotuoi;
+	private JComboBox<String> cbxtgt;
 	public Phim_UI() {
 		
 		JWestphim = new JPanel();
@@ -156,7 +160,6 @@ public class Phim_UI extends JPanel implements ActionListener, MouseListener{
 		hb9phim.add(btnXoaphim);
 		hb9phim.add(Box.createHorizontalStrut(30));
 		hb9phim.add(btnLamMoiphim);
-		hb10phim.add(btnThoatphim);
 
 		vb1phim.add(hb0phim);
 		vb1phim.add(Box.createVerticalStrut(25));
@@ -178,7 +181,6 @@ public class Phim_UI extends JPanel implements ActionListener, MouseListener{
 		vb1phim.add(Box.createVerticalStrut(25));
 		vb1phim.add(hb9phim);
 		vb1phim.add(Box.createVerticalStrut(25));
-		vb1phim.add(hb10phim);
 
 		JCen1p = new JPanel(new BorderLayout());
 		add(JCen1p, BorderLayout.CENTER);
@@ -223,10 +225,10 @@ public class Phim_UI extends JPanel implements ActionListener, MouseListener{
 
 		lbltenphimtk = new JLabel("Độ tuổi:   ");
 		String[] tp = { "Tất cả", "10", "18" };
-		JComboBox<String> cbxdotuoi = new JComboBox<String>(tp);
+		cbxdotuoi = new JComboBox<String>(tp);
 		lblnn = new JLabel("Thể loại:  ");
-		String[] tgt = { "Tất cả", "Lãng mạn", "Hài" };
-		JComboBox<String> cbxtgt = new JComboBox<String>(tgt);
+		String[] tgt = { "Tất cả", "Tình cảm", "Hài" };
+		cbxtgt = new JComboBox<String>(tgt);
 
 		cbxtgt.setPreferredSize(new Dimension(200, 25));
 
@@ -261,6 +263,9 @@ public class Phim_UI extends JPanel implements ActionListener, MouseListener{
 		btnLamMoiphim.addActionListener(this);
 		btnTimphim.addActionListener(this);
 		btnLammoinvw.addActionListener(this);
+		
+		cbxdotuoi.addActionListener(this);
+		cbxtgt.addActionListener(this);
 		
 		tablephim.addMouseListener(this);
 		
@@ -315,6 +320,10 @@ public class Phim_UI extends JPanel implements ActionListener, MouseListener{
 	        }
 	    }
 
+	    String selectedTuoi = (String) cbxdotuoi.getSelectedItem();
+		String selectedLoai = (String) cbxtgt.getSelectedItem();
+		updateTableDataFilter(selectedTuoi, selectedLoai);
+	    
 	    if(o.equals(btnLammoinvw)){
 	    	 txtloaiphimt.setText("");
 	    	 txttenphimt.setText("");
@@ -329,7 +338,69 @@ public class Phim_UI extends JPanel implements ActionListener, MouseListener{
 	    if (o.equals(btnLamMoiphim)) {
 	        clearFields(); 
 	    }
+	   
 	}
+	
+	public void updateTableDataFilter(String selectedTuoi, String selectedLoai) {
+		Phim_Dao phimDao = new Phim_Dao();
+		ArrayList<Phim> danhSachPhim = phimDao.getAllPhim();
+		tablemodelphim.setRowCount(0);
+
+		for (Phim phim : danhSachPhim) {
+			if (selectedTuoi.equals("Tất cả")) {
+				if (selectedLoai.equals("Tất cả")) {
+					tablemodelphim.addRow(new Object[] { phim.getMaPHIM(), phim.getTenPhim(), phim.getThoiLuong(), phim.getDoTuoi(),
+		                    phim.getNgayCongChieu(), phim.getNhaSX(), phim.getLoaiPhim() });
+				} else if (selectedLoai.equals("Hài")) {
+					if (phim.getLoaiPhim().equals("Hài")) {
+						tablemodelphim.addRow(new Object[] { phim.getMaPHIM(), phim.getTenPhim(), phim.getThoiLuong(), phim.getDoTuoi(),
+			                    phim.getNgayCongChieu(), phim.getNhaSX(), phim.getLoaiPhim() });
+					}
+				} else {
+					if (phim.getLoaiPhim().equals("Tình cảm")) {
+						tablemodelphim.addRow(new Object[] { phim.getMaPHIM(), phim.getTenPhim(), phim.getThoiLuong(), phim.getDoTuoi(),
+			                    phim.getNgayCongChieu(), phim.getNhaSX(), phim.getLoaiPhim() });
+					}
+				}
+			} else if (selectedTuoi.equals("10")) {
+				if (selectedLoai.equals("Tất cả")) {
+					if(phim.getDoTuoi()==10) {
+						tablemodelphim.addRow(new Object[] { phim.getMaPHIM(), phim.getTenPhim(), phim.getThoiLuong(), phim.getDoTuoi(),
+			                    phim.getNgayCongChieu(), phim.getNhaSX(), phim.getLoaiPhim() });
+					}
+				} else if (selectedLoai.equals("Hài")) {
+					if (phim.getLoaiPhim().equals("Hài") && phim.getDoTuoi()==10) {
+						tablemodelphim.addRow(new Object[] { phim.getMaPHIM(), phim.getTenPhim(), phim.getThoiLuong(), phim.getDoTuoi(),
+			                    phim.getNgayCongChieu(), phim.getNhaSX(), phim.getLoaiPhim() });
+					}
+				} else {
+					if (phim.getLoaiPhim().equals("Tình cảm") && phim.getDoTuoi()==10) {
+						tablemodelphim.addRow(new Object[] { phim.getMaPHIM(), phim.getTenPhim(), phim.getThoiLuong(), phim.getDoTuoi(),
+			                    phim.getNgayCongChieu(), phim.getNhaSX(), phim.getLoaiPhim() });
+					}
+				}
+			} else if (selectedTuoi.equals("18")) {
+				if (selectedLoai.equals("Tất cả")) {
+					if (phim.getDoTuoi()==18) {
+						tablemodelphim.addRow(new Object[] { phim.getMaPHIM(), phim.getTenPhim(), phim.getThoiLuong(), phim.getDoTuoi(),
+			                    phim.getNgayCongChieu(), phim.getNhaSX(), phim.getLoaiPhim() });
+					}
+				} else if (selectedLoai.equals("Hài")) {
+					if (phim.getLoaiPhim().equals("Hài") && phim.getDoTuoi()==18) {
+						tablemodelphim.addRow(new Object[] { phim.getMaPHIM(), phim.getTenPhim(), phim.getThoiLuong(), phim.getDoTuoi(),
+			                    phim.getNgayCongChieu(), phim.getNhaSX(), phim.getLoaiPhim() });
+					}
+				} else {
+					if (phim.getLoaiPhim().equals("Tình cảm") && phim.getDoTuoi()==18) {
+						tablemodelphim.addRow(new Object[] { phim.getMaPHIM(), phim.getTenPhim(), phim.getThoiLuong(), phim.getDoTuoi(),
+			                    phim.getNgayCongChieu(), phim.getNhaSX(), phim.getLoaiPhim() });
+					}
+				}
+			}
+		}
+	}
+	
+	
 	public void clearFields() {
 		txtmaphim.setText("");
 	    txttenphim.setText(""); 
@@ -344,11 +415,10 @@ public class Phim_UI extends JPanel implements ActionListener, MouseListener{
 	    if (!txttenphimt.getText().equals("")) {
 	        Phim_Dao phimDao = new Phim_Dao();
 	        ArrayList<Phim> danhSachPhim = phimDao.getAllPhimByTenLoai(txttenphimt.getText(),txtloaiphimt.getText());
-	        DefaultTableModel model = (DefaultTableModel) tablephim.getModel();
-	        model.setRowCount(0);
+	        tablemodelphim.setRowCount(0);
 
 	        for (Phim phim : danhSachPhim) {
-	            model.addRow(new Object[] { phim.getMaPHIM(), phim.getTenPhim(), phim.getThoiLuong(), phim.getDoTuoi(),
+	        	tablemodelphim.addRow(new Object[] { phim.getMaPHIM(), phim.getTenPhim(), phim.getThoiLuong(), phim.getDoTuoi(),
 	                    phim.getNgayCongChieu(), phim.getNhaSX(), phim.getLoaiPhim() });
 	        }
 	    }

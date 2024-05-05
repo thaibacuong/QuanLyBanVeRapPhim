@@ -187,7 +187,6 @@ public class NhanVien_UI extends JPanel implements ActionListener, MouseListener
 		hb9.add(btnXoa);
 		hb9.add(Box.createHorizontalStrut(30));
 		hb9.add(btnLamMoinv1);
-		hb10.add(btnThoat);
 
 		vb1.add(hb);
 		vb1.add(Box.createVerticalStrut(25));
@@ -209,7 +208,6 @@ public class NhanVien_UI extends JPanel implements ActionListener, MouseListener
 		vb1.add(Box.createVerticalStrut(25));
 		vb1.add(hb9);
 		vb1.add(Box.createVerticalStrut(25));
-		vb1.add(hb10);
 
 		JCen1 = new JPanel(new BorderLayout());
 		add(JCen1, BorderLayout.CENTER);

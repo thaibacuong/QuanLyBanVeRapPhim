@@ -99,12 +99,6 @@ public class HoaDon_UI extends JPanel implements ActionListener, MouseListener{
 		vb21.add(Box.createHorizontalStrut(15));
 		vb21.add(btnLamMoi);
 
-		btnThoat = new JButton("Thoát");
-		Box vbT = Box.createHorizontalBox();
-		vbT.add(Box.createHorizontalStrut(50));
-		vbT.add(btnThoat);
-		JThoat.add(vbT);
-
 //		JCenp = new JPanel(new BorderLayout());
 //		add(JCenp, BorderLayout.CENTER);
 		JNorth = new JPanel(new GridLayout(1, 12));

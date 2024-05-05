@@ -19,6 +19,7 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import dao.NhanVien_Dao;
+import entity.MaNV;
 import entity.NhanVien;
 
 public class DangNhap extends JFrame implements ActionListener{
@@ -113,7 +114,7 @@ public class DangNhap extends JFrame implements ActionListener{
 			String mk=txtMatKhau.getText().toString();
 			String matKhauFromDB = NhanVien_Dao.getMatKhauByMaNhanVien(ma).trim();
 			if (matKhauFromDB != null && matKhauFromDB.equals(mk.trim())) {
-			  
+			    MaNV manv=new MaNV(ma);
 				dispose();
 				try {
 					new Tab().setVisible(true);
