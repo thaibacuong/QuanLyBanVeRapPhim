@@ -27,7 +27,7 @@ import javax.swing.table.TableModel;
 import dao.Phim_Dao;
 import entity.Phim;
 
-public class Phim_UI extends JFrame implements ActionListener, MouseListener{
+public class Phim_UI extends JPanel implements ActionListener, MouseListener{
 	/**
 	 * 
 	 */
@@ -264,11 +264,11 @@ public class Phim_UI extends JFrame implements ActionListener, MouseListener{
 		
 		tablephim.addMouseListener(this);
 		
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		setResizable(true);
-		setExtendedState(JFrame.MAXIMIZED_BOTH);
-		setLocationRelativeTo(null);
-		setVisible(true);
+//		setDefaultCloseOperation(EXIT_ON_CLOSE);
+//		setResizable(true);
+//		setExtendedState(JFrame.MAXIMIZED_BOTH);
+//		setLocationRelativeTo(null);
+//		setVisible(true);
 	}
 	public static void main(String[] args) {
 		new Phim_UI();

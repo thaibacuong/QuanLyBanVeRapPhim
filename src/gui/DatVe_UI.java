@@ -37,7 +37,7 @@ import dao.PhongChieu_Dao;
 import dao.SuatChieu_DAO;
 import entity.Phim;
 
-public class DatVe_UI extends JFrame implements ActionListener, MouseListener {
+public class DatVe_UI extends JPanel implements ActionListener, MouseListener {
 	/**
 	 * 
 	 */
@@ -261,12 +261,12 @@ public class DatVe_UI extends JFrame implements ActionListener, MouseListener {
 		
 		btnThanhtoan.addActionListener(this);
 		
-		setTitle("Đặt vé");
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		setResizable(true);
-		setLocationRelativeTo(null);
-		setVisible(true);
-		setExtendedState(JFrame.MAXIMIZED_BOTH);
+//		setTitle("Đặt vé");
+//		setDefaultCloseOperation(EXIT_ON_CLOSE);
+//		setResizable(true);
+//		setLocationRelativeTo(null);
+//		setVisible(true);
+//		setExtendedState(JFrame.MAXIMIZED_BOTH);
 
 	}
 

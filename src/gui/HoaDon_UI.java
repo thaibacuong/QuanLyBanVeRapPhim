@@ -20,7 +20,7 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
-public class HoaDon_UI extends JFrame implements ActionListener, MouseListener{
+public class HoaDon_UI extends JPanel implements ActionListener, MouseListener{
 	/**
 	 * 
 	 */
@@ -100,35 +100,35 @@ public class HoaDon_UI extends JFrame implements ActionListener, MouseListener{
 		vb21.add(Box.createHorizontalStrut(15));
 		vb21.add(btnLamMoi);
 
-		btnChiTiet = new JButton("Xem chi tiết");
 		btnThoat = new JButton("Thoát");
 		Box vbT = Box.createHorizontalBox();
-		vbT.add(Box.createHorizontalStrut(40));
-		vbT.add(btnChiTiet);
 		vbT.add(Box.createHorizontalStrut(50));
 		vbT.add(btnThoat);
 		JThoat.add(vbT);
 
-		JCenp = new JPanel(new BorderLayout());
-		add(JCenp, BorderLayout.CENTER);
+//		JCenp = new JPanel(new BorderLayout());
+//		add(JCenp, BorderLayout.CENTER);
 		JNorth = new JPanel(new GridLayout(1, 12));
 		JCen1 = new JPanel(new BorderLayout());
-		String[] header = "Mã hóa đơn;Ngày thanh toán;Giờ thanh toán;Mã nhân viên;Số vé;Tổng hóa đơn"
+		String[] header = "Mã hóa đơn;Ngày thanh toán;Giờ thanh toán;Tên nhân viên;Tổng hóa đơn"
 				.split(";");
 		tablemodel = new DefaultTableModel(header, 0);
 		table = new JTable(tablemodel);
 		scroll = new JScrollPane(table);
-		JCen1.add(scroll);
-		JCenp.add(JCen1, BorderLayout.CENTER);
-		JCenp.add(JNorth, BorderLayout.NORTH);
+//		JCen1.add(scroll);
+//		JCenp.add(JCen1, BorderLayout.CENTER);
+//		JCenp.add(JNorth, BorderLayout.NORTH);
 
 		
+		this.setLayout(new BorderLayout());
+		this.add(JNorth1, BorderLayout.NORTH);
+		this.add(scroll, BorderLayout.CENTER);
 		
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		setResizable(true);
-		setExtendedState(JFrame.MAXIMIZED_BOTH);
-		setLocationRelativeTo(null);
-		setVisible(true);
+//		setDefaultCloseOperation(EXIT_ON_CLOSE);
+//		setResizable(true);
+//		setExtendedState(JFrame.MAXIMIZED_BOTH);
+//		setLocationRelativeTo(null);
+//		setVisible(true);
 	}
 	
 	public static void main(String[] args) {
