@@ -40,6 +40,24 @@ public class Phim_Dao {
 	    return ds;
 	}
 	
+	public String layNgayChieuTheoTenPhim(String tenPhim) {
+        String ngayChieuList = "";
+        
+        try {
+            Connection con = ConnectDB.getConnection();
+            String sql = "SELECT SC.NgayChieu FROM PHIM P INNER JOIN SUATCHIEU SC ON P.MaPhim = SC.MaPhim WHERE P.TenPhim = '" + tenPhim + "'";
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            while (rs.next()) {
+                String ngayChieu = rs.getString("NgayChieu");
+                ngayChieuList=ngayChieu;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return ngayChieuList;
+    }
+	
 	public static ArrayList<String> layDanhSachTenPhim() throws SQLException {
 		ConnectDB.getInstance().connect();
 	    ArrayList<String> ds = new ArrayList<String>();

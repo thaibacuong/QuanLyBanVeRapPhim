@@ -427,7 +427,8 @@ public class DatVe_UI extends JFrame implements ActionListener, MouseListener {
 			String tenphim=cbxdstenphim.getSelectedItem().toString();
 			String suatchieu=cbxdssuatchieu.getSelectedItem().toString();
 			String maPhong = PhongChieu_Dao.getMaPhongByTenphong(cbxdsphong.getSelectedItem().toString());
-			new Ve_UI(null,chairSelected.toString(),maPhong,suatchieu,null,tenphim,txtTongtien.getText());
+			String ngaychieu= Phim_Dao.getMaPhimByTenPhim(tenphim);
+			new Ve_UI(null,chairSelected.toString(),maPhong,suatchieu,ngaychieu,tenphim,txtTongtien.getText());
 		}
 	}
 }
