@@ -8,6 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
 import javax.swing.Box;
@@ -18,6 +19,11 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
+
+import dao.HoaDon_Dao;
+import dao.NhanVien_Dao;
+import entity.HoaDon;
+import entity.NhanVien;
 
 public class HoaDon_UI extends JPanel implements ActionListener, MouseListener{
 	/**
@@ -117,6 +123,10 @@ public class HoaDon_UI extends JPanel implements ActionListener, MouseListener{
 		this.add(JNorth1, BorderLayout.NORTH);
 		this.add(scroll, BorderLayout.CENTER);
 		
+		loaddata();
+		
+		btnLamMoi.addActionListener(this);
+		
 //		setDefaultCloseOperation(EXIT_ON_CLOSE);
 //		setResizable(true);
 //		setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -127,6 +137,18 @@ public class HoaDon_UI extends JPanel implements ActionListener, MouseListener{
 	public static void main(String[] args) {
 		new HoaDon_UI();
 	}
+	
+	public void loaddata() {
+		HoaDon_Dao hoadondao = new HoaDon_Dao();
+		ArrayList<HoaDon> danhSachNhanVien = hoadondao.getAllHoaDon();
+
+		for (HoaDon hoadon : danhSachNhanVien) {
+			tablemodel.addRow(new Object[] { hoadon.getMaHD(),hoadon.getNgayXHD(),hoadon.getGioXHD(),
+					hoadon.getNhanVien(),hoadon.getTongHoaDon()});
+				
+		}
+	}
+	
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
@@ -155,7 +177,11 @@ public class HoaDon_UI extends JPanel implements ActionListener, MouseListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		
+		Object o=e.getSource();
+		if(o.equals(btnLamMoi)) {
+			tablemodel.setColumnCount(0);
+			loaddata();
+		}
 	}
 	
 }

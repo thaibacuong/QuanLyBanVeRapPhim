@@ -6,16 +6,14 @@ public class HoaDon {
     private String MaHD;
     private String NgayXHD;
     private String GioXHD; 
-    private NhanVien nhanVien;
-    private int soVe; 
-    private double tongHoaDon; 
+    private String nhanVien;
+    private String tongHoaDon; 
 
-    public HoaDon(String maHD, String ngayXHD, String gioXHD, NhanVien nhanVien, int soVe, double tongHoaDon) {
+    public HoaDon(String maHD, String ngayXHD, String gioXHD, String nhanVien, String tongHoaDon) {
         this.MaHD = maHD;
         this.NgayXHD = ngayXHD;
         this.GioXHD = gioXHD;
         this.nhanVien = nhanVien;
-        this.soVe = soVe;
         this.tongHoaDon = tongHoaDon;
     }
 
@@ -43,34 +41,27 @@ public class HoaDon {
 		GioXHD = gioXHD;
 	}
 
-	public NhanVien getNhanVien() {
+	public String getNhanVien() {
 		return nhanVien;
 	}
 
-	public void setNhanVien(NhanVien nhanVien) {
+	public void setNhanVien(String nhanVien) {
 		this.nhanVien = nhanVien;
 	}
 
-	public int getSoVe() {
-		return soVe;
-	}
 
-	public void setSoVe(int soVe) {
-		this.soVe = soVe;
-	}
-
-	public double getTongHoaDon() {
+	public String getTongHoaDon() {
 		return tongHoaDon;
 	}
 
-	public void setTongHoaDon(double tongHoaDon) {
+	public void setTongHoaDon(String tongHoaDon) {
 		this.tongHoaDon = tongHoaDon;
 	}
 
 	@Override
 	public String toString() {
 		return "HoaDon [MaHD=" + MaHD + ", NgayXHD=" + NgayXHD + ", GioXHD=" + GioXHD + ", nhanVien=" + nhanVien
-				+ ", soVe=" + soVe + ", tongHoaDon=" + tongHoaDon + "]";
+				+ ", tongHoaDon=" + tongHoaDon + "]";
 	}
     
 	

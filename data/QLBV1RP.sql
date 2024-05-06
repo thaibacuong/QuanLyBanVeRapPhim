@@ -17,13 +17,14 @@ FILEGROWTH=3MB
 use QLBV1RP
 drop table HOADON
 
+
+select * from HOADON
 CREATE TABLE HOADON 
 (maHoaDon CHAR(5) NOT NULL,
 ngayXuatHD NVARCHAR(20),
 gioXuatHD NVARCHAR(20),
-maNhanVien CHAR(5),
-soVe int,
-tongHoaDon int)
+tenNhanVien NVARCHAR(20),
+tongHoaDon NVARCHAR(20))
 
 
 CREATE TABLE NHANVIEN
@@ -71,7 +72,7 @@ ngayChieu NVARCHAR(10),
 maPhim CHAR(5)
 )
 
-
+select * from NHANVIEN
 
 
 CREATE TABLE PHIM

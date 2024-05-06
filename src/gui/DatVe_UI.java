@@ -15,6 +15,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
@@ -32,11 +36,14 @@ import javax.swing.table.DefaultTableModel;
 
 import connectDB.ConnectDB;
 import dao.GheNgoi_Dao;
+import dao.HoaDon_Dao;
 import dao.NhanVien_Dao;
 import dao.Phim_Dao;
 import dao.PhongChieu_Dao;
 import dao.SuatChieu_DAO;
+import entity.HoaDon;
 import entity.MaNV;
+import entity.NhanVien;
 import entity.Phim;
 
 public class DatVe_UI extends JPanel implements ActionListener, MouseListener {
@@ -421,6 +428,23 @@ public class DatVe_UI extends JPanel implements ActionListener, MouseListener {
 			String ngaychieu= Phim_Dao.getMaPhimByTenPhim(tenphim);
 			String tennv=NhanVien_Dao.getTenByMa(MaNV.getMa());
 			new Ve_UI(tennv,chairSelected.toString(),maPhong,suatchieu,ngaychieu,tenphim,txtTongtien.getText());
+			
+			LocalDateTime currentDateTime = LocalDateTime.now();
+			LocalDate currentDate = currentDateTime.toLocalDate();
+
+			LocalTime currentTime = currentDateTime.toLocalTime();
+			DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+			String formattedDate = currentDate.format(dateFormatter);
+
+			DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm");
+			String formattedTime = currentTime.format(timeFormatter);
+			ConnectDB.getInstance().getConnection();
+			HoaDon_Dao hoadondao=new HoaDon_Dao();	
+			String nv =NhanVien_Dao.getTenByMa(MaNV.getMa());
+			int i=1;
+			String ma=i+"";
+			HoaDon hoadon=new HoaDon(ma,formattedDate,formattedTime,nv,txtTongtien.getText());
+			hoadondao.addHoaDon(hoadon);
 		}
 	}
 }
