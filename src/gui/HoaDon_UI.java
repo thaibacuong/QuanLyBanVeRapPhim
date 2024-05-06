@@ -100,9 +100,9 @@ public class HoaDon_UI extends JPanel implements ActionListener, MouseListener{
 		vb21.add(lblNgayKT);
 		vb21.add(txtNgayKT);
 		vb21.add(Box.createHorizontalStrut(15));
-		vb21.add(lblSoDT);
-		vb21.add(txtSoDT);
-		vb21.add(Box.createHorizontalStrut(15));
+//		vb21.add(lblSoDT);
+//		vb21.add(txtSoDT);
+		vb21.add(Box.createHorizontalStrut(367));
 		vb21.add(btnLamMoi);
 
 //		JCenp = new JPanel(new BorderLayout());
@@ -123,10 +123,11 @@ public class HoaDon_UI extends JPanel implements ActionListener, MouseListener{
 		this.add(JNorth1, BorderLayout.NORTH);
 		this.add(scroll, BorderLayout.CENTER);
 		
-		loaddata();
+		
 		
 		btnLamMoi.addActionListener(this);
-		
+		btnTim.addActionListener(this);
+		loaddata();
 //		setDefaultCloseOperation(EXIT_ON_CLOSE);
 //		setResizable(true);
 //		setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -141,12 +142,24 @@ public class HoaDon_UI extends JPanel implements ActionListener, MouseListener{
 	public void loaddata() {
 		HoaDon_Dao hoadondao = new HoaDon_Dao();
 		ArrayList<HoaDon> danhSachNhanVien = hoadondao.getAllHoaDon();
-
+		
 		for (HoaDon hoadon : danhSachNhanVien) {
 			tablemodel.addRow(new Object[] { hoadon.getMaHD(),hoadon.getNgayXHD(),hoadon.getGioXHD(),
 					hoadon.getNhanVien(),hoadon.getTongHoaDon()});
 				
 		}
+	}
+	
+	public void loaddatim() {
+		if(!txtTenNV.getText().equals("")) {
+		HoaDon_Dao hoadondao = new HoaDon_Dao();
+		ArrayList<HoaDon> danhSachHOadon = hoadondao.getAllHoaDonByTenNV(txtTenNV.getText());
+		tablemodel.setRowCount(0);
+		for (HoaDon hoadon : danhSachHOadon) {
+			tablemodel.addRow(new Object[] { hoadon.getMaHD(),hoadon.getNgayXHD(),hoadon.getGioXHD(),
+					hoadon.getNhanVien(),hoadon.getTongHoaDon()});
+				
+		}}
 	}
 	
 	@Override
@@ -179,8 +192,11 @@ public class HoaDon_UI extends JPanel implements ActionListener, MouseListener{
 		// TODO Auto-generated method stub
 		Object o=e.getSource();
 		if(o.equals(btnLamMoi)) {
-			tablemodel.setColumnCount(0);
+			
 			loaddata();
+		}
+		if(o.equals(btnTim)) {
+			loaddatim();
 		}
 	}
 	

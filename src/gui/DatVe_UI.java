@@ -441,7 +441,7 @@ public class DatVe_UI extends JPanel implements ActionListener, MouseListener {
 			ConnectDB.getInstance().getConnection();
 			HoaDon_Dao hoadondao=new HoaDon_Dao();	
 			String nv =NhanVien_Dao.getTenByMa(MaNV.getMa());
-			int i=1;
+			int i=3;
 			String ma=i+"";
 			HoaDon hoadon=new HoaDon(ma,formattedDate,formattedTime,nv,txtTongtien.getText());
 			hoadondao.addHoaDon(hoadon);

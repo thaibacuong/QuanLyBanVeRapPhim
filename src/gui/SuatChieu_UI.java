@@ -153,11 +153,11 @@ public class SuatChieu_UI extends JPanel implements ActionListener, MouseListene
 		JCen1.add(JNorth1sc, BorderLayout.NORTH);
         
 		Box hbsc = Box.createHorizontalBox();
-		JPSmall1 = new JPanel();
+//		JPSmall1 = new JPanel();
 		JPSmall2 = new JPanel();
-		JPSmall1.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.BLACK), "Lọc"));
+//		JPSmall1.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.BLACK), "Lọc"));
 		JPSmall2.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.BLACK), "Tra cứu"));
-		hbsc.add(JPSmall1);
+//		hbsc.add(JPSmall1);
 		hbsc.add(JPSmall2);
 		JNorth1sc.add(hbsc);
 		vbsc1 = Box.createVerticalBox();
@@ -173,7 +173,7 @@ public class SuatChieu_UI extends JPanel implements ActionListener, MouseListene
 		vbsc2.add(Box.createVerticalStrut(25));
 		vbsc2.add(hbsc3);
 		vbsc2.add(Box.createVerticalStrut(10));
-		JPSmall1.add(vbsc1);
+//		JPSmall1.add(vbsc1);
 		JPSmall2.add(vbsc2);
 		
         lblGioBDp = new JLabel("Giờ bắt đầu   ");

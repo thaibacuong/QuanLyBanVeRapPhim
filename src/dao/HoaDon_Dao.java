@@ -40,6 +40,32 @@ public class HoaDon_Dao {
 		return ds;
 	}
 
+	public ArrayList<HoaDon> getAllHoaDonByTenNV(String tenNV) {
+	    ArrayList<HoaDon> ds = new ArrayList<>();
+	    String sql = "SELECT * FROM HOADON WHERE tenNhanVien = ?";
+	    ConnectDB.getInstance().connect();
+	    try (Connection con = ConnectDB.getConnection();
+	         PreparedStatement pst = con.prepareStatement(sql)) {
+
+	        pst.setString(1, tenNV);
+	        try (ResultSet rs = pst.executeQuery()) {
+	            while (rs.next()) {
+	                String maHoaDon = rs.getString(1);
+	                String ngayXHD = rs.getString(2);
+	                String gioXHD = rs.getString(3);
+	                String tenNhanVien = rs.getString(4);
+	                String tongHoaDon = rs.getString(5);
+	                HoaDon hoadon = new HoaDon(maHoaDon, ngayXHD, gioXHD, tenNhanVien, tongHoaDon);
+	                ds.add(hoadon);
+	            }
+	        }
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+	    return ds;
+	}
+
+	
 	public void addHoaDon(HoaDon hoadon) {
 		ConnectDB.getInstance().getConnection();
 		String sql = "INSERT INTO HOADON VALUES (?, ?, ?, ?, ?)";
